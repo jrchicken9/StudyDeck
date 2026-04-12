@@ -179,6 +179,8 @@ export default function QuizPage() {
 
   useEffect(() => {
     if (!q || secondsOnQuestion.length === 0) return;
+    /* Stop the clock after confirm so review time (and last-question feedback) is not counted */
+    if (revealed) return;
     const id = window.setInterval(() => {
       setSecondsOnQuestion((arr) => {
         if (index >= arr.length) return arr;
@@ -188,7 +190,7 @@ export default function QuizPage() {
       });
     }, 1000);
     return () => window.clearInterval(id);
-  }, [index, q?.id, secondsOnQuestion.length]);
+  }, [index, q?.id, secondsOnQuestion.length, revealed]);
 
   const scoringEnabled = useMemo(
     () => deck.length > 0 && deck.every((x) => x.correctIndex !== null),
@@ -236,11 +238,14 @@ export default function QuizPage() {
     );
     setAttempts(nextAttempts);
     if (index + 1 >= deck.length) {
+      const totalSecondsOnQuiz = secondsOnQuestion.reduce((a, b) => a + b, 0);
       navigate(`/results/${examId}`, {
         state: {
           attempts: nextAttempts,
           scoringEnabled,
           title: exam?.title,
+          totalSecondsOnQuiz,
+          sessionQuestionCount: deck.length,
         },
       });
       return;
@@ -248,7 +253,7 @@ export default function QuizPage() {
     setIndex((x) => x + 1);
   }, [
     attempts,
-    deck.length,
+    deck,
     exam?.title,
     examId,
     index,
@@ -257,6 +262,7 @@ export default function QuizPage() {
     choicePerm,
     revealed,
     scoringEnabled,
+    secondsOnQuestion,
     selected,
   ]);
 

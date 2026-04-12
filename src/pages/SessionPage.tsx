@@ -7,12 +7,13 @@ const PRESETS = [20, 40, 60, 100] as const;
 export default function SessionPage() {
   const { examId } = useParams<{ examId: string }>();
   const navigate = useNavigate();
-  const [custom, setCustom] = useState("50");
+  const [custom, setCustom] = useState("");
   const exam = examId ? getExamSummary(examId) : undefined;
 
   const parsedCustom = useMemo(() => {
-    const n = Number.parseInt(custom, 10);
-    return Number.isFinite(n) ? Math.max(1, Math.min(500, n)) : 20;
+    const n = Number.parseInt(custom.trim(), 10);
+    if (!Number.isFinite(n)) return null;
+    return Math.max(1, Math.min(500, n));
   }, [custom]);
 
   function start(count: number) {
@@ -71,6 +72,7 @@ export default function SessionPage() {
             id="custom-n"
             className="input"
             inputMode="numeric"
+            placeholder="1–500"
             value={custom}
             onChange={(e) => setCustom(e.target.value)}
           />
@@ -79,9 +81,12 @@ export default function SessionPage() {
           <button
             type="button"
             className="btn"
-            onClick={() => start(parsedCustom)}
+            disabled={parsedCustom === null}
+            onClick={() => parsedCustom !== null && start(parsedCustom)}
           >
-            Start {parsedCustom} questions
+            {parsedCustom !== null
+              ? `Start ${parsedCustom} questions`
+              : "Enter number of questions"}
           </button>
         </div>
       </div>
