@@ -245,6 +245,17 @@ export default function QuizPage() {
             Tap another option to change your mind, or confirm below.
           </p>
         ) : null}
+        {revealed && selected !== null && scoringEnabled && q.correctIndex !== null ? (
+          choicePerm[selected] === q.correctIndex ? (
+            <p className="prank-banner prank-banner--ok" role="status" aria-live="polite">
+              Goodjob Khan!
+            </p>
+          ) : (
+            <p className="prank-banner prank-banner--bad" role="status" aria-live="polite">
+              Dumb Ass Idiot Khan
+            </p>
+          )
+        ) : null}
         {revealed && selected !== null ? (
           <FeedbackLine
             scoringEnabled={scoringEnabled}
