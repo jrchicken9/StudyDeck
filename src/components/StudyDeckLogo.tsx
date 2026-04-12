@@ -7,7 +7,7 @@ type Props = {
 };
 
 /**
- * StudyDeck mark: stacked study cards, violet–indigo top card, cyan accent.
+ * StudyDeck mark: stacked cards, coral–rose top card, sky accent dot.
  * Custom mark (not a stock icon); pair with the wordmark in the nav.
  */
 export function StudyDeckLogo({ className, title = "StudyDeck" }: Props) {
@@ -33,9 +33,9 @@ export function StudyDeckLogo({ className, title = "StudyDeck" }: Props) {
           y2="28"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#8b5cf6" />
-          <stop offset="0.45" stopColor="#6366f1" />
-          <stop offset="1" stopColor="#4f46e5" />
+          <stop stopColor="#fb7185" />
+          <stop offset="0.42" stopColor="#f43f5e" />
+          <stop offset="1" stopColor="#0369a1" />
         </linearGradient>
       </defs>
       <rect
@@ -44,7 +44,7 @@ export function StudyDeckLogo({ className, title = "StudyDeck" }: Props) {
         width="22"
         height="16"
         rx="3"
-        fill="#27272a"
+        fill="#1e2d42"
         stroke="rgba(255,255,255,0.08)"
         strokeWidth="1"
       />
@@ -54,7 +54,7 @@ export function StudyDeckLogo({ className, title = "StudyDeck" }: Props) {
         width="22"
         height="18"
         rx="3.5"
-        fill="#3f3f46"
+        fill="#2a3d56"
         stroke="rgba(255,255,255,0.1)"
         strokeWidth="1"
       />
@@ -74,7 +74,7 @@ export function StudyDeckLogo({ className, title = "StudyDeck" }: Props) {
         strokeWidth="1.5"
         strokeLinecap="round"
       />
-      <circle cx="25" cy="7" r="2.25" fill="#22d3ee" opacity="0.95" />
+      <circle cx="25" cy="7" r="2.25" fill="#38bdf8" opacity="0.95" />
     </svg>
   );
 }

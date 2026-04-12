@@ -2,18 +2,18 @@
   <title>StudyDeck</title>
   <defs>
     <linearGradient id="g2" x1="6" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7c3aed"/>
-      <stop offset="0.5" stop-color="#6366f1"/>
-      <stop offset="1" stop-color="#4338ca"/>
+      <stop stop-color="#f43f5e"/>
+      <stop offset="0.48" stop-color="#e11d48"/>
+      <stop offset="1" stop-color="#0284c7"/>
     </linearGradient>
   </defs>
-  <rect width="240" height="48" rx="12" fill="#fafafa"/>
+  <rect width="240" height="48" rx="12" fill="#f8fafc"/>
   <g transform="translate(10, 8)">
-    <rect x="3" y="14" width="22" height="16" rx="3" fill="#e4e4e7" stroke="#d4d4d8" stroke-width="1"/>
-    <rect x="5" y="10" width="22" height="18" rx="3.5" fill="#d4d4d8" stroke="#a1a1aa" stroke-width="1"/>
+    <rect x="3" y="14" width="22" height="16" rx="3" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <rect x="5" y="10" width="22" height="18" rx="3.5" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1"/>
     <rect x="6" y="4" width="22" height="24" rx="4.5" fill="url(#g2)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
     <path d="M10 12h14M10 16h11M10 20h9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="25" cy="7" r="2.25" fill="#0891b2" opacity="0.95"/>
+    <circle cx="25" cy="7" r="2.25" fill="#0ea5e9" opacity="0.95"/>
   </g>
-  <text x="50" y="30" fill="#09090b" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" letter-spacing="-0.04em">StudyDeck</text>
+  <text x="50" y="30" fill="#0a1628" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" letter-spacing="-0.04em">StudyDeck</text>
 </svg>
