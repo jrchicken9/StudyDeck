@@ -10,6 +10,12 @@ export type Attempt = {
   selectedChoiceIndex: number | null;
 };
 
+type QuestionUi = {
+  /** Display index 0–2 (matches shuffled choice buttons) */
+  sel: number | null;
+  rev: boolean;
+};
+
 function FeedbackLine({
   scoringEnabled,
   correctIndex,
@@ -60,9 +66,8 @@ export default function QuizPage() {
   const [deck, setDeck] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [attempts, setAttempts] = useState<Attempt[]>([]);
-  const [selected, setSelected] = useState<number | null>(null);
-  /** After user confirms their selection, show correct/incorrect before "Next" */
-  const [revealed, setRevealed] = useState(false);
+  /** Per-question selection + revealed state so we can go back/forward in the deck */
+  const [perQ, setPerQ] = useState<QuestionUi[]>([]);
 
   useEffect(() => {
     if (!examId) return;
@@ -78,9 +83,8 @@ export default function QuizPage() {
         setAttempts(
           picked.map((q) => ({ questionId: q.id, selectedChoiceIndex: null })),
         );
+        setPerQ(picked.map(() => ({ sel: null, rev: false })));
         setIndex(0);
-        setSelected(null);
-        setRevealed(false);
       } catch (e) {
         if (!cancelled) {
           setLoadError(e instanceof Error ? e.message : "Load failed");
@@ -93,6 +97,10 @@ export default function QuizPage() {
   }, [examId, requested]);
 
   const q = deck[index];
+  const row = perQ[index] ?? { sel: null, rev: false };
+  const selected = row.sel;
+  const revealed = row.rev;
+
   const scoringEnabled = useMemo(
     () => deck.length > 0 && deck.every((x) => x.correctIndex !== null),
     [deck],
@@ -133,8 +141,6 @@ export default function QuizPage() {
       return;
     }
     setIndex((x) => x + 1);
-    setSelected(null);
-    setRevealed(false);
   }, [
     attempts,
     deck.length,
@@ -149,14 +155,23 @@ export default function QuizPage() {
     selected,
   ]);
 
+  function patchCurrent(patch: Partial<QuestionUi>) {
+    setPerQ((pq) => pq.map((r, i) => (i === index ? { ...r, ...patch } : r)));
+  }
+
   function onPickChoice(displayIdx: number) {
     if (revealed) return;
-    setSelected(displayIdx);
+    patchCurrent({ sel: displayIdx });
   }
 
   function confirmAnswer() {
     if (revealed || selected === null) return;
-    setRevealed(true);
+    patchCurrent({ rev: true });
+  }
+
+  function goToPreviousQuestion() {
+    if (index <= 0) return;
+    setIndex((i) => i - 1);
   }
 
   if (loadError) {
@@ -239,6 +254,15 @@ export default function QuizPage() {
           />
         ) : null}
         <div className="btn-row">
+          {index > 0 ? (
+            <button
+              type="button"
+              className="btn secondary"
+              onClick={goToPreviousQuestion}
+            >
+              Previous question
+            </button>
+          ) : null}
           {!revealed ? (
             <>
               <button
@@ -253,7 +277,7 @@ export default function QuizPage() {
                 type="button"
                 className="btn secondary"
                 disabled={selected === null}
-                onClick={() => setSelected(null)}
+                onClick={() => patchCurrent({ sel: null })}
               >
                 Clear selection
               </button>
