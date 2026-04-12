@@ -17,7 +17,7 @@ export default function DashboardPage() {
               <span className="exam-card-kicker">{exam.subtitle}</span>
               <span className="exam-card-title">{exam.title}</span>
               <span className="exam-card-desc">{exam.description}</span>
-              <span className="exam-card-cta">Get Started</span>
+              <span className="exam-card-cta">{exam.dashboardCta}</span>
             </Link>
           </li>
         ))}

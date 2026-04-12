@@ -4,6 +4,8 @@ export type ExamSummary = {
   subtitle: string;
   /** Short blurb for dashboard cards */
   description: string;
+  /** Link label on the dashboard exam card */
+  dashboardCta: string;
 };
 
 export const EXAMS: ExamSummary[] = [
@@ -12,6 +14,7 @@ export const EXAMS: ExamSummary[] = [
     title: "Sergeant exam",
     subtitle: "March 2026",
     description: "Full bank of multiple-choice items with instant feedback.",
+    dashboardCta: "Get Started",
   },
 ];
 
