@@ -1,0 +1,7 @@
+# https://docs.railway.com/reference/config-as-code
+# Nixpacks runs `npm install` and `npm run build` automatically when a "build"
+# script exists in package.json.
+
+[deploy]
+startCommand = "npm start"
+restartPolicyType = "ON_FAILURE"

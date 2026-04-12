@@ -1,0 +1,2418 @@
+{
+  "examId": "sgt-march-2026",
+  "title": "Sergeant Exam (March 2026)",
+  "version": 2,
+  "sourceNote": "Imported from Word; 'Heading 1' style = correct answer (choices[0], correctIndex 0). The app shuffles choices when you take a quiz.",
+  "questions": [
+    {
+      "id": "q001-c60d0e77215e",
+      "text": "In order to approve a member's timesheet row, it must be in what status?",
+      "choices": [
+        "Needs Approval or Submitted",
+        "Needs Approval or New",
+        "Not Submitted or New"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q002-9850cf5c8745",
+      "text": "You are a Homicide Detective and your teams working schedule is 0700 - 1700 hrs Monday to Friday. A homicide call came in late Monday at 1600 hours causing the team to work continuously into their next tour of duty signing off at 0800 hrs. As it relates to timekeeping, which statement is true?",
+      "choices": [
+        "The “Unable to Continue” time reporting code ensures officers are paid Regular Time for up to 8 consecutive hours of their regular shift.",
+        "The final hour of the overnight shift is paid as Regular Time because that is a regular scheduled hour of work.",
+        "The officers are not permitted to return at 1600 hrs."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q003-9558659cf96b",
+      "text": "You are a supervisor overseeing timekeeping for your shift. Yesterday, one of your members worked a dayshift from 0700 -1700 hrs, but was actually scheduled to work an 8 hour afternoon shift. The appropriate action is to:",
+      "choices": [
+        "Conduct a shift override manually. The In / Out time reflects the appropriate 10 hours worked, but the Shift Start / Shift End needs to reflect 8 hours. This ensures that the officer gets 2 hours overtime.",
+        "Change the officers’ master schedule for that day to reflect the appropriate hours worked.",
+        "Amend the In / Out times for the date to reflect the first 8 hours worked. Add a dropdown line for an additional entry and add the remaining 2 hours to account for the officer’s overtime."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q004-785d214224e0",
+      "text": "One of your officers is scheduled to work 0600-1600 hrs, and has training from 0800-1600 hrs. What is the correct action to reflect this in timekeeping?",
+      "choices": [
+        "0600-0800 hrs 'Regular Time', and add a second line for 0800-1600 hrs 'Training'",
+        "There is no required action as the officer is 'on-duty' for the duration of the training",
+        "0600-0630 hrs 'Regular Time', leave 1.5 hrs for their lunch, and add a second line for 0800-1600 hrs 'Training'"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q005-ebf46c27e4e5",
+      "text": "Sgt Brown is going on vacation for two weeks and you are tasked with filling the role with an Acting Sergeant. To capture this in e-time, you would…",
+      "choices": [
+        "submit an e-transfer to Human Resources including the effective transfer and return dates, no e-time entries are required",
+        "manually change the Time Reporting Code from 'Regular Time' to 'Acting' for the dates that Sgt Brown is off",
+        "enter 'Acting for Sgt Brown' in the job code remarks for every shift being covered"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q006-5ad15277446f",
+      "text": "Sgt Williams is going to be off for the next 4 days and you have been tasked with filling the role with an 'Acting Sergeant'. The steps for capturing this in e-time would be to:",
+      "choices": [
+        "Select the applicable Job Code for Sgt Williams to ensure member is credited with acting",
+        "submit an e-transfer to Human Resources including the effective transfer and return dates, no e- time entries are required",
+        "manually change the Time Reporting Code from 'Regular Time' to 'Acting' for the dates that Sgt Williams is off"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q007-73a2787fb90e",
+      "text": "As a supervisor how would you get your employee to submit their vacation request?",
+      "choices": [
+        "Have the employee enter their vacation time through a leave request in E-Time",
+        "Enter their vacation time manually in the timesheets",
+        "Enter their vacation time manually in the timesheet and have them enter a leave request in E- Time"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q008-d0b16e5478a5",
+      "text": "Cst Hurst has a ZBA balance of -23.50 hrs. She also has 187 hrs STAT, 4.25 hrs COMP, 17.50 hrs ACCRUED, and 8 hrs VAC remaining in her banks. The reconciliation process would be as follows:",
+      "choices": [
+        "17.50 hrs from her ACCRUED, then 4.25 hrs from her COMP, and 1.75 hrs from her VAC",
+        "4.25 hrs from her COMP, then 8 hrs from her VAC, and 11.25 hrs from her ACCRUED",
+        "8 hrs from her VAC, then 15.50 hours from her ACCRUED"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q009-0b13c1eb2bd5",
+      "text": "One of the officers on your platoon advises you that she had slipped on the floor in the report room and has hurt her wrist and knee. How many days do you have to submit the Supervisors Incident Report?",
+      "choices": [
+        "3 calendar days",
+        "3 business days",
+        "3 days after seeing a physician"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q010-d0bce45affda",
+      "text": "You have been dispatched to attend the scene of a departmental MVC. As the investigating Sergeant you are responsible for submitting the following documents:",
+      "choices": [
+        "Supervisors Investigation of Police Vehicle Collision Report, Driving Performance Report, and Discipline Report",
+        "Motor Vehicle Collision Report, Collision Review Investigators Report, and Supervisors Departmental Report",
+        "Driving Evaluation Report, Police Vehicle Collision Report, and Sergeant Investigation Collision Report"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q011-81c5a2709021",
+      "text": "You attend the scene of a departmental MVC with very minor injuries. Officers begin to argue over who will be responsible for investigating the collision. As the Sergeant, you respond that the investigation will be conducted by:",
+      "choices": [
+        "yourself, as the injuries are minor, unless the DI or MCB S/Sgt believes MCB should do it",
+        "an officer from MCB, as they are responsible for all departmental with injuries",
+        "the first officer dispatched to the call, as they are deemed the reporting officer"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q012-95d3cba28756",
+      "text": "One of the officers on your platoon advises you that she had slipped on the floor in the report room and fell. As a result she hit her head and was unconscious for a short period of time. As her supervisor you must report this incident immediately to:",
+      "choices": [
+        "The Ministry of Labour AND to a Joint Occupational Health and Safety Committee Representative",
+        "The Workplace Safety and Insurance Board AND the Chief of Police or their designate",
+        "The Occupational Health and Safety Board AND the Disability Specialist of Human Resources"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q013-a8df65d912b2",
+      "text": "You are a Detective in the Central Robbery Bureau. You become aware that during an arrest the culprit intentionally rammed one of your officers vehicles. As a result you should direct the officer operating the damaged vehicle to:",
+      "choices": [
+        "contact Fleet Services to determine the cost of repairs",
+        "If the damage is greater than $2000 notify FIS for photographs",
+        "forward a copy of the MVC report to the accused and his/her counsel"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q014-e4ad2661fe2a",
+      "text": "Cst Swanson broke his leg while on-duty chasing a culprit over a fence trying to effect an arrest. As their supervisor you know this needs to be reported to WSIB. What steps shall be taken?",
+      "choices": [
+        "Cst Swanson shall complete a WSIB Form 6 (Worker's Report of Injury / Disease) and send it to you and HR. You shall complete a Supervisors Incident Report.",
+        "Cst Swanson shall complete a WSIB Form 7 (Worker's Report of Injury / Disease) and send it to you and HR. You shall complete a Supervisors Incident Report.",
+        "You shall complete a WSIB Form 6 (Worker's Report of Injury / Disease) and a Supervisors Incident Report and send it to HR."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q015-4b8d5e565fc0",
+      "text": "For member's at maximum salary - their annual performance evaluation for the previous calendar year is required to be completed by",
+      "choices": [
+        "February 28th",
+        "December 31st",
+        "January 31st"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q016-3ee2ac4a7a1c",
+      "text": "According to Statistics Canada's Uniform Crime Reporting (UCR) if it has been determined through police investigation that the offence reported did not occur, nor was it attempted and therefore no violations of the Criminal Code or other federal statute took place at that time or location, the case can be considered as:",
+      "choices": [
+        "Unfounded",
+        "Inconclusive",
+        "Unsubstantiated"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q017-abf9a2a7b803",
+      "text": "As a supervisor you are responsible for approving Niche tasks that are in 'Supervisor Check' status. These are located under which tab?",
+      "choices": [
+        "“Sup. Approve Unit Member Tasks”",
+        "“Incomplete Unit Tasks”",
+        "“Approve Unit Member Tasks”"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q018-af2dbadc7c6c",
+      "text": "As a supervisor you are responsible for approving Niche tasks that are in 'Supervisor Check'. After reviewing the task your options are:",
+      "choices": [
+        "\"Appr\" or \"Rwrk\"",
+        "\"Start\" or \"Complete\"",
+        "\"Accpt\" or \"Rtrn\""
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q019-68e457abcefb",
+      "text": "You are the Detective in Robbery and are responsible for completing a performance appraisal for one of your Detective Constables. The officer has been under your command for five months, and was previously assigned to Homicide. Your responsibilities when completing the assessment include the following ?",
+      "choices": [
+        "be familiar with the Robbery and Homicide Detective Constable Position Profiles, maintain performance notes throughout the appraisal period, complete the Manager Evaluation, and complete directives and equipment verifications",
+        "be familiar with the Robbery Detective Constable Position Profile, review previous evaluations for the member, nominate another supervisor to complete the Manager Evaluation, complete inspections of the notebooks accumulated during the evaluation period",
+        "be familiar with the Robbery Detective Constable Position Profile, maintain e-performance notes on My Private I, complete the Manager Evaluation, and provide explanations for all of your competency ratings"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q020-5cfc819044c1",
+      "text": "When reviewing your Patrol Zone sheets, members who are off will automatically be given what order number?",
+      "choices": [
+        "999",
+        "99",
+        "9999"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q021-8d86c4f4be3a",
+      "text": "When changing an officer's unit and/or shift cycle on the Patrol Zone sheets, the 'Assignment Type' should always be:",
+      "choices": [
+        "Primary",
+        "Temporary",
+        "Permanent"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q022-30f8d1eeb92b",
+      "text": "What is the 'Codes' column on a Patrol Zone sheet reserved for?",
+      "choices": [
+        "To explain the reason the officer is off on VAC, STAT, or COMP",
+        "To explain scheduling purposes such as Court and Training",
+        "To explain the Recording Code Type such as Regular Time, Overtime, and Sick"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q023-e9ff05034cb6",
+      "text": "As a Patrol Sergeant you are responsible for reviewing MVC reports to ensure they are completed as required, submitted and approved. This shall be done within days of the accident.",
+      "choices": [
+        "7",
+        "4",
+        "10"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q024-45578d84b8eb",
+      "text": "An officer on your shift was involved in a pursuit. What document(s) are they required to submit to you, as the divisional investigating supervisor?",
+      "choices": [
+        "Preliminary Pursuit Report, and when necessary a Supplementary Report",
+        "Police Pursuit Report, and when necessary a Collision Report",
+        "Pursuit Investigation Report, and when necessary a Incident Response Report"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q025-77b98e4e653b",
+      "text": "It is identified that one of your FTO units was traveling in excess of 130 km/hr. Who is required to submit a 130 km/hr report to you?",
+      "choices": [
+        "the driver",
+        "the driver and the passenger",
+        "no one, as long as they were in lawful execution of their duties"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q026-e6c3989089fd",
+      "text": "It was identified that one of your units was exceeding 130 km/hr. You learn that Cst Alma was driving, and riding with Cst Branch at the time. Cst Alma has no previous 130 km/hr reports in the last year, and Cst Branch has one. Prior to submitting the 130 km/hr report to your Staff Sergeant you shall:",
+      "choices": [
+        "review the 130 km/hr report from Cst Alma and the memo from Cst Branch, and include that Cst Alma has no previous 130 km/hr reports in the last 12 months",
+        "review the 130 km/hr reports from Cst Alma and Cst Branch, and include that Cst Alma has no previous 130 km/hr reports in the last 12 months",
+        "review the 130 km/hr report from Cst Alma, and include history of 130 km/hr reports for Cst Alma and Cst Branch over the last 12 months"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q027-375deae5cd67",
+      "text": "Cst. Hawley has been served a disposition by the Informal Discipline Review Committee. He seeks your guidance as he is unsure if he should accept or refuse the penalty. After speaking with him you tell him to think it over on his days off, as he has days to respond.",
+      "choices": [
+        "7",
+        "10",
+        "14"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q028-a3256bb7738a",
+      "text": "PRP strives to create a safe and inclusive environment for all members. One of your officers advises you that Cst. Campbell made a racial joke in the lunchroom. If you, as their supervisor, fail to take action, who is subject to discipline?",
+      "choices": [
+        "Cst. Campbell and you",
+        "Cst. Campbell",
+        "everyone that was present and failed to report it"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q029-ad1abf7a3537",
+      "text": "Who may authorize the suspension of a police officer with pay?",
+      "choices": [
+        "Chief of Police",
+        "Chair of the Police Services Board",
+        "Inspector of Professional Standards"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q030-5f9dd8ae1ba1",
+      "text": "One of your officers calls you while on vacation in Vancouver to advise you that he was arrested. As his supervisor you should:",
+      "choices": [
+        "notify the Chief through the chain of command",
+        "do nothing if he was not charged",
+        "request the arrest report and file it with HR"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q031-1929968f1d76",
+      "text": "You have been having ongoing issues with Cst. Chan's deportment. When applying corrective discipline you shall ensure it is:",
+      "choices": [
+        "timely, consistent, and objective",
+        "properly documented and a follow-up conducted within 30 days",
+        "reported to the Manager of Human Resources"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q032-01fa6a2e7d1b",
+      "text": "Supervisors applying corrective discipline should handle acts of misconduct with:",
+      "choices": [
+        "certainty, consistency, and fairness",
+        "authority, discretion, and confidentiality",
+        "subjectivity, compassion, and equality"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q033-769db89b31f1",
+      "text": "Cst Scott reports to you, and has been involved in conduct that warrants disciplinary action. Your S/Sgt has had enough and tells you he wants you to prepare and submit a Discipline Report. You comply and include the following information in your report: outline the behaviour in question, and your recommendations for appropriate action. What information is missing from your report?",
+      "choices": [
+        "any previous counselling and any progressive discipline given to Cst. Scott",
+        "a memorandum from Cst. Scott and a copy of your notes",
+        "Cst. Scott's employment history and justification for your recommended actions"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q034-e7ae5d5bd397",
+      "text": "Who maintains the Directives Management System?",
+      "choices": [
+        "Quality Assurance",
+        "Risk Assessment",
+        "Corporate Communications"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q035-9394ee57039c",
+      "text": "One of your officers has posted an inappropriate picture on social media. While speaking with them, you reference their non-compliance with the Social Media directive. They advise that they were unaware of this directive. You run their directive history report and learn that they had not accepted receipt of this directive. How does this impact your course of action?",
+      "choices": [
+        "It has no relevance, as lack of knowledge of the contents of an existing directive is not an acceptable excuse",
+        "It is significantly relevant as an employee cannot be held accountable to a directive or policy if they were not made aware of it",
+        "Every member has three months to acknowledge acceptance of any new directives before they can be bound to its content"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q036-79e69c4af8a9",
+      "text": "Every member has three months to acknowledge acceptance of any new directives before they can be bound to its content",
+      "choices": [
+        "Directive Re-evaluation Notice, five",
+        "Directive Renewal Notice, nine",
+        "General Procedure Review Notice, two"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q037-a67e3318cd1c",
+      "text": "The shall conduct the administrative investigation, on behalf of this Service, of all occurrences resulting from the discharge of a PRP Officer's firearm, where no injury occurs.",
+      "choices": [
+        "Investigative Support Bureau",
+        "Criminal Investigation Bureau",
+        "Incident Response Training Unit"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q038-808f75b285ec",
+      "text": "Which of the following is an acceptable way to make an allegation of unsatisfactory work performance?",
+      "choices": [
+        "Originated by a member of the public, in writing, signed by the complainant, and sent to the OIC Professional Standards",
+        "Originated by any member of the Service, in writing, and sent to the Director of Human Resources",
+        "Originated by a sworn member of the Service, in writing or in person, to a supervisor holding the rank of Sergeant or higher"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q039-d7a1f9aab6d3",
+      "text": "An officer on your platoon is alleging the unsatisfactory work performance of another officer on your platoon. This shall be reported .",
+      "choices": [
+        "through the chain of command to the Senior Officer in charge of the Subject Officer",
+        "directly to the Senior Officer in charge of the Subject Officer",
+        "to any Senior Officer or Manager"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q040-3836f07a0226",
+      "text": "A supervisor assigned to the subject officer during an administrative review shall",
+      "choices": [
+        "be the rank of Staff Sergeant or higher, ensure the subject officer understands what is unsatisfactory about the performance, and together with the subject officer determine the reasons for the unsatisfactory work performance",
+        "be the rank of Sergeant or higher, ensure the subject officer understands they may contact the Peel Regional Police Association, and together with the subject officer determine the reasons for the unsatisfactory work performance",
+        "be the rank of Sergeant or higher, ensure the subject officer understands they may contact the Peel Regional Police Association, and together with the subject officer determine the reasons for the unsatisfactory work performance"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q041-0e4071e9a0b8",
+      "text": "Information requests submitted under the Municipal Freedom of Information and Protection of Privacy Act are to be processed in:",
+      "choices": [
+        "30 days",
+        "60 days",
+        "90 days"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q042-9e9d221d7c2e",
+      "text": "Personal information may be disclosed regarding an individual, to any person, if there is a reasonable\nthat the individual poses a significant risk of harm to other persons or property",
+      "choices": [
+        "Belief",
+        "Opinion",
+        "Suspicion"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q043-c644d2862224",
+      "text": "You are working as a Detective when one of your Constables advises that they just started putting together a Complex Crown Brief for a human trafficking arrest last night. The Constable is scheduled to start a ten-day cruise tomorrow and is in a panic. You advise the Constable to appoint an OIC to:",
+      "choices": [
+        "Ensure that the Complex Brief arrives at CDU within 21 days",
+        "Submit an Initial Crown Brief to CDU within 3 days and the Complex Brief within 28 days",
+        "Submit an Initial Crown Brief today and a Complex Crown Brief within 14 days"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q044-52b1aeb8e7cd",
+      "text": "You are a Detective in CIB and you need to find someone to 'act' for you while you are away on vacation. What defines 'acting eligibility'?",
+      "choices": [
+        "a valid score of at least 90% on the NCO Eligibility Exam or Sergeant Supervisory Exam",
+        "a valid score of at least 70% on the Ontario Police College Promotional Exam",
+        "a valid score of at least 90% on the SGT Supervisory Exam AND a valid score of at least 70% on the OPC Promotional Exam"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q045-5aba5b8ec4a1",
+      "text": "You are a Detective in CIB and asked to run a posting process to fill a new permanent vacancy. The posting process should include:",
+      "choices": [
+        "application, paper review, and interview",
+        "application only",
+        "application and paper review only"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q046-3b8513f3072c",
+      "text": "You are a Detective in CIB and asked to run a posting process to fill a new permanent vacancy. Who can apply for the position?",
+      "choices": [
+        "Any Constable assigned to, or on a TT from the affected Division",
+        "Any Constable in the Organization",
+        "Any Constable that has previously worked at the affected Division"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q047-05f68ca70894",
+      "text": "You are a Detective in CIB and asked to run a job posting process. There are ten applicants for one full- time and one temporary vacant position. How many interviews are you required to conduct?",
+      "choices": [
+        "6 (minimum)",
+        "3 (minimum)",
+        "9 (minimum)"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q048-80d14cf6db47",
+      "text": "A permanent vacancy is required to be filled in your area. What happens if there are no qualified applicants? You may find a suitable candidate and fill the vacancy through:",
+      "choices": [
+        "the permanent transfer of this member with their consent.",
+        "the temporary transfer of this member with their consent.",
+        "the appointment from the Director of Human Resources"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q049-90a0bb165d8e",
+      "text": "A member commences her 80 hour scheduled vacation at a resort in Mexico.. On the second day of the trip, an infectious virus breaks out at the resort. The officer is experiencing symptoms of contracting the virus and is taken to a local hospital for treatment. Is the officer entitled to recoup lost vacation time?",
+      "choices": [
+        "Yes, with supporting documentation confirming the officer was hospitalized",
+        "No, there is no compensation for officers travelling outside of the country",
+        "The collective agreement states medical expenses will be covered but not time"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q050-c2da5a695e18",
+      "text": "All members shall receive their Performance Evaluation within of when it is due, except where the Supervisor is unable to review the evaluation with the member due to the member's authorised absence on leave.",
+      "choices": [
+        "Thirty five days",
+        "Sixty days",
+        "One year"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q051-3955d1e68a6f",
+      "text": "Under the Collective Agreement, within the Letter of Understanding respecting the posting of vacancies for the rank of Constable, \"tenure” is defined as the cumulative duration of an Officer’s assignment to a position, taking into account one of the following factors:",
+      "choices": [
+        "the duration of all period(s) of temporary transfer from the position arising after the date of permanent assignment, including transfers to special projects, joint forces operations, and secondments",
+        "the duration of the Officer’s assignment since the date of his/her permanent transfer to the position, without including any period(s) of authorized leave of absence",
+        "the duration of all period(s) of previous temporary transfer to the same position where the end date of such transfer(s) is less than one (1) year from the date of the Officer’s permanent assignment to the position;"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q052-933cbad5c41d",
+      "text": "You are the Sergeant in Recruiting and learn that one of your officers is being transferred to the Training Bureau for a year to cover a maternity leave. In order to fill your vacancy you should .",
+      "choices": [
+        "post to fill the position, organization wide, for a temporary vacancy",
+        "first canvass the other units under Learning & Development for a suitable candidate and then post",
+        "ask your Inspector to assign someone to the position since the vacancy is for less than 12 months"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q053-bc86dd86c446",
+      "text": "As a manager, you should watch for indicators of negative workplace stress. Symptoms of physical indicators include:",
+      "choices": [
+        "indigestion, insomnia, muscle aches",
+        "mood swings, depression, irritability",
+        "isolation, impatience, overeating"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q054-654a6979e872",
+      "text": "As a manager, you should watch for indicators of negative workplace stress. Symptoms of emotional indicators include:",
+      "choices": [
+        "mood swings, depression, irritability",
+        "indigestion, insomnia, muscle aches",
+        "isolation, impatience, overeating"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q055-396e1a7b38a9",
+      "text": "As a manager, you should watch for indicators of negative workplace stress. Symptoms of behavioural indicators include:",
+      "choices": [
+        "isolation, impatience, overeating",
+        "mood swings, depression, irritability",
+        "indigestion, insomnia, muscle aches"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q056-cba580333122",
+      "text": "Peel Regional Police have implemented a Wellness Check-in program with contracted Psychologists that promote health, safety and well-being of members in designated ‘at risk’ areas. Participation in this program is:",
+      "choices": [
+        "Mandatory",
+        "Voluntary",
+        "Mandatory with member right of refusal"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q057-c4d627ad059f",
+      "text": "Peel Regional Police incurs the full cost for the contracted Psychologists Wellness Check-in appointments, even for cancelled appointments. When members fail to attend without exigent circumstances, the members Inspector is notified for follow-up. Members wishing to cancel their Wellness Check-in appointment shall:",
+      "choices": [
+        "Notify Organizational Wellness within 72 hours with their Inspectors Approval",
+        "Notify Organizational Wellness within 48 hours with their Inspectors Approval",
+        "Notify Organizational Wellness within 24 hours with their Inspectors Approval"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q058-e8473a504753",
+      "text": "The Peer Support Team provides support for member’s experiencing personal or professional challenges or stress. The Peer Support Team:",
+      "choices": [
+        "Is comprised Volunteer members",
+        "Provides Counselling",
+        "Can breach confidentiality if requested by a supervisor"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q059-5d92e800abcb",
+      "text": "Sworn Members who apply to a designated at risk bureau must be scheduled for a Wellness Check-in assessment. If the psychologist assessment deems the member unsuitable, the member is eligible to re- apply to a designated at risk bureau:",
+      "choices": [
+        "After 1 year",
+        "After 3 months",
+        "After 6 months"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q060-53110104450b",
+      "text": "The Early Intervention System is an alert system that is a data driven management tool that assists police services in identifying atypical performance issues. When thresholds are met, an alert is generated and the members NCO is notified for the performance issue and requires follow-up. These files:",
+      "choices": [
+        "Are electronic only and destroyed once completed",
+        "Electronic copy is retained in the members file for a period of 2 years",
+        "Can be used as documents for performance appraisals"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q061-39f65e302458",
+      "text": "The Wellness Check-in program requires an informed consent to be reviewed prior to the Wellness Check-in assessment. This informed consent shall be reviewed and signed by:",
+      "choices": [
+        "The Member and Psychologist",
+        "The Member",
+        "The PsychologistPolic"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q062-2ae679377a5f",
+      "text": "As a supervisor, it is important to be aware of negative workplace stress. Overeating, loss of appetite, increased drug/alcohol use and poor hygiene are examples of what type of stress indicators?",
+      "choices": [
+        "Behavioral",
+        "Emotional",
+        "Physical"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q063-1a47124f3a59",
+      "text": "You have noticed a change in behaviour in one of your officers. You learn that they are going through a divorce and financial difficulties. You feel that this member could benefit from a Wellness Check. How do you generate an alert?",
+      "choices": [
+        "You can make a referral through the Early Intervention System",
+        "Contact the Staff Sergeant in Organizational Wellness to initiate a referral",
+        "The referral begins with the Manager of Employee Benefits, Human Resources"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q064-673cada287b2",
+      "text": "You are the Sergeant in Organizational Wellness and have been assigned to conduct a Wellness Check. Upon completion you shall notify and follow-up with:",
+      "choices": [
+        "the members Staff Sergeant and the Staff Sergeant of Organizational Wellness",
+        "the members Inspector and the Manager of Human Resources",
+        "the members Sergeant and the Co-ordinator of Organizational Wellness"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q065-4db8989ea0a5",
+      "text": "Cst Harvey is a brand new Cst assigned to your shift. Within the first three months you start to notice an increasing number of absences, most of which are recorded as 'sick'. You make inquiries and learn that Cst Harvey has a sick spouse. Cst Harvey is still within their probationary period. Your S/Sgt tells you to request medical documentation. As their supervisor you can request:",
+      "choices": [
+        "all medical documentation for Cst Harvey",
+        "all medical documentation of the spouse",
+        "only medical documentation for absences of 3+ days"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q066-4f3eeedf297a",
+      "text": "You are the Sergeant in the Divisional Mobilization Unit (DMU). Your team is constantly complaining that frontline officers keep using your vehicles and it's preventing them from doing their work. This would be an example of what source of intergroup conflict?",
+      "choices": [
+        "competition over scarce resources",
+        "goal orientation",
+        "ambiguous work assignments"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q067-cded98c92279",
+      "text": "As a supervisor and leader you must be mindful of your employees and managing conflict. At times conflict may exist between groups. Which statement is true about Intergroup Conflict?",
+      "choices": [
+        "It builds cohesion, improves organizational effectiveness, and can be a stimulus for change",
+        "It should be avoided and eliminated as soon it is recognized, before it disrupts other areas of the organization",
+        "It is best dealt with at the Senior Officer level as it will minimize the impact and mitigate the risk to the officers and the organization"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q068-c56b427499ed",
+      "text": "You are preparing for a performance appraisal meeting with one of your employees. You will have to address some of their behavioral issues and anticipate that it may be met with some resistance. Some of the guidelines you should follow are:",
+      "choices": [
+        "avoid jargon, be assertive, focus on the problem and their impact",
+        "include a third person into the meeting as a witness and ask 'why' questions",
+        "explain some of the employee's other weaknesses first before transitioning to address the problem"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q069-d0a26902387c",
+      "text": "You have four performance evaluations required to be completed this month. As you are completing them, you naturally begin to compare the knowledge, skills, and abilities of the officer's against each other, and not against the set standard of the position profile. This common pitfall by evaluators is known as:",
+      "choices": [
+        "contrast error",
+        "personal bias",
+        "preconceived opinion"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q070-cea3435e4578",
+      "text": "You are meeting Cst Dover to go over his annual performance appraisal. You address some of his 'Patrol Effectiveness' deficiencies. He becomes very upset and defensive. What do you do next?",
+      "choices": [
+        "Listen to his perspective and consider it before you present your points",
+        "be very clear on why he needs to do better in these areas, regardless of how he feels",
+        "tell him that you won't be spoken to in that way and that you'll reconvene the discussion once he's calmed down"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q071-d8e415db1cc9",
+      "text": "Three types of counseling that may result in a crucial conversation are:",
+      "choices": [
+        "problem-centered, career-development, performance-centered",
+        "individual-centered, performance-driven, team-centered",
+        "team-centered, motivation-centered, relationship-centered"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q072-f89b46357f00",
+      "text": "Leaders can make the conditions of crucial conversations safe by developing mutual:",
+      "choices": [
+        "purpose and respect",
+        "understanding and trust",
+        "caring and empathy"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q073-cb205e5b16c7",
+      "text": "You discover that there are a number of provincial court disclosure issues with the officers on your shift. You decided to address the shift on parade. One officer asks, \"How long do we have to submit a Crown Brief for a Part I resulting from a MVC?\" The correct response would be days upon receiving the Notice of Trial.",
+      "choices": [
+        "14",
+        "21",
+        "7"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q074-3cdcb2eb492f",
+      "text": "Cst. Jones advises that they have just received a Notice of Trial for a Part I speeding ticket. After tomorrow the officer will be off on vacation for two weeks. You advise them that their notes must be submitted:",
+      "choices": [
+        "by the end of their shift tomorrow",
+        "immediately upon their return from vacation",
+        "no later than 30 days from date of receipt of the Notice of Trial"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q075-930d410f759d",
+      "text": "You discover that there are a number of provincial court disclosure issues with the officers on your shift. You decided to address the shift on parade. One officer asks, \"What exactly needs to go into a Crown Brief for a Part I resulting from a MVC?\" The correct response would include the following required information:",
+      "choices": [
+        "A synopsis with sufficient information for a guilty plea, court date/time/location, diagram of the scene, and officer's notes.",
+        "The MVC report, all relevant CPIC information, tow company information, road and weather conditions.",
+        "The vehicle plate and VIN information, the officers name/badge/platoon, and photographs of the damage."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q076-5d0400bbd1b2",
+      "text": "A letter from the Court Bureau is read out on parade reinforcing the need for officers to be more consistent, thorough, and remember to include all the facts in issue when creating a court synposis. What documents could you provide as resource to your platoon to help rectify this issue?",
+      "choices": [
+        "Officer Handbook - Standardized Synopsis Document",
+        "Recruit Constable Field Training Manual - Court Synopsis Document",
+        "Case Management Template Guide - Officer Sample Occurrences Document"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q077-0b01d3aadfe3",
+      "text": "You receive a call from one of your officers during a traffic stop. She tells you that during the investigation she observed the adult driver discard a small amount of cocaine, AND the driver has no insurance. She asks you if she can write a Form 9 with both offences on it? Your response should be:",
+      "choices": [
+        "No. You cannot put CDSA and provincial offences on the same release document. The CDSA charge goes to drug assignment court, and the no insurance goes to the provincial offences assignment court.",
+        "No. You need to issue a Form 9 for the drugs, and a Part III for the no insurance, but you have to use the drug assignment court dates and location for both documents.",
+        "Yes. You can issue a Form 9 for both offences, as long as you use the drug assignment court dates and the driver is over 16 years of age."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q078-a2f9ae78cdd6",
+      "text": "You receive a call from one of your officers during a traffic stop. She tells you that she has a 15 year old with no licence, no insurance, and 5 ecstasy pills. She asks you if she can write three Part III Summons, one for each offence? Your response should be:",
+      "choices": [
+        "No. You can issue a Form 9 - Appearance Notice for the CDSA, and a Part III Summons for each of the provincial offences, as long as you use the drug assignment court dates on all the release forms.",
+        "No. You cannot put CDSA and provincial offences on the same release document. Form 9 - Appearance Notice for the drugs goes to drug assignment court, and Part III Summons for the no license and no insurance goes to provincial offences assignment court.",
+        "Yes. You can issue a Form 9 - Appearance Notice including all three offences, as long as you use the drug assignment court dates and the driver is under 16 years of age."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q079-b648548997e2",
+      "text": "A process server approaches you in the parking lot of the division. He tells you that he is looking to serve documents on one of your officers regarding a civil matter. You advise him that the officer is off on vacation. An argument ensues and the server drops the documents on the floor. This action constitutes\non you (on the officers behalf).",
+      "choices": [
+        "corporation service",
+        "municipality service",
+        "absentee service"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q080-63d907cde4ce",
+      "text": "An officer on your shift was served with a civil litigation claim from a departmental MVC she was involved in seven months ago. She asks you how long she has to file for her defence? You tell her:",
+      "choices": [
+        "20 calendar days from the date she was served",
+        "she doesn’t have to respond as the six month period to file a claim has already passed",
+        "she should meet with Civil Litigation within 20 days to determine how she should proceed"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q081-e5e9b31d3a96",
+      "text": "A process server approaches you in the parking lot of the division. He tells you that he is looking to serve documents on one of your officers regarding a civil matter. You advise him that the officer is off on vacation. The appropriate course of action as their supervisor is to:",
+      "choices": [
+        "accept the documents from the server and notify Civil Litigation",
+        "do not accept the documents from the server and notify the officer in the claim",
+        "advise the server that all civil matters shall be forwarded to the attention of PRP General Counsel"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q082-5e92d665652f",
+      "text": "In many police services, training is focused on the acquisition of specific, measurable skills and knowledge that can be transferred to the operational level. This style of training is known as:",
+      "choices": [
+        "Competency based training",
+        "Skills based training",
+        "Proficiency based training"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q083-cb57ee59397f",
+      "text": "Your Staff Sergeant believes that you are a positive role model on the platoon and has selected you as the Acting Sergeant Mentor. Some of your additional duties include:",
+      "choices": [
+        "completing the Competency Checklist and Learning Action Plan",
+        "preparing Patrol Zone Sheets and Performance Appraisals",
+        "scheduling Cohort Training and reviewing Learning Logs"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q084-ad5102c27f7e",
+      "text": "The leadership process focuses primarily on:",
+      "choices": [
+        "influencing behavior",
+        "exercising authority",
+        "mitigating risks"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q085-aab15b965acc",
+      "text": "Leadership theories suggest that employees benefit most from leaders who possess self-awareness, self- management, social awareness and relationship management. These are known as the components of:",
+      "choices": [
+        "Emotional intelligence",
+        "Professional orientation",
+        "Personal strength"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q086-113590ed0c89",
+      "text": "Supervisors dealing with corrective discipline should have and at their disposal.",
+      "choices": [
+        "coaching, counselling",
+        "authority, power",
+        "training, mentoring"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q087-548661e5974b",
+      "text": "Cst. Singh is one of your hardest working officers. She was unsuccessful in the last promotional process and has come to you for help. You want to help her be successful in the future so you explore the Sergeant role to determine what she needs. You ask her why she wants to be a Sergeant and why she thinks she would be a good one. This versatile approach can be described as:",
+      "choices": [
+        "Coaching",
+        "Mentoring",
+        "teaching"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q088-7d370c2f486b",
+      "text": "A coroner's inquest has imposed a number of recommendations on PRP and requires the organization to respond. This can be described as a(n):",
+      "choices": [
+        "change",
+        "adaptation",
+        "alteration"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q089-d7d262f8aeda",
+      "text": "One of the most effective ways of obtaining an understanding of your new area of command is to conduct a SWOT analysis. SWOT is the acronym for…",
+      "choices": [
+        "Strengths, Weaknesses, Opportunities, Threats.",
+        "Strengths, Workload, Organization, Threats.",
+        "Strategy, Weaknesses, Optimism, Threats."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q090-06bb7d96da0d",
+      "text": "The three main areas of focus for PRP moving forward are?",
+      "choices": [
+        "Community Safety and well-being together / Inclusive, engaged and progressive workplace / Accountability, equity and service excellence",
+        "Community Safety Together / Professional Diverse and Supportive Workplace / Quality Service and Fiscal Responsibility",
+        "Collaboration / Information Sharing / and Performance Measurement"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q091-cc8fddb4df6c",
+      "text": "Strategic objectives refer to:",
+      "choices": [
+        "Specific directions to be undertaken to achieve the areas of focus within the Strategic Plan",
+        "Quantitative and qualitative data gathered to measure progress on the Strategic Plan",
+        "Long term goals that guide the Strategic Plan"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q092-f2c9413f7068",
+      "text": "Effective leaders are always trying to improve the workplace. Taking a business process mapping course would assist in developing which PRP competencies?",
+      "choices": [
+        "process excellence, resource management, planning and organizing",
+        "achievement orientation, leadership, decision making",
+        "problem solving, process excellence, achievement orientation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q093-bc806c7c814a",
+      "text": "The overarching key finding from the CCDI’s Current State Inclusivity Assessment indicated that:",
+      "choices": [
+        "The gap between the PRP policies and the cultural competence of the leadership leads to ineffective outcomes.",
+        "The perception of the frontline officers and the reputation of the Service within the community were similar.",
+        "The reputation of the service within the community impacted the outcomes of the initiatives."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q094-3e6709cedc3a",
+      "text": "According to the CCDI Current State Inclusivity Assessment, the Police Services Board's view around diversity and inclusion at the Police Service:",
+      "choices": [
+        "Is more positive as compared with the employees in the front line.",
+        "Is inconsequential to the employee experience.",
+        "Opposite of the employees in the front line."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q095-82cc18f4312b",
+      "text": "In high crime neighbourhoods, policing efforts should be directed at engaging community members in motivating and supporting them to assume more leadership roles in crime prevention and reduction efforts. This type of police activity embodies principles of:",
+      "choices": [
+        "Ontario's Mobilization and Engagement Model of Community Policing.",
+        "Problem Oriented Policing",
+        "Intelligence-Led Policing"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q096-880cb6ce091d",
+      "text": "Which one of these conditions must exist for a person to be considered missing?",
+      "choices": [
+        "A Police Officer is unable to locate the person after making reasonable efforts to do so.",
+        "Friends or family are unable to locate the person after making reasonable efforts to do so",
+        "The person’s whereabouts have been unaccounted for over 30 days"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q097-6b361a0822b2",
+      "text": "The Missing Persons Act enables police officers to utilize investigative measures such as the production of records and search warrants in the absence of:",
+      "choices": [
+        "a criminal investigation",
+        "an official missing person complaint",
+        "reasonable grounds that a person is missing"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q098-8a1b4f8ce93a",
+      "text": "You are a Sergeant on the road and slide by a traffic stop, where one of your officers has the occupant under arrest. You are advised that this male is wanted for fraud offences and he admitted that he has cocaine in his underwear. It is 3:00 a.m. and you are in a secluded industrial area. The officer asks if he can view down the subject’s pants to verify and ensure there are no concealed weapons. You advise:",
+      "choices": [
+        "No, there is no lawful authority",
+        "Yes, this does not constitute a strip search",
+        "Yes, this is a field strip search, but these circumstances allow for it"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q099-1b690bc265d4",
+      "text": "You walk into the parade room and hear a few officers debating over the circumstances when they can use mandatory alcohol screening (MAS). You remind the platoon that under the new impaired driving laws the following criteria must be met:",
+      "choices": [
+        "the vehicle must be lawfully stopped, the driver must have care and control of the vehicle, and the officer must have the ASD on hand.",
+        "you suspect the driver had been drinking within two hours, there is no impaired driving evidence or motor vehicle collision.",
+        "the \"bolus drinking\" defence and \"intervening drinking\" defence must be eliminated."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q100-8a3d7a1e3eee",
+      "text": "You are a Detective in the Specialized Enforcement Bureau. Your team is preparing a CDSA search warrant and you speak with the OIC to discuss the threat level. According to the Search Warrant Protocol Execution Guidelines the following factors should be assessed:",
+      "choices": [
+        "type and location of the premise, accessibility to weapons, history of mental health issues",
+        "number of occupants expected to be at the target premise, the gender and race of the subject(s), specialized training",
+        "potential for the presence of weapons, radicalized follower, weather conditions"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q101-cb368cd27b59",
+      "text": "You are a Detective in the Specialized Enforcement Bureau. Your team is preparing to execute a CDSA search warrant. According to Directive I-B-745(F) Search Warrants - Obtaining and Executing, you ensure that:",
+      "choices": [
+        "all of the officers involved in the execution of the search warrant read the search warrant prior to execution and wear clothing that identifies them as police officers.",
+        "read and sign the search warrant prior to execution, notify the Duty Inspector, and the Inspector of the division where the search warrant is being executed.",
+        "an exhibits officer has been assigned, the operational plan is reviewed by the Duty Inspector, and the TAC Sergeant has been notified."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q102-8006a78fe5aa",
+      "text": "A missing person may not want to be located. This factor shall be considered when:",
+      "choices": [
+        "seeking a warrant authorizing entry to a premise",
+        "deciding what details to disclose to the public, through a press release",
+        "commencing the missing person investigation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q103-57040f6864d5",
+      "text": "Members of your SVU Team identified a person of interest in a series of random sex assaults. Your team decides to have one investigator approach the person of interest in a public setting and attempt to interview him. The encounter will be brief, with emphasis on his right to leave anytime. As you and your team discuss the operational planning of this tactic, which statement is true:",
+      "choices": [
+        "You are required to caution the person of interest, regardless of your suspicion",
+        "A One Party Consent is required to enable you to record the encounter",
+        "You require a minimum of two officers to approach a person of interest that could lead to an arrest"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q104-b30b35e3bd08",
+      "text": "You are called to attend the scene where one of your officers has a male under arrest. Upon arrival the officer tells you that he had the individual under investigative detention. He told him the reason for the detention, and read him his RTC's. After searching the male he found a small amount of cocaine at the bottom of his sock and then placed him under arrest for possession of a controlled substance. What advice would you give the officer?",
+      "choices": [
+        "Tell him to release the male immediately as it is an unlawful arrest. His grounds to arrest were based on an unlawful search.",
+        "Consider if the male belongs to a vulnerable population that is overrepresented in the criminal justice system. If so, release him at the scene on a form 9.",
+        "Ensure the officer collects and submits all the relevant information according to the Collection of Identifying Information in Certain Circumstances (CIICC)"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q105-ce64343527fb",
+      "text": "is responsible for generating emails notifying members that their evaluation process has been initiated.",
+      "choices": [
+        "Human Resources",
+        "Corporate Learning",
+        "My Private I"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q106-5957d46638c7",
+      "text": "One way an FTO can address any shortcomings of a Constable's training and/or competency development is through a Learning Action Plan (LAP). It is the Supervisors responsibility to:",
+      "choices": [
+        "review all LAP's created by the FTO's, ensure the LAP is completed by the due date, and make any comments pertaining to the progress.",
+        "create all LAP's, ensure the FTO has documented the progress, and ensure all LAP's are saved in the Divisional 'T' Drive",
+        "ensure the LAP has been received and reviewed by the Constable and remove all LAP's from the 'T' Drive once they have been completed"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q107-1c88ec835c79",
+      "text": "You have been selected to be an Acting Sergeant Mentor (ASM) on your platoon. Your responsibilities include:",
+      "choices": [
+        "complete the Competency Checklist, submit all reports to the Staff Sergeant",
+        "review the Competency Checklist with the Staff Sergeant, add comments regarding performance in each section",
+        "complete the Learning Action Plan-Acting Sergeant, select eligible Constables for the program"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q108-3cdeafd9611e",
+      "text": "Officers performance appraisal periods are from January 1st - December 31st. Exceptions to this rule include:",
+      "choices": [
+        "probationary constables, reclassification, senior officers",
+        "maternity leave, joint forces operations, extended injuries/sick time off",
+        "promotion within 3 months, permanently transferred within 3 months"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q109-50338d537616",
+      "text": "Officer Clarke was assigned to your platoon and under your command on October 15th. He then went off on an authorized leave from December 20th - April 10th. Who is responsible for completing his performance appraisal and when is it due?",
+      "choices": [
+        "you are responsible for completing it as his supervisor, and it is to be completed upon the members return from their leave",
+        "his previous supervisor as he reported to you for less than three months, and it is due December 31st of the next calendar year",
+        "HR will assign the appraisal upon his return, and it can be combined and completed with next years appraisal by February 28th"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q110-06614851cfaa",
+      "text": "You are a Detective in CIB overseeing the assignment of cases to your D/C’s. In this case, Priority 1 Occurrences are to be:",
+      "choices": [
+        "Reviewed within 30 days of assignment to your area",
+        "Assigned within 30 days of review by a supervisor",
+        "Followed up by assignee within 30 days"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q111-aec1d88e5989",
+      "text": "You are supervising a team within Investigative Services and your team is called back on a day off for 2 hours to complete a task. When you are completing the timesheets, you and your team are entitled to:",
+      "choices": [
+        "4 hours at time and one-half",
+        "3 hours at time and one-half",
+        "2 hours at time and one-half"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q112-0c54cc6faf7f",
+      "text": "You and your colleagues finished a dayshift from 7 a.m.-3 p.m., but are called back in at 5:00 a.m. You and your team stay on duty until 3 p.m. When completing the timesheets, your team is entitled to:",
+      "choices": [
+        "3 hours at time and one-half and regular time for the dayshift",
+        "2 hours at time and one-half and regular time for the dayshift",
+        "10 hours at time and one-half"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q113-09360d2413bf",
+      "text": "The Training Initiative Program (T.I.P) is designed to develop investigative experience and skill in uniform officers. As a Detective in CIB, when provided T.I.P officers, it is your responsibility to:",
+      "choices": [
+        "Provide the T.I.P member with a variety of work assignments, regardless of their level of experience.",
+        "Maintain the T.I.P officers Investigative Experience Log",
+        "Provide the T.I.P member with work assignments that are specific to their skill-set and Developmental needs."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q114-2d575213f864",
+      "text": "You are a supervisor in Central Robbery and your team is planning to conduct surveillance on a robbery suspect to gather lifestyle and associate details. The surveillance is likely to take the team outside of the region. Do you need to create an operational plan for this initiative?",
+      "choices": [
+        "An operational plan is not required for this particular type of surveillance initiative",
+        "An operational plan is required because the initiative is outside of the region",
+        "A single operational plan will suffice for this initiative and any other surveillance moving forward for this initiative."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q115-06bd02ffef08",
+      "text": "As a supervisor you have been dispatched to a missing persons call. At the scene you learn that the missing person is elderly and has the onset of dementia. It is unknown if the missing person has been taking her medication but you learn that she is familiar with the area as she grew up in that neighborhood. The evening is closing in and the family has been searching for almost two hours prior to calling police. The temperature is supposed to drop throughout the night. You have exhausted all attempts to locate the missing person. What should your next steps be?",
+      "choices": [
+        "Seek approval in writing through the Chain of Command to contact the Duty Inspector and request a Search Manager",
+        "Continue to search because eventually she will be located",
+        "Put on a general occurrence for a Missing Person knowing that the Missing Persons Coordinator will follow-up on the matter."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q116-06820c06f62f",
+      "text": "You are a supervisor in an investigative bureau and your members require digital cameras to assist them in a project initiative that is highly surveillance based. Which statement is true?",
+      "choices": [
+        "For expenses of this nature that may exceed $500, a specialized asset could be purchased under your cost centre.",
+        "These are Operational Assets and can be purchased ahead of an annual budget, as long as the receipt is submitted within the current fiscal year.",
+        "Cameras are considered as T.S.S related property, a requisition can be made through your divisional commander and compensated through your area cost centre."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q117-50b33a1481ee",
+      "text": "You are a supervisor in CIB. A Senior Constable who was in the last selection process has just started on your shift. The officer has vacation deferral requests and you note that these summer dates have already been approved for several junior officers. When making your decision you note that you must consider:",
+      "choices": [
+        "operational requirements",
+        "seniority",
+        "Previous supervisor approval"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q118-35e7d3600906",
+      "text": "While reviewing timesheets for your uniform shift, you notice that there is an unusual number of members that are off / or seeking off, the Friday of a long weekend. When deciding how to proceed with approving, denying or cancelling a member’s time off, you note that Operational Requirements:",
+      "choices": [
+        "Is a subjective level of staffing to ensure the effective response to calls.",
+        "Is a set ratio based on your divisional strength, and seniority that is based on last date of hire by PRP.",
+        "Allow you to cancel Stat and Comp time only; Vacation time cannot be cancelled without members consent."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q119-e62b50733706",
+      "text": "You are a Detective in CIB and are reviewing the Missing Person cases within your division. You review a Habitual Missing Person case from 32 days ago. 15 days ago a Missing Person Coordinator put a follow- up on, but all the Divisional Coordinators are off for the week. As a supervisor, you:",
+      "choices": [
+        "Ensure the Missing Person is added to SharePoint. This is a non-threshold Incident.",
+        "Allocate a member of your office to conduct additional checks for the missing person to satisfy that efforts are being met to locate the individual in the absence of the Coordinators.",
+        "Ensure a ViCLAS report has been submitted and a Missing Person Circular has been prepared."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q120-50d3590dcd68",
+      "text": "NRA principles should be considered when making decisions during critical incidents. What does NRA stand for?",
+      "choices": [
+        "Necessary, Risk Effective, Acceptable",
+        "Necessary, Reasonable, Available",
+        "Needed, Realistic, Achievable"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q121-a4ef0c9cf2b1",
+      "text": "When dealing with the initial response to a critical incident the acronym ICEN refers to:",
+      "choices": [
+        "Isolate, Contain, Evacuate, Negotiate",
+        "Immediate, Containment, Evaluate, Negotiate",
+        "Initiate, Cover, Engage, Notetaking"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q122-07e28639f223",
+      "text": "You are the Sergeant responding to a critical incident. Some of your responsibilities include:",
+      "choices": [
+        "establishing a Command Post, confirm an inner perimeter has been established, and debrief the Duty Inspector",
+        "ensure TAC has been dispatched, notify CIB/ FIS, and call out the Crisis Negotiators Team",
+        "interview the complainant, notify public transit and/or nearby schools, and update the media unit"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q123-980b913d38a7",
+      "text": "Supervisors and Incident Commanders commonly use which acronym as an Operational Planning tool:",
+      "choices": [
+        "Situation, Mission, Execution, Administration, Communication",
+        "Situation, Mission, Execution, Alternatives, Command/ Communication",
+        "Situation, Mission, Evaluate, Administer, Communicate"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q124-77f5f7c79e87",
+      "text": "A robbery is in progress at a bank and you are a short distance away. As you arrive on scene, there are customers laying face down on the floor crying hysterically but you do not see the gunmen. No one seems to be moving or leaving the bank which leads you to believe the gunmen is still inside. There are four priorities of life (POL) you must consider when making your decisions, what is the correct order?",
+      "choices": [
+        "Victims / Hostages, Public, Police, and Subject",
+        "Victims / Hostages, Public, Subject, and Police",
+        "Victims / Hostages, Police, Public, and Subject"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q125-746b685c04f1",
+      "text": "At a critical incident, the inner perimeter surrounds:",
+      "choices": [
+        "the immediate scene of the incident",
+        "the immediate scene of the incident, including the Command Post",
+        "the immediate scene of the incident, including the media staging area"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q126-ea38365b2f3a",
+      "text": "After a major incident who appoints the debriefing facilitator to hold an operational debriefing?",
+      "choices": [
+        "The Deputy Chief’s Office",
+        "The Incident Commander",
+        "The Divisional Superintendent where the incident took place"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q127-66072e1a82d7",
+      "text": "You are the Uniform supervisor at a gas line explosion where secondary explosions are likely to occur and damage nearby homes. While overseeing the evacuation, one of your officers advises you that a family is hesitant to leave because the homeowner is a structural engineer and adamant that the home will be fine. You advise the officer:",
+      "choices": [
+        "We have lawful authority to evacuate the occupants of the home",
+        "Members of the public can only be asked to leave voluntarily, but once they leave, they are not permitted to return until authorized",
+        "Request members of the Fire Department to assist in the removal, as they are permitted to order the evacuation."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q128-fc0d9044b541",
+      "text": "A critical incident has been unfolding for several hours when the Incident Commander finally makes the decision to enter the residence using force and arrest the subject. What is one primary question the Incident Commander considered when determining the new course of action?",
+      "choices": [
+        "What's changed?",
+        "What's not changing?",
+        "What's the outcome if I don't make a change now?"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q129-7d3b81c4794e",
+      "text": "The hostage negotiation team has been able to establish a line of communication with the barricaded subject. The subject has demanded take out from Arby's Restaurant and a piloted plane to assist in his escape from police. Only given this limited information, the crisis negotiator would identify the subject as:",
+      "choices": [
+        "Instrumental",
+        "Expressive",
+        "High Risk / Closure Motivated"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q130-5496e9c3e721",
+      "text": "Negotiations have been going on with an armed barricaded subject until he walks out the front door of the residence unannounced. What plan is being initiated and what must already be established and communicated by the Incident Commander?",
+      "choices": [
+        "Break Out Plan and Action Line(s)",
+        "Surrender Plan and Alternate Line(s)",
+        "Immediate Action Plan and Inaction Line(s)"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q131-d9b60c739170",
+      "text": "There is a barricaded subject call on the go and the Incident Commander has asked for a command post to be set-up immediately. The Command Post arrives at the scene, where should it ideally be located:",
+      "choices": [
+        "Frozen Zone",
+        "Outer perimeter",
+        "Staging Area"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q132-93c4ed299451",
+      "text": "What are the first two fundamental components of ICEN as the overall strategy employed during high risk incidents?",
+      "choices": [
+        "Isolate and Contain",
+        "Establish perimeters and communicate",
+        "Evacuate and Negotiate"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q133-0d77e678b64e",
+      "text": "Hostage negotiations have been going on for hours at a critical incident call. Every time police attempt to speak or build rapport with the subject he becomes agitated, aggressive and angry. It becomes apparent that he has a low tolerance for police presence. This subject is classified as:",
+      "choices": [
+        "Expressive",
+        "Instrumental",
+        "High Risk / Closure Motivated"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q134-c6cb226c18a9",
+      "text": "You are at a critical incident and the subject is deemed to be high-risk. How is the incident likely to be resolved?",
+      "choices": [
+        "A tactical resolution",
+        "Protracted Negotiations",
+        "Establishing rapport"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q135-07fcf042185f",
+      "text": "A Sergeant is currently the Incident Commander. In order for her to issue a Provincial Alert what level of authorization does she require?",
+      "choices": [
+        "Inspector Level",
+        "She can authorize it as the Incident Commander",
+        "Chief of Police"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q136-b03d6690b5a6",
+      "text": "According to best practices, in which of the following situations should canine / police service dogs NOT be considered a resource?",
+      "choices": [
+        "Unplanned protest or demonstration",
+        "Major disaster",
+        "Comprehensive ground search"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q137-e044bb513a68",
+      "text": "You are the supervisor on scene at a critical incident where tactical intervention is absolutely necessary. The Duty Inspector is enroute and tactical officers have arrived. You brief the tactical supervisor in accordance with Critical Incident Response Protocols and collaborate on a plan moving forward. Who is currently in charge of the scene?",
+      "choices": [
+        "You are",
+        "The Tactical Supervisor",
+        "The Duty Inspector"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q138-7f4c6e38d722",
+      "text": "You are a supervisor responding to a critical incident. Prior to the arrival of the Duty Inspector, you communicate to your officers the plans and authorities for responding to the subject’s behaviour. Which answer contains correct responses?",
+      "choices": [
+        "Immediate Action Plan / Command Authority, Surrender Plan / Command Authority",
+        "Immediate Action Plan / React Authority, Breakout Plan / React Authority",
+        "Breakout Plan / Command Authority, Surrender Plan / Command Authority"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q139-50f810886126",
+      "text": "Police are dealing with a barricaded subject at a residential home and attempt to evacuate the surrounding homes. One of the residents is declining to vacate. What is your authority?",
+      "choices": [
+        "There is no authority to forcibly remove a resident from their home",
+        "You have the authority to force the resident out for their own safety",
+        "You have the authority to force the resident out due to PRP liability"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q140-4936d1ddcbed",
+      "text": "After calling a lone subject out of an apartment on the strength of a Feeney arrest warrant for weapons dangerous, the investigators want to enter and clear the apartment for weapons and potential\nvictims. There is no information to indicate any other persons in the apartment or any public safety issues. If you NRA this decision you would:",
+      "choices": [
+        "Not authorize - Not judicially (legally) acceptable",
+        "You would authorize entry",
+        "Not authorize - Not morally acceptable"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q141-70bbfe41d58e",
+      "text": "An officer under your supervision has a case where a ViCLAS submission is required, the officer must have the booklet submitted to a ViCLAS coordinator no later than:",
+      "choices": [
+        "21 days from the start of the investigation",
+        "30 days from the start of the investigation",
+        "60 days from the time of the offence"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q142-d441165ec6c9",
+      "text": "Where an investigation meets the criteria of a Major Case, as defined by the Major Case Management Manual, a minimum of three (3) roles shall be assigned, they are:",
+      "choices": [
+        "Primary Investigator, Major Case Manager, File Coordinator",
+        "Major Case Manager, File Coordinator, Search Warrant Coordinator",
+        "Primary Investigator, Search Warrant Coordinator, File Coordinator"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q143-10be1be65023",
+      "text": "The Major Case Management (MCM) System is best characterized as a standardized case management system designed to facilitate, link and share information:",
+      "choices": [
+        "At a Provincial Level",
+        "At a Federal Level",
+        "Between qualifying Police Agencies"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q144-edc4b40d8e10",
+      "text": "You are assigned as the Primary investigator on a homicide investigation, which meets the criteria for a Major Case Management Model. You, The MCM, File and Affiant are collaborating on the direction, speed and flow of the investigation, but ultimately, those decisions are made by the:",
+      "choices": [
+        "Primary Investigator",
+        "Major Case Manager",
+        "File Coordinator"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q145-b2389628c363",
+      "text": "One of your Detectives is involved in a court case that was initiated by the victim laying a private information. A hearing date has been set and police notes have been requested by the Crown’s Office. The Detective asks you if the disclosure should be submitted electronically. You advise:",
+      "choices": [
+        "No, CDU will provide disclosure to the Crown’s Office in a hardcopy format",
+        "Yes, private information hearings follow the same format as police-laid information's",
+        "Yes, scan and email copies of your notes directly to the assigned Crown"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q146-45f315014f62",
+      "text": "As a Detective in Homicide & Missing Persons Bureau, one of the investigative teams appears to be having a heated discussion over the correct classification of an individual in their case. The individual is a known associate to the victim and was present at the time of the party when the victim was shot and killed. It is the early stages of the investigation so there is no current evidence to suggest the individual committed the offence. What is proper classification of the individual?",
+      "choices": [
+        "Person of Interest",
+        "Suspect",
+        "No classification"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q147-4b715c33f99f",
+      "text": "Which statement is true, as it relates to the Ontario Major Case Manual?",
+      "choices": [
+        "The Major Case Management Board may deem a sex assault a threshold case, if the suspect and victim are in a familial relationship.",
+        "An In custody Informer is someone providing information to law enforcement, about a subjects actions within a custodial institution.",
+        "Multijurisdictional major cases encourage the use of a Multijurisdictional Major Case Manager, but this is not mandatory."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q148-d272f23517a0",
+      "text": "You are a Detective in a CIB office and become aware of a non-familial attempt abduction. This is:",
+      "choices": [
+        "classified as a Major Case and requires the utilization of Major Case Management.",
+        "not a Threshold Case and may be assigned, in accordance to the PRP Criminal Investigation Management Plan",
+        "a Threshold offence and may be assigned, in accordance to the PRP Criminal Investigation Management Plan"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q149-68c93a8b67b6",
+      "text": "You are the Detective in SVU. You review a sexual exploitation case with a known suspect that is not predatory or serial in nature. Detective Constable Smith does not have the MCM course but you assign him as the OIC because:",
+      "choices": [
+        "he has completed the GIT/CIT course, and this is a non-threshold offence",
+        "he has completed the GIT/CIT course, and this is a threshold offence",
+        "This is a non-threshold offence, therefore there are no requirements when assigning an OIC"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q150-7864369451bf",
+      "text": "A female party went missing on September 13, 2020. She is known to reside at a group home and leave frequently without coming back for days on end. All efforts to locate the female party were exhausted by frontline officers and a general Missing Person Occurrence was put on the system. The Missing Persons Coordinator at the Division has been conducting regular follow-ups and check-ins with the group home but all attempts have been futile. It is now October 14, 2020 and The Missing Persons Coordinator approaches you, as the CIB Detective, to find out from a Major Case Management standpoint what his next steps should be with this occurrence?",
+      "choices": [
+        "You advise it is not a threshold incident and the information entered into power case can be tombstone information only.",
+        "You advise that this is a threshold incident and you assign a Powercase Indexer to the investigation.",
+        "You advise it is not a threshold incident and does not meet the criteria of an incident that has to be entered into the Powercase software system."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q151-98d3bd872017",
+      "text": "You are the Sergeant responding to a fatal motor vehicle collision. The next-of-kin or relatives of the victim are to be notified in person by a:",
+      "choices": [
+        "Sergeant",
+        "Senior Constable",
+        "Senior Officer"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q152-1034c3d979a9",
+      "text": "As a Supervisor, any of your officers involved in a breaching incident, shall submit a Frontline Breaching Reporting Form to you within:",
+      "choices": [
+        "Three days",
+        "Seven days",
+        "Thirty days"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q153-902c04e8b31b",
+      "text": "You are a Detective in CIB and two of your Detective Constables are returning to the division with a prisoner in a car that is not equipped with a prisoner cage. You direct that:",
+      "choices": [
+        "The accompanying officer sits in the back with the prisoner",
+        "The passenger is angled to face the prisoner",
+        "The prisoner is hand cuffed and placed in the rear seat"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q154-f7f2c5efbdf8",
+      "text": "Synthetic Drug (Clan) Laboratories pose a significant threat to the community and responding officers. As a Supervisor dispatched to a suspected Clan Lab call, you must ensure:",
+      "choices": [
+        "safety precautions are employed: no eating, drinking or portable radio use",
+        "any contaminated persons are transported to the closest holding facility for immediate decontamination, prior to being lodged",
+        "notification to Special Enforcement Bureau (SEB) members is made prior to any members entering the suspected Lab"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q155-2d5a45125aad",
+      "text": "You are a supervisor contacted by an officer writing a CDSA search warrant. It is 11 p.m. and the officer is having difficulty articulating night grounds. The most appropriate response is:",
+      "choices": [
+        "tell them night grounds are not required for a CDSA search warrant",
+        "direct them to elaborate on the exigency and possible destruction of evidence",
+        "advise them to wait for a daytime execution"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q156-0dcc2fa6986f",
+      "text": "While supervising a CDSA Search Warrant, your officers locate items set out in the warrant as being evidence to the offence. The officers also locate several other items deemed evidence, however the items were not mentioned in the warrant or suspected to be present. Your advice is to:",
+      "choices": [
+        "Seize the evidence as authority to do so exists",
+        "Do not seize the evidence, write an amendment to the initial warrant indicating the new information and seize once permitted to by a Justice of the Peace",
+        "Seize the items but draft a separate Report to Justice advising the additional items not previously listed in Appendix A of the Warrant"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q157-59a903981956",
+      "text": "You are supervising the execution of a Feeney warrant on a prolific bank robber, wanted by a number of police agencies including yours. You make entry on the residence and arrest the subject without incident. While in the residence, you are contacted by a neighboring police department, asking if you can check the garage for their suspect vehicle. You advise:",
+      "choices": [
+        "Unable to assist in the request, there is no lawful authority to check the garage.",
+        "Certainly, there is no risk to public safety and you are lawfully in the residence",
+        "Certainly, it is necessary to clear the residence and if the vehicle is observed, will advise."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q158-6d1d58177504",
+      "text": "Your team is preparing for a search warrant initiative outside of the region where an operational plan is required. You are in the final stages of completing the plan when the affiant calls you from court to advise the warrant has been granted. You are in a hurry to get the plan approved and advise the affiant:",
+      "choices": [
+        "You need a copy of the signed warrant face to accompany the operational plan before submission for approval.",
+        "They need to take the original signed warrant to the briefing location so that the search team can review and sign the warrant.",
+        "A copy of the warrant, not including the Information to Obtain (ITO), is required to be uploaded to SharePoint with the Operational Plan, for retention purposes."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q159-9f12832f6725",
+      "text": "You are a uniform supervisor responding to a domestic assault call. On arrival, you learn that the suspect is an off duty member of this Service. You are required to notify:",
+      "choices": [
+        "The Staff Sergeant",
+        "The Duty Inspector",
+        "The Intimate Partner Violence Coordinator"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q160-5aeb1382913d",
+      "text": "You are a supervisor at an Intimate Partner Violence call. An officer tells you that both parties’ statements are contradictory; the complainant advised an assault occurred, but the culprit is adamant that the allegation is false. You advise the officers that the test for reasonable grounds in this case is:",
+      "choices": [
+        "Evidence for an arrest authority and not necessarily for a conviction",
+        "suspicion that would satisfy an officer that an offence has been committed",
+        "Enough of a suspicion to satisfy an ordinary prudent person"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q161-254890b18b23",
+      "text": "You are a Detective coordinating an undercover operation (UCO). It is anticipated that this UCO will lead to a local bar and the cover team will have to go inside to maintain officer safety. A member of your cover team asks if they are allowed to consume alcohol, to which you advise:",
+      "choices": [
+        "Yes, you are permitted to a maximum of two alcoholic beverages; a written report must accompany associated costs prior to completion of duty",
+        "Yes, you are permitted to consume alcohol to conceal your identity, but must do so responsibly, and are required to be “Fit for Duty” during and after the UCO.",
+        "You may purchase alcoholic beverages but shall not consume them"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q162-a77d7a838d0a",
+      "text": "You are a Detective in an Investigative Bureau and are monitoring your officer’s worklist and clearance status designations. You notice that a particular case has been assigned, but is not being actively investigated, nor does it meet the criteria to be closed. You ensure the case status designation shows:",
+      "choices": [
+        "Suspended",
+        "Active",
+        "Pending"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q163-489854c3723d",
+      "text": "You are the Sergeant responding to a fatal motor vehicle collision. Some of the personnel you shall request/notify include:",
+      "choices": [
+        "MCB, FIS, Duty Inspector",
+        "CIB, Media, MTO",
+        "Traffic Services, Public Works, Superintendent"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q164-7c48ce2adb6d",
+      "text": "You are the Sergeant responding to the scene of a suicide. Your initial responsibilities are to:",
+      "choices": [
+        "notify the coroner, ensure the Duty Inspector is notified, ensure the next of kin are notified",
+        "collect and preserve all evidence, interview all witnesses, ensure Media is notified",
+        "seize and lodge any notes that were left outlining any thoughts and/or plans of self-harm"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q165-dd262ee23806",
+      "text": "You are the Sergeant responding to a found human remains scene. Some of your responsibilities include:",
+      "choices": [
+        "set up an inner and outer perimeter, assign an officer to maintain continuity of the body, arrange transportation of witnesses",
+        "notify communications centre, collect and preserve all evidence, notify the Missing Persons and Homicide Bureau",
+        "notify the Inspector of Investigative Services, collect and preserve all evidence, set up a Command Post"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q166-d8961f33c6ad",
+      "text": "You are responding to a train derailment with a large chemical spill. As the first supervisor on scene you are responsible for:",
+      "choices": [
+        "evaluating the incident scene, establishing the inner and outer perimeters, and staging area",
+        "evacuating the hazardous material at the scene and ensure all officers have the necessary PPE to deal with the call",
+        "ensuring the ESS Inspector, Media Unit, CIB Detective Sergeant, and the Chief are notified"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q167-8c82312e05b8",
+      "text": "You are supervising a scene of a rapidly developing call involving a barricaded person at a detached home. The barricaded person is wanted and is also suspected to be suffering from mental health issues. As part of your scene management, you communicate to your team that “the action line”, should the subject leave the house, will be:",
+      "choices": [
+        "The sidewalk at the front of the home",
+        "25 feet from the front door",
+        "10 steps after leaving the threshold of the front door"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q168-03941b06cded",
+      "text": "You are a uniform sergeant at the scene of a police involved shooting. Two officers fired their service pistols at a culprit that is now being treated by EMS, two other officers were present for the shooting but only witnessed the event. When the Duty Inspector arrives on scene you advise:",
+      "choices": [
+        "There are 4 officers involved in this shooting and they have been asked to separate and return to the division once the scene can be managed by additional responding units.",
+        "You have designated 2 officers as subject officers and 2 officers as witness officers. You have interviewed all of them “broadly” to ensure there are no outstanding public safety concerns.",
+        "This is likely an SIU investigation so you instructed the witness officers that their notes are mandatory by the end of shift; the Subject officer’s notes are not mandatory by the end of shift."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q169-bd10d74ca8ef",
+      "text": "While at 12 Division, two of your station duty officers are attacked by a man suffering the effects of a drug overdose. As a result, the civilian console operator assists in defending the attack and apprehending the culprit, using force. The culprit sustains serious injuries and is transported to the hospital. As it relates to an SIU investigation which statement about the console operator is true?",
+      "choices": [
+        "This employee may be a Civilian Witness",
+        "This employee may be a Subject Officer",
+        "This employee may be a Witness officer"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q170-bde7d46270b8",
+      "text": "An officer under your command is on a day off and calls you to advise that she caught a male breaking into her car and stealing her police issued body armour and take down jacket. After a short foot pursuit from her home, the officer caught the male, resulting in a fight and the culprit sustained a broken arm. Uniform personnel / EMS have just arrived on scene and the officer stresses that she did not identify herself as a police officer. The most applicable response would be:",
+      "choices": [
+        "This falls under the SIU’s mandate and you should advise her of such",
+        "Ensure her wellbeing is prioritised and counsel her for what could potentially be a breach of procedure for storing of her police issued equipment",
+        "She will need to cooperate with responding investigators, to justify the level of use of force, in light of what is a lawful citizen’s arrest"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q171-3ff9017f0843",
+      "text": "You are a uniform Sergeant responding to an officer involved shooting; one culprit is killed and a second culprit has escaped. The Duty Inspector is unavailable due to a number of other major incidents at this time. In this instance you are permitted to:",
+      "choices": [
+        "Maintain control of the scene, in accordance with best practices, Notify Professional Standards and conduct an interview of the subject officer.",
+        "Invoke the SIU Mandate by notifying the Chief of Police, SIU and Professional Standards on behalf of the Duty Inspector, who is currently unavailable.",
+        "Maintain control of the scene, notify Association representatives and isolate involved officers while determining if SIU will invoke their mandate."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q172-372e14d5d2e7",
+      "text": "You are the Primary Investigator called to the scene of a homicide. The homicide victim is inside a dwelling house and suffering from apparent gunshot wounds. Before the Coroner has even arrived, the first responding officers brief you and you learn that there is a cellphone by the victim’s side, which was apparently receiving messages. You hear the phone ringing and the battery light is low. As it relates to the phone, you should:",
+      "choices": [
+        "Make immediate efforts enter the scene prior to written authorization and secure the phone, pending an authorized search of its contents.",
+        "Brief in the details to enable the affiant to add the phone as an item to be seized, and in the terms and conditions of the search, have the contents searched.",
+        "Re-enter the home under the authorization of the Coroners Warrant and seize the phone so it may be charged and preserved."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q173-50a7b1772186",
+      "text": "You have decided to reinforce the cultural and religious considerations that should be given when searching a person in custody, to the officers on your platoon. Cst. Hunt is unsure what he should do when searching a Sikh with a turban. You advise him:",
+      "choices": [
+        "officer safety is paramount, if practicable have the prisoner remove it themselves, remove the pins, and return it to them (if there is no evidential value or suicide concerns)",
+        "the turban is significant in the Sikh culture. A 'pat-down' search of the turban should be conducted in a dignified manner, and the turban should not be removed",
+        "considering to search a turban should be done on a case-by-case basis. The decision is ultimately up to the Staff Sergeant, and when possible be conducted by a Sikh officer."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q174-e1626392d7bd",
+      "text": "You have decided to reinforce the cultural and religious considerations that should be given when searching a person in custody, to the officers on your platoon. Cst. Powlinski is unsure what she should do when searching a female Muslim prisoner wearing a niqab? You advise her:",
+      "choices": [
+        "Removing a niqab is permitted to verify a female Muslim's identity. After searching the niqab, it can be returned after removing any pins, if there are no security/suicide concerns",
+        "Removing a niqab is permitted to search for weapons. It must be authorized by the on-duty Staff Sergeant. It should be removed in private, by a female officer, and returned as soon as possible.",
+        "Without exigent circumstances, removing a niqab off of a Muslim female by another person is strictly prohibited. This is protected by the Canadian Charter of Rights and Freedoms"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q175-d81d24e5dbc9",
+      "text": "You have decided to reinforce the procedures surrounding the 'search of persons', to the officers on your platoon. Cst. Powlinski is unsure what she should do when lodging a transgender prisoner. You advise her:",
+      "choices": [
+        "They/ze/hir shall be lodged in the separate cell that best reflects the prisoner's self-identified gender identity. Never in a multi-person cell",
+        "They/ze/hir shall be lodged in a multi-person cell if they identify as a he, and a single cell if they identify as a she.",
+        "The cell should be determined after the 'split search' when their gender can be more accurately assessed by the searching officers."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q176-d8a90cefe55a",
+      "text": "You have decided to reinforce the procedures surrounding the 'search of persons', to the officers on your platoon. Cst. Powlinski is unsure what she should do when addressing a transgender prisoner. You advise her:",
+      "choices": [
+        "use gender neutral pronouns like 'they', 'ze', and 'hir'",
+        "if it is unclear, refer to them as the gender that they were given at birth",
+        "if their gender expression is uncertain, you can ask them their sexual orientation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q177-6ccaf3f4fb76",
+      "text": "You are a uniform supervisor and one of your officers is at a shop theft call. The officer advises that the offender qualified for diversion, but the Loss Prevention Officer did not realize this when they called Communications. You recognize that calls are backing up in the officer’s area and the most appropriate action is to:",
+      "choices": [
+        "Advise the officer to continue with this call and complete it accordingly, regardless of the calls waiting.",
+        "Have communications re-direct this call to Station Duty, as the offender is suitable for release in this manner",
+        "Release the offender and forward the Occurrence to CDU to process via a Summons"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q178-4cc1eb87b68e",
+      "text": "When must an accused party that has been held for a bail hearing be brought before a Justice?",
+      "choices": [
+        "Within 24 hours",
+        "Within 24 hours, unless it can be justified why additional time is required in custody",
+        "As soon as practicable"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q179-7acb5b824cd0",
+      "text": "You are a uniform supervisor directing an FTO and trainee to conduct a prisoner pickup at the Maplehurst Correctional Facility. The trainee asks if they are required to wear a seat belt during prisoner transport and you reply:",
+      "choices": [
+        "No occupant is required to wear a seatbelt while a prisoner is being transported unless there is a physical or mental health disability",
+        "The prisoners is required to wear a seatbelt in a police vehicle, if the vehicle is equipped with one; the officer’s use of a belt is at their discretion",
+        "Use of a seatbelt in this situation is at the discretion of the driver of the field training officer"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q180-fd69250a344a",
+      "text": "When conducting a search of a person, an officer must consider Gender Identity as a variable. What are the 3 Gender expressions recognized by the Peel Regional Police?",
+      "choices": [
+        "Male, Female, Non-Conforming",
+        "Gender Identity, Sexual Orientation, Assigned Sex",
+        "They, ze, and hir"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q181-477dadc54c69",
+      "text": "You have decided to reinforce the cultural and religious considerations that should be given when searching a person in custody, to the officers on your platoon. Cst. Owuso is unsure what he should do when a Muslim prisoner requests to pray while in custody. You advise him:",
+      "choices": [
+        "Muslims are required to pray five times a day. They may use the water fountain in the cells to wash prior to praying. They need to pray while facing the Qibla, which lies north-east in Canada. A safety blanket may be provided as a mat, if it does not compromise safety.",
+        "Muslims are required to pray three times a day. They need to remove their headdress prior to praying. They need to pray while facing west. A Qur'an may be provided if it does not compromise safety.",
+        "Muslims are required to pray multiple times a day. They prefer to pray while covering their heads as symbol of faith and respect. They need to pray while facing south. A safety blanket may be provided as a mat, if it does not compromise safety."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q182-e93a1d34af67",
+      "text": "CSWB stands for…",
+      "choices": [
+        "Community Safety and Well-being",
+        "Common Sense and Well-being",
+        "Creative Strategies and Well-being"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q183-f5f91984ee85",
+      "text": "The Community Safety and Well-being Planning Framework - The green circle represents which area of the model?",
+      "choices": [
+        "social development",
+        "prevention",
+        "risk intervention"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q184-8103f1eb43b8",
+      "text": "The Community Safety and Well-being Planning Framework - The blue circle represents which area of the model?",
+      "choices": [
+        "Prevention",
+        "Social development",
+        "Risk intervention"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q185-1322243946ac",
+      "text": "The Community Safety and Well-being Planning Framework - The yellow circle represents which area of the model?",
+      "choices": [
+        "Risk intervention",
+        "Prevention",
+        "Incident response"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q186-586d75e75690",
+      "text": "The Community Safety and Well-being Planning Framework - The red circle represents which area of the model?",
+      "choices": [
+        "Incident response",
+        "Social development",
+        "Prevention"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q187-2b807228c32b",
+      "text": "Sample Community Safety and Well-being Planning Governance Structure - The blue rectangle\nrepresents which role of the structure?",
+      "choices": [
+        "Champion",
+        "Coordinator(s)",
+        "Committee Advisor"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q188-8183db32b918",
+      "text": "Sample Community Safety and Well-being Planning Governance Structure - The orange rectangle represents which role of the structure?",
+      "choices": [
+        "Coordinator(s)",
+        "Champion",
+        "Committee Advisor"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q189-479adfe5f9bd",
+      "text": "Sample Community Safety and Well-being Planning Governance Structure - The yellow rectangle represents which role of the structure?",
+      "choices": [
+        "Multi-sectional Advisory Committee",
+        "Champion",
+        "Coordinator"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q190-321960394163",
+      "text": "Sample Community Safety and Well-being Planning Governance Structure - The green rectangle s represent which role of the structure?",
+      "choices": [
+        "Implementation Team(s)",
+        "Coordinator(s)",
+        "Community member(s)"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q191-4b99ba794be2",
+      "text": "According to the Community Safety and Well-being Planning Framework what are the four areas to ensure local plans are efficient and effective as possible in making the community safer and healthier?",
+      "choices": [
+        "Social Development, Prevention, Risk Intervention and Incident Response",
+        "Social Development, Community Partnerships, Strategic Enforcement and Incident Response",
+        "Social Development, Risk Prevention, Community Engagement and Incident Response"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q192-7999c3e3d8f2",
+      "text": "What approach allows municipalities to take a leadership role in defining and addressing priority risks in the community through proactive, integrated strategies that ensure vulnerable populations to receive the help they need from the providers best suited to support them?",
+      "choices": [
+        "Community Safety and Well being Plan",
+        "Community Mobilization & Engagement Community Policing Model",
+        "Problem Oriented Policing"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q193-ec78e43f86a0",
+      "text": "Our mental health crisis intervention teams (COAST and MCRRT) are examples of which area of The Community Safety and Well-being Planning Framework?",
+      "choices": [
+        "incident response",
+        "risk intervention",
+        "crime prevention"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q194-217dc9d54bb4",
+      "text": "Peel Regional Police and Supportive Housing in Peel (SHIP), have joined forces to offer crisis beds for those in need within the Region. This program…",
+      "choices": [
+        "Gives support to individuals after their interaction with police. SHIP can be used in conjunction with the release from a criminal charge.",
+        "Gives support to individuals who call the Peel Regional Police looking for shelter. SHIP is not to be used in conjunction with the release from a criminal charge.",
+        "Gives support to individuals who are currently registered with Region of Peel Human Services. SHIP is not to be used in conjunction with the release from a criminal charge."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q195-38cca1261d96",
+      "text": "CPTED is based on the simple theory that a proper design and an effective use of the physical environment can help reduce the number of crimes. CPTED Strategies",
+      "choices": [
+        "Decrease crime opportunities",
+        "Eliminates crime",
+        "Does not use physical design to increase the perception or reality of natural surveillance."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q196-f9e850e71a1e",
+      "text": "As it relates to the Community Safety and Well-being Planning Framework, an increase in non-critical Incident Response is generally a sign of",
+      "choices": [
+        "a need to increase preventative social development strategies.",
+        "the successful application of Risk Intervention measures.",
+        "an Increase in Social Development measures, such as proactive policing."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q197-ed0320852dfc",
+      "text": "By design, increasing Social Development measures such as quality housing and childhood development, should result in:",
+      "choices": [
+        "addressing root causes of crime and social disorder.",
+        "the identification of risk factors within a community.",
+        "increased resources being focused on critical incident response."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q198-eca62627b458",
+      "text": "As it relates to the Community Safety and Well-Being, front-line police officers hold a valuable role in the success of this framework. “Effective Partnerships” is considered one of the Critical Success factors and is best characterized as:",
+      "choices": [
+        "Communicating between service providers",
+        "Building effective cross-cultural relationships",
+        "Commitment by heads of agencies to devote staff and resources"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q199-f6d3f5051487",
+      "text": "As it relates to the Community Safety and Well-being Planning Framework, the initial emphasis is placed on Social Development, followed by:",
+      "choices": [
+        "Prevention",
+        "Risk Intervention",
+        "Incident Response"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q200-d77e0433941a",
+      "text": "Critical success factors that should be considered when developing a plan under The Community Safety and Well-being Planning Framework include:",
+      "choices": [
+        "strength-based, risk-focused, effective partnership",
+        "effective strategies, goal-focused, evidence-based",
+        "understanding & respect, honesty-based, awareness-based"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q201-b68e06e33aae",
+      "text": "The Community Safety and Well-being Planning Framework refers to 'cultural awareness' as:",
+      "choices": [
+        "acknowledging differences",
+        "respecting differences",
+        "self-reflection, empathy and advocacy"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q202-2d24da76ec73",
+      "text": "The Community Safety and Well-being Planning Framework refers to 'cultural sensitivity' as:",
+      "choices": [
+        "respecting differences",
+        "self-reflection, empathy and advocacy",
+        "acknowledging differences"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q203-371af535268d",
+      "text": "The Community Safety and Well-being Planning Framework refers to 'cultural competency' as:",
+      "choices": [
+        "developing skills and knowledge",
+        "acknowledging differences",
+        "self-reflection, empathy and advocacy"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q204-285cdf616e0b",
+      "text": "The Community Safety and Well-being Planning Framework refers to 'cultural safety' as:",
+      "choices": [
+        "self-reflection, empathy and advocacy",
+        "developing skills and knowledge",
+        "respecting differences"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q205-06817060f00d",
+      "text": "Police officers may seize property with or without a warrant. If the property is not to be returned, the officer must report the seizure to a Justice of the Peace:",
+      "choices": [
+        "As soon as practicable",
+        "Within 7 days",
+        "Within 30 days"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q206-ff5f81ff2bed",
+      "text": "A junior constable on your shift has been expressing interest developing confidential informants (CI). She approaches you regarding a CI that has been providing information on a house that has a high volume of drug transactions occurring daily. She has asked the CI to note a couple licence plates to assist in the grounds for a warrant. The officer is wondering how to best forward the information to be actioned. The most appropriate response is:",
+      "choices": [
+        "The requesting of licence plate information has categorized the CI as an Agent and this needs to be addressed immediately.",
+        "You have seven days to submit a debrief report so do not wait for the updated information; submit a report now and then a separate one at a later date.",
+        "When completing the debrief report(s), simply add the name of the respective bureau supervisor you would like the information to be received by, so s/he can action it."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q207-4cfaaa8a6e6b",
+      "text": "You are a Detective in Robbery and one of your officers approaches you after debriefing a confidential informant (CI). He produces his CI ledger for review of the debrief details. The appropriate course of action is to:",
+      "choices": [
+        "Advise him that only our Detective Sergeant can review the CI ledger for the purposes of submitting the debrief report.",
+        "Review the report for compliance with the directive so that the debrief report may be added to the Confidential Informant Management System (CIMS).",
+        "Review and sign the ledger. Ensure that the details being used as part of an Information to Obtain (ITO) are identical to the information in the ledger."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q208-f7636328a87f",
+      "text": "You are a Divisional Sergeant and one of your officers brings to your attention that the employee parking lot lighting is inadequate and at night, poses several risks for foot traffic. As it relates to Risk Mitigation:",
+      "choices": [
+        "Risk reporting does not require a chain of command and to submit a risk report or call Risk Mitigation directly.",
+        "Advise the officer to provide you with a detailed memo so you can forward it by email through the chain of command",
+        "Matters of corporate liability and risk mitigation follow a chain of command. The officer can submit a risk report and include your details for tracking."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q209-a360089bca85",
+      "text": "You are a road Sergeant with a number of junior officers in your zones. While on patrol, you query a stolen vehicle that is in front of you. Over the radio, you inform the dispatcher of such, advise that you are going to attempt a rolling block on the vehicle as soon as your officers are in position. Once in position, you maintain calling the takedown plan and lead the officers to a successful stop. After the event, you host a debrief. This is an example of:",
+      "choices": [
+        "S.M.E.A.C",
+        "Formulating Leader Actions",
+        "Suspect Apprehension Pursuit"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q210-05014cc40e06",
+      "text": "When assessing a risk as having a high impact on the organization, with a low likelihood of occurring, the risk is considered:",
+      "choices": [
+        "Discretionary Risk",
+        "Acceptable Risk",
+        "Unacceptable Risk"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q211-4f6f7c269dd7",
+      "text": "When assessing a risk as having a low impact on the organization, with a high likelihood of occurring, the risk is considered:",
+      "choices": [
+        "Acceptable Risk",
+        "Discretionary Risk",
+        "Unacceptable Risk"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q212-14e5768e703e",
+      "text": "A risk that remains after mitigation steps have been deployed is known as:",
+      "choices": [
+        "Residual risk",
+        "Inherent risk",
+        "Situational risk"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q213-cc9f9873d07d",
+      "text": "In situations where suspected opioids are identified or seized, officers shall assess the at the scene, based on the quantity and form of opioids and the chance of accidentally inhaling the chemical.",
+      "choices": [
+        "Risk",
+        "Suspect",
+        "Conditions"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q214-a2ec32fcd63a",
+      "text": "“Disability” means the condition attributable to a member who, because of illness, injury, or “disability” as defined by the , is temporarily or permanently incapable of performing all of the requisite duties of a given position to the same standard as a member who is not so affected.",
+      "choices": [
+        "Ontario Human Rights Code",
+        "Occupational Health and Safety Act",
+        "Workplace Safety and Insurance Act"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q215-3d2b146c815b",
+      "text": "Cst. Singh advises you that while effecting an arrest the culprit spat in her face. She has learned that the culprit has viral hepatitis. As her supervisor you should contact the Duty Inspector or:",
+      "choices": [
+        "the Occupational Health Nurse",
+        "the Joint Occupational Health and Safety Committee",
+        "the Public Health Nurse"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q216-25849380abf8",
+      "text": "As a supervisor, the health and safety of your team is paramount. The Peel Regional Police shall accommodate members with self-declared substance use disorders, as per:",
+      "choices": [
+        "The Ontario Human Rights Code",
+        "Occupational Health and Safety Code",
+        "Our Mission, Vision and Values Statement"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q217-af327ef780eb",
+      "text": "You are a uniform supervisor. One of your officers informs you that he sprained his ankle during a foot pursuit yesterday but it is only now starting to cause him pain. As it relates to a Supervisors Incident report, you have:",
+      "choices": [
+        "3 days to submit the report",
+        "24 hours to submit the report",
+        "to submit the report as soon as practical"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q218-e5b66ab980ad",
+      "text": "You are a Uniform Supervisor attending for power lines down that are crossing an intersection. On arrival, the responding Constable advises that he does not feel safe detouring traffic due to his close proximity of the live wires and refuses to conduct traffic direction. In this situation:",
+      "choices": [
+        "The Officer shall direct traffic, as the safety concern does not qualify for refusal under the Occupational Health and Safety Act.",
+        "The Officer may refuse to work, another officer must be dispatched but provided the reason for the refusal, before accepting to direct traffic.",
+        "Following this refusal, a decision to proceed must be determined by a uniform member of the Joint Occupational Health and Safety Committee"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q219-966eeb499143",
+      "text": "You are a Detective in SVU and a new officer is transferred to your shift from Organizational Wellness. As it relates to the Wellness Check-in Program, which statement is true for this new member to your team?",
+      "choices": [
+        "The officer can keep their previous re-evaluation date because both units share the same re- evaluation cycle.",
+        "The officer must commence a Pre-entry Assessment because Organizational Wellness is not designated as having a mandatory Wellness Check-in assessment.",
+        "Organizational Wellness requires a pre-entry assessment and requires “In-Program” re- evaluation on a semi-annual basis."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q220-9135243ae453",
+      "text": "You are a Detective is the Homicide Bureau and one of the D/C’s on your team is transferring to the Fraud Bureau. The officer participated in their “In-Program” Wellness Check-in Program 5 months ago and asks if they require a “Post Exit” assessment. The correct response is:",
+      "choices": [
+        "No, the Fraud Bureau is not designated for the mandatory Wellness Check-in Program and the officer’s latest “In-Program” assessment can count as the “Post-Exit” assessment.",
+        "No, the Fraud Bureau is designated for mandatory Wellness Check-in assessments and the office can keep his/her re-evaluation cycle.",
+        "Yes, by directive, the Homicide Bureau requires annual “In-Program” assessment and a “Post- Exit” assessment."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q221-fe3d4a286918",
+      "text": "You were just transferred to the Digital Forensics Bureau as a new Detective. Another Detective in the unit approaches you about a Constable who just completed a 30 day mentorship in DFS; questioning whether or not the Constable now requires a referral to the Wellness Check-in Program. You advise the Detective:",
+      "choices": [
+        "No, they do not require Wellness Check-in, as they were only in DFS for 30 days",
+        "Yes, they do require Wellness Check-in, as DFS is designated an “at risk” area",
+        "No, they do not require Wellness Check-in, as it only applies to permanent members of a bureau"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q222-3cdc14b9f71c",
+      "text": "As a supervisor of a uniform shift, you receive several concerns from officers about a particular officers poor work performance and officer safety skills. You are new to the shift and not completely familiar with any previous performance concerns, but know that the officer is stressed over a recent divorce. As the supervisor, you address this by",
+      "choices": [
+        "Immediately address the concerns with the officer, to seek clarification and determine a course of action",
+        "First check the officer’s personnel file for any prior Early Intervention alerts that may assist you in formulating a cause and / or intervention strategies.",
+        "Initiate a confidential referral to Organizational Wellness. They will follow up at a later date, this process is non-disciplinary in nature."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q223-5429c5ec6b07",
+      "text": "The Criminal Code defines as: Every person who, for a sexual purpose, touches, directly or indirectly, with a part of the body or with an object, any part of the body of a person under the age of 16 years",
+      "choices": [
+        "sexual interference",
+        "sexual assault",
+        "sexual exploitation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q224-6cfbc07d3ec5",
+      "text": "The Criminal Code defines as: Every person who, for a sexual purpose, invites, counsels or incites a person under the age of 16 years to touch, directly or indirectly, with a part of the body or with an object, the body of any person, including the body of the person who so invites, counsels or incites and the body of the person under the age of 16 years",
+      "choices": [
+        "invitation to sexual touching",
+        "sexual interference",
+        "sexual exploitation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q225-a259603d1a1e",
+      "text": "During the review, preparation and planning phase of an interview, R.A.P.I.D is an acronym that stands for:",
+      "choices": [
+        "Review, Assess, Profile, Identify, Develop",
+        "Research, Apply, Profile, Identify, Deploy",
+        "Review, Apply, Profile, Identify, Develop"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q226-c4784deb9f6d",
+      "text": "As it relates to apprehension / taking custody, under Section 17 of the Mental Health Act, which factor shall a responding officer consider?",
+      "choices": [
+        "The subject is showing a lack of competence to care for himself or herself",
+        "The subject has a history of behaviour resulting in serious bodily harm to another person",
+        "The subject is currently taking his or her prescribed medication"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q227-f7e41f03f851",
+      "text": "Sexual offences concerning a young person where the offender is in a position of trust is:",
+      "choices": [
+        "Sexual Exploitation",
+        "Sexual Assault",
+        "Sexual Interference"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q228-b510cd9c970b",
+      "text": "Which statement is true relating to the publication of an intimate image without consent?",
+      "choices": [
+        "At the time of the recording, there were circumstances that gave rise to a reasonable expectation of privacy",
+        "The image needs to have been captured during the course of an intimate partnership; not before or after.",
+        "The presence or absence of the victims consent to the image is not considered a factor"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q229-04f0ccf9c45b",
+      "text": "Under the Missing Persons Act, a Justice makes an order for the production of records. The order may specify several types of records that are to be produced to members of a police force. Which of the following is NOT one of the records a Justice may order to be produced?",
+      "choices": [
+        "Records relating to a person's outstanding criminal charges, release forms and conditions, despite the privilage that applies to CPIC under Section 289 of the RCMP Act",
+        "Records that relate to a student of an educational institution, including a pupil record as described in clause 265(1)(d) of the Education Act, despite privilage that applies to the pupil under sction 266(2) of that Act.",
+        "Records relating to services received from a service provider as defined in subsection 3 (1) of the Child and Family Services Act."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q230-6143e2545deb",
+      "text": "When executing a warrant for arrest (DNA) pursuant to 487.0551(1) of the Criminal Code of Canada the arresting officer shall:",
+      "choices": [
+        "hold the offender for the purpose of obtaining DNA and then release “Catch and Release”",
+        "hold the offender for bail hearing",
+        "hold the offender for the purpose of obtaining DNA and then release on an Undertaking for FTA"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q231-c95c33309799",
+      "text": "When executing a warrant for arrest (DNA) pursuant to 487.0551(1) of the Criminal Code of Canada,\nIf the offender is arrested out of the Province of Ontario or in any other jurisdiction the arresting officer shall:",
+      "choices": [
+        "Have the warrant executed, DNA obtained and then release the offender, this warrant can be executed anywhere in Canada",
+        "There is no jurisdiction if it is out of Province",
+        "Request authority from the Minister of the Attorney General (MAG) to have the offender brought back to the appropriate jurisdiction"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q232-e249d8eaacc6",
+      "text": "A male baseball coach is accused of inappropriately touching a 12 year-old girl on his team. This is an example of which criminal offence:",
+      "choices": [
+        "Sexual Interference",
+        "Breach of Trust",
+        "Sexual Exploitation"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q233-ecabefcbc8c1",
+      "text": "A woman was running an after school daycare program at her home. Her husband would arrive home every evening around 5 p.m. when some of the children were still waiting to be picked up by their parents. Ten years later, one of the children alleged the woman’s husband would ask her to touch him inappropriately. Upon interviewing the husband, he confessed to the allegation. What would be the appropriate charge?",
+      "choices": [
+        "Invitation to Sexual Touching",
+        "Sexual Exploitation",
+        "Sexual Interference"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q234-7e76cc8e9836",
+      "text": "A uniform officer on your shift has just arrested a male for Criminal Harassment, for making a series of inappropriate cellphone calls to his ex-girlfriend. The officer has located a cellphone on the male and asks for your advice on how to proceed with it. You advise:",
+      "choices": [
+        "Place the phone on Airplane mode, leave it powered on, remove the SIM card and place in a faraday bag, pending the authorization of a search warrant.",
+        "Place phone on Airplane mode, leave powered on, keep SIM card inserted and place in a faraday bag, pending the authorization of a search warrant.",
+        "You are permitted to conduct a cursory search of the phone to verify ownership, which will assist in your grounds for a search warrant."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q235-59754557f26e",
+      "text": "Under the Ontario Human Rights Code, there are 4 criteria for identifying/ detecting racial profiling in Law Enforcement behaviour, given the totality of the circumstances. These criteria are:",
+      "choices": [
+        "Degrading statements, Deviations from normal practice, Failing to assess the totality of circumstances, no sufficient, credible reason",
+        "Degrading questions, Deviations from Procedure, Actions based on stereotypes, Criminal profiling",
+        "Degrading treatment, Deviations from Policy. Failing to assess the totality of circumstances, Criminal profiling"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q236-2fcab9ea45e6",
+      "text": "You are a Detective in CIB and one of your officers is trying to locate a male wanted for several robberies. The officer has received recent and accurate information for the males’ current phone number and would like to draft a Trace Data Recorder (TDR) warrant to locate and apprehend him. The appropriate course of action is to:",
+      "choices": [
+        "Make lengthy efforts to locate the male using investigative techniques such as physical surveillance, interviewing known associates and informants before proceeding with the TDR.",
+        "The threshold for obtaining TDR is met, draft the paper and have the Judicial Authorization Unit review it before having it sworn to and fulfilled.",
+        "Once the TDR authorized, submit to Intelligence Services with an Intel Service Request for fulfillment and to schedule the mandatory case conference."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q237-fc154df4ffaa",
+      "text": "Members of drug team receive a Crime Stoppers Tip pertaining to a firearm transaction that is going to occur at a local plaza later today. The tip details the culprit, his description, home address, the vehicle and license plate, and the suitcase that the firearm will be in. The tip is so detailed that the culprit would identify the tipster. With these details you independently verify the culprit has a long CNI for firearm offences and is a suspended driver. Surveillance is initiated at the plaza and as you arrive the culprit is observed leaving the plaza, as described above. As the supervisor, you instruct your team to:",
+      "choices": [
+        "Continue observations on the culprit, enabling you to develop independent grounds despite the risk of losing the culprit during surveillance.",
+        "Initiate a traffic stop, knowing the driver is suspended and utilize this as a means to investigate the suitcase and further the firearm investigation.",
+        "The Tip is protected from disclosure and provides reasonable grounds to arrest. When safe to do so, stop the culprit and arrest for firearms possession. A search incident to arrest can enable examination of the suitcase."
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q238-48a2e3e72a78",
+      "text": "Exigent circumstances is defined in section 529.3 of the Criminal Code and allows police to gain entry inside a residence without warrant under the following circumstance:",
+      "choices": [
+        "Reasonable grounds to suspect that entry is necessary to prevent bodily harm or death",
+        "Reasonable grounds to believe that entry is necessary to prevent bodily harm or death",
+        "Reasonable grounds to suspect that evidence relating to an indictable offence is present and entry is necessary to prevent the loss or destruction of the evidence"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q239-0c4da5eaf50e",
+      "text": "The right to flows section 7 of the Canadian Charter of Rights and Freedoms – Everyone has the right to life, liberty and security of the person and the right not to be deprived thereof except in accordance with the principles of fundamental justice.",
+      "choices": [
+        "Disclosure",
+        "Equality under the law",
+        "A trial without delay"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q240-f8be6efbd5bd",
+      "text": "The Supreme Court of Canada states that a Police Officer’s discipline history may be subject to first party disclosure, pursuant to",
+      "choices": [
+        "R v Stinchcombe",
+        "R v Jordan",
+        "R v Garofoli"
+      ],
+      "correctIndex": 0
+    },
+    {
+      "id": "q241-3ad366b98d33",
+      "text": "In relation to McNeil disclosure, “Privileged Material” refers to information that has some protection under law and shall not be disclosed without careful vetting, consideration and final authorization from the:",
+      "choices": [
+        "Crown’s office",
+        "Ministry of the Attorney General (MAG)",
+        "Major Case Manager or OIC of the investigation"
+      ],
+      "correctIndex": 0
+    }
+  ]
+}
