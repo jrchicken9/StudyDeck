@@ -16,6 +16,15 @@ type QuestionUi = {
   rev: boolean;
 };
 
+const TIMER_CAP_SEC = 60;
+
+function formatMmSs(totalSec: number) {
+  const s = Math.max(0, Math.floor(totalSec));
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m}:${String(r).padStart(2, "0")}`;
+}
+
 function FeedbackLine({
   scoringEnabled,
   correctIndex,
@@ -68,6 +77,8 @@ export default function QuizPage() {
   const [attempts, setAttempts] = useState<Attempt[]>([]);
   /** Per-question selection + revealed state so we can go back/forward in the deck */
   const [perQ, setPerQ] = useState<QuestionUi[]>([]);
+  /** Cumulative seconds spent on each deck question (persists when using Previous) */
+  const [secondsOnQuestion, setSecondsOnQuestion] = useState<number[]>([]);
 
   useEffect(() => {
     if (!examId) return;
@@ -84,6 +95,7 @@ export default function QuizPage() {
           picked.map((q) => ({ questionId: q.id, selectedChoiceIndex: null })),
         );
         setPerQ(picked.map(() => ({ sel: null, rev: false })));
+        setSecondsOnQuestion(picked.map(() => 0));
         setIndex(0);
       } catch (e) {
         if (!cancelled) {
@@ -100,6 +112,19 @@ export default function QuizPage() {
   const row = perQ[index] ?? { sel: null, rev: false };
   const selected = row.sel;
   const revealed = row.rev;
+
+  useEffect(() => {
+    if (!q || secondsOnQuestion.length === 0) return;
+    const id = window.setInterval(() => {
+      setSecondsOnQuestion((arr) => {
+        if (index >= arr.length) return arr;
+        const next = [...arr];
+        next[index] = (next[index] ?? 0) + 1;
+        return next;
+      });
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [index, q?.id, secondsOnQuestion.length]);
 
   const scoringEnabled = useMemo(
     () => deck.length > 0 && deck.every((x) => x.correctIndex !== null),
@@ -195,6 +220,8 @@ export default function QuizPage() {
   }
 
   const progressPct = ((index + 1) / deck.length) * 100;
+  const elapsedThisQuestion = secondsOnQuestion[index] ?? 0;
+  const timerBarPct = Math.min((elapsedThisQuestion / TIMER_CAP_SEC) * 100, 100);
 
   return (
     <main className="page page-quiz">
@@ -211,6 +238,30 @@ export default function QuizPage() {
             style={{ width: `${progressPct}%` }}
           />
         </div>
+      </div>
+      <div
+        className="quiz-timer"
+        aria-label={`Time on this question: ${formatMmSs(elapsedThisQuestion)}. One-minute pace guide; you can still answer after.`}
+      >
+        <div className="quiz-timer-row">
+          <span className="quiz-timer-label">Time on this question</span>
+          <span className="quiz-timer-value" aria-live="polite">
+            {formatMmSs(elapsedThisQuestion)}
+          </span>
+        </div>
+        <div className="quiz-timer-track">
+          <div
+            className={
+              elapsedThisQuestion >= TIMER_CAP_SEC
+                ? "quiz-timer-fill quiz-timer-fill--over"
+                : "quiz-timer-fill"
+            }
+            style={{ width: `${timerBarPct}%` }}
+          />
+        </div>
+        <p className="quiz-timer-hint muted">
+          Bar fills over 1 minute as a pace guide — it does not lock answers.
+        </p>
       </div>
       <div className="card">
         <div className="qtext">{q.text}</div>
