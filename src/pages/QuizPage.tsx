@@ -183,11 +183,6 @@ export default function QuizPage() {
 
   return (
     <main className="page page-quiz">
-      <p className="lead lead--compact">
-        Choices are shuffled each question. Select one, then{" "}
-        <span className="text-emphasis">Confirm answer</span> to see if you are
-        right before continuing.
-      </p>
       <div className="quiz-progress">
         <div className="progress-meta">
           <span>
