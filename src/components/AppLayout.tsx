@@ -1,7 +1,6 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getGuestSession } from "../lib/session";
-import { supabaseStatusMessage } from "../lib/supabase";
 import { StudyDeckLogo } from "./StudyDeckLogo";
 
 export default function AppLayout() {
@@ -49,9 +48,6 @@ export default function AppLayout() {
         </div>
       </header>
       <Outlet />
-      <footer className="app-footer">
-        <p className="footer-note">{supabaseStatusMessage()}</p>
-      </footer>
     </div>
   );
 }

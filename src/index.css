@@ -177,19 +177,6 @@ body {
   background: rgba(255, 255, 255, 0.03);
 }
 
-.app-footer {
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.footer-note {
-  margin: 0;
-  font-size: 0.75rem;
-  color: var(--zinc-600);
-  line-height: 1.45;
-}
-
 /* ——— Pages ——— */
 .page {
   animation: pageIn 0.45s ease both;
