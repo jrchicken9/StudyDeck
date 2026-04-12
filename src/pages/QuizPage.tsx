@@ -17,12 +17,59 @@ type QuestionUi = {
 };
 
 const TIMER_CAP_SEC = 60;
+const TIMER_BAR_HIDDEN_KEY = "studydeck_quiz_timer_bar_hidden";
+
+function readTimerBarHidden(): boolean {
+  try {
+    return localStorage.getItem(TIMER_BAR_HIDDEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
 
 function formatMmSs(totalSec: number) {
   const s = Math.max(0, Math.floor(totalSec));
   const m = Math.floor(s / 60);
   const r = s % 60;
   return `${m}:${String(r).padStart(2, "0")}`;
+}
+
+type ProgressSegment = "pending" | "current" | "correct" | "incorrect" | "neutral";
+
+function progressSegmentKind(
+  i: number,
+  deck: Question[],
+  attempts: Attempt[],
+  currentIndex: number,
+  scoringEnabled: boolean,
+  choicePerm: [number, number, number],
+  currentSel: number | null,
+  currentRevealed: boolean,
+): ProgressSegment {
+  const question = deck[i];
+  if (!question) return "pending";
+
+  const recorded = attempts[i]?.selectedChoiceIndex ?? null;
+
+  if (recorded !== null) {
+    if (!scoringEnabled || question.correctIndex === null) return "neutral";
+    return recorded === question.correctIndex ? "correct" : "incorrect";
+  }
+
+  if (i === currentIndex) {
+    if (
+      currentRevealed &&
+      currentSel !== null &&
+      scoringEnabled &&
+      question.correctIndex !== null
+    ) {
+      const canon = choicePerm[currentSel]!;
+      return canon === question.correctIndex ? "correct" : "incorrect";
+    }
+    return "current";
+  }
+
+  return "pending";
 }
 
 function FeedbackLine({
@@ -79,6 +126,23 @@ export default function QuizPage() {
   const [perQ, setPerQ] = useState<QuestionUi[]>([]);
   /** Cumulative seconds spent on each deck question (persists when using Previous) */
   const [secondsOnQuestion, setSecondsOnQuestion] = useState<number[]>([]);
+  /** Hide pace bar only; time stays visible. Persisted in localStorage. */
+  const [hideTimerBar, setHideTimerBar] = useState(readTimerBarHidden);
+  const [exitModalOpen, setExitModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (!exitModalOpen) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setExitModalOpen(false);
+    }
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [exitModalOpen]);
 
   useEffect(() => {
     if (!examId) return;
@@ -148,6 +212,22 @@ export default function QuizPage() {
     return pos >= 0 ? pos : null;
   }, [q, choicePerm]);
 
+  const segmentKinds = useMemo(() => {
+    if (!deck.length) return [];
+    return deck.map((_, i) =>
+      progressSegmentKind(
+        i,
+        deck,
+        attempts,
+        index,
+        scoringEnabled,
+        choicePerm,
+        selected,
+        revealed,
+      ),
+    );
+  }, [deck, attempts, index, scoringEnabled, choicePerm, selected, revealed]);
+
   const recordAndAdvance = useCallback(() => {
     if (!q || !revealed || selected === null) return;
     const selectedChoiceIndex = choicePerm[selected]!;
@@ -186,6 +266,10 @@ export default function QuizPage() {
 
   function onPickChoice(displayIdx: number) {
     if (revealed) return;
+    if (selected === displayIdx) {
+      patchCurrent({ sel: null });
+      return;
+    }
     patchCurrent({ sel: displayIdx });
   }
 
@@ -197,6 +281,27 @@ export default function QuizPage() {
   function goToPreviousQuestion() {
     if (index <= 0) return;
     setIndex((i) => i - 1);
+  }
+
+  function openExitModal() {
+    setExitModalOpen(true);
+  }
+
+  function confirmLeaveQuiz() {
+    setExitModalOpen(false);
+    navigate("/dashboard");
+  }
+
+  function toggleTimerBar() {
+    setHideTimerBar((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem(TIMER_BAR_HIDDEN_KEY, next ? "1" : "0");
+      } catch {
+        /* ignore */
+      }
+      return next;
+    });
   }
 
   if (loadError) {
@@ -219,11 +324,11 @@ export default function QuizPage() {
     );
   }
 
-  const progressPct = ((index + 1) / deck.length) * 100;
   const elapsedThisQuestion = secondsOnQuestion[index] ?? 0;
   const timerBarPct = Math.min((elapsedThisQuestion / TIMER_CAP_SEC) * 100, 100);
 
   return (
+    <>
     <main className="page page-quiz">
       <div className="quiz-progress">
         <div className="progress-meta">
@@ -232,11 +337,29 @@ export default function QuizPage() {
           </span>
           <span>{exam.title}</span>
         </div>
-        <div className="progress-track">
-          <div
-            className="progress-fill"
-            style={{ width: `${progressPct}%` }}
-          />
+        <div
+          className="progress-track progress-track--segments"
+          role="list"
+          aria-label="Per-question results: green correct, red incorrect, dim not yet answered."
+        >
+          {deck.map((qi, i) => {
+            const kind = segmentKinds[i] ?? "pending";
+            const labels: Record<ProgressSegment, string> = {
+              pending: "Not yet answered",
+              current: "Current question",
+              correct: "Correct",
+              incorrect: "Incorrect",
+              neutral: "Answered (no score)",
+            };
+            return (
+              <div
+                key={qi.id}
+                className={`progress-segment progress-segment--${kind}`}
+                role="listitem"
+                title={`Question ${i + 1}: ${labels[kind]}`}
+              />
+            );
+          })}
         </div>
       </div>
       <div
@@ -245,23 +368,32 @@ export default function QuizPage() {
       >
         <div className="quiz-timer-row">
           <span className="quiz-timer-label">Time on this question</span>
-          <span className="quiz-timer-value" aria-live="polite">
-            {formatMmSs(elapsedThisQuestion)}
-          </span>
+          <div className="quiz-timer-right">
+            <span className="quiz-timer-value" aria-live="polite">
+              {formatMmSs(elapsedThisQuestion)}
+            </span>
+            <button
+              type="button"
+              className="quiz-timer-toggle"
+              onClick={toggleTimerBar}
+              aria-pressed={hideTimerBar ? "true" : "false"}
+            >
+              {hideTimerBar ? "Show bar" : "Hide bar"}
+            </button>
+          </div>
         </div>
-        <div className="quiz-timer-track">
-          <div
-            className={
-              elapsedThisQuestion >= TIMER_CAP_SEC
-                ? "quiz-timer-fill quiz-timer-fill--over"
-                : "quiz-timer-fill"
-            }
-            style={{ width: `${timerBarPct}%` }}
-          />
-        </div>
-        <p className="quiz-timer-hint muted">
-          Bar fills over 1 minute as a pace guide — it does not lock answers.
-        </p>
+        {!hideTimerBar ? (
+          <div className="quiz-timer-track">
+            <div
+              className={
+                elapsedThisQuestion >= TIMER_CAP_SEC
+                  ? "quiz-timer-fill quiz-timer-fill--over"
+                  : "quiz-timer-fill"
+              }
+              style={{ width: `${timerBarPct}%` }}
+            />
+          </div>
+        ) : null}
       </div>
       <div className="card">
         <div className="qtext">{q.text}</div>
@@ -291,9 +423,10 @@ export default function QuizPage() {
             </button>
           );
         })}
-        {!revealed && selected !== null ? (
+        {!revealed ? (
           <p className="hint-line">
-            Tap another option to change your mind, or confirm below.
+            Tap an option to select it; tap again on your choice to deselect. Then
+            confirm below.
           </p>
         ) : null}
         {revealed && selected !== null && scoringEnabled && q.correctIndex !== null ? (
@@ -315,18 +448,9 @@ export default function QuizPage() {
             displayIndexOfCanonical={displayIndexOfCanonical}
           />
         ) : null}
-        <div className="btn-row">
-          {index > 0 ? (
-            <button
-              type="button"
-              className="btn secondary"
-              onClick={goToPreviousQuestion}
-            >
-              Previous question
-            </button>
-          ) : null}
-          {!revealed ? (
-            <>
+        <div className="btn-row btn-row--quiz">
+          <div className="btn-row-primary">
+            {!revealed ? (
               <button
                 type="button"
                 className="btn"
@@ -335,25 +459,62 @@ export default function QuizPage() {
               >
                 Confirm answer
               </button>
+            ) : (
+              <button type="button" className="btn" onClick={recordAndAdvance}>
+                {index + 1 >= deck.length ? "Finish" : "Next question"}
+              </button>
+            )}
+          </div>
+          <div className="btn-row-end">
+            {index > 0 ? (
               <button
                 type="button"
                 className="btn secondary"
-                disabled={selected === null}
-                onClick={() => patchCurrent({ sel: null })}
+                onClick={goToPreviousQuestion}
               >
-                Clear selection
+                Previous question
               </button>
-            </>
-          ) : (
-            <button type="button" className="btn" onClick={recordAndAdvance}>
-              {index + 1 >= deck.length ? "Finish" : "Next question"}
+            ) : null}
+            <button type="button" className="btn secondary" onClick={openExitModal}>
+              Exit
             </button>
-          )}
-          <button type="button" className="btn secondary" onClick={() => navigate("/dashboard")}>
-            Exit
-          </button>
+          </div>
         </div>
       </div>
     </main>
+    {exitModalOpen ? (
+      <div
+        className="modal-backdrop"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="exit-quiz-title"
+        onClick={() => setExitModalOpen(false)}
+      >
+        <div className="modal-panel card" onClick={(e) => e.stopPropagation()}>
+          <p className="eyebrow">StudyDeck</p>
+          <h2 id="exit-quiz-title" className="modal-title">
+            Leave this quiz?
+          </h2>
+          <p className="lead lead--compact">
+            You will return to the dashboard and{" "}
+            <span className="text-emphasis">lose your progress</span> in this
+            session.
+          </p>
+          <div className="modal-actions">
+            <button
+              type="button"
+              className="btn secondary"
+              onClick={() => setExitModalOpen(false)}
+            >
+              Stay
+            </button>
+            <button type="button" className="btn" onClick={confirmLeaveQuiz}>
+              Leave quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    ) : null}
+    </>
   );
 }

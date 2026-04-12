@@ -399,6 +399,31 @@ a.btn {
   margin-top: 1.35rem;
 }
 
+.btn-row--quiz {
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.btn-row--quiz .btn-row-primary {
+  flex: 0 0 auto;
+}
+
+.btn-row--quiz .btn-row-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+@media (max-width: 520px) {
+  .btn-row--quiz .btn-row-end {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
 /* Preset grid (home) */
 .preset-grid {
   display: grid;
@@ -481,6 +506,43 @@ a.btn {
   margin-bottom: 0.45rem;
 }
 
+.quiz-timer-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.quiz-timer-toggle {
+  margin: 0;
+  padding: 0.25rem 0.55rem;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--zinc-400);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.quiz-timer-toggle:hover {
+  color: var(--zinc-200);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.quiz-timer-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--zinc-950), 0 0 0 4px rgba(56, 189, 248, 0.35);
+}
+
 .quiz-timer-label {
   font-size: 0.72rem;
   font-weight: 700;
@@ -517,12 +579,6 @@ a.btn {
   box-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
 }
 
-.quiz-timer-hint {
-  margin: 0.5rem 0 0;
-  font-size: 0.75rem;
-  line-height: 1.4;
-}
-
 .quiz-progress {
   margin-bottom: 1.25rem;
 }
@@ -555,6 +611,48 @@ a.btn {
   background: linear-gradient(90deg, var(--violet-deep), var(--cyan));
   box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
   transition: width 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.progress-track--segments {
+  display: flex;
+  gap: 3px;
+  height: 6px;
+  padding: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.progress-segment {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  border-radius: 3px;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.progress-segment--pending {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.progress-segment--current {
+  background: rgba(125, 211, 252, 0.22);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.35);
+}
+
+.progress-segment--correct {
+  background: linear-gradient(180deg, #4ade80, #059669);
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.25);
+}
+
+.progress-segment--incorrect {
+  background: linear-gradient(180deg, #fb7185, #be123c);
+  box-shadow: 0 0 8px rgba(244, 63, 94, 0.2);
+}
+
+.progress-segment--neutral {
+  background: linear-gradient(180deg, #94a3b8, #64748b);
 }
 
 .qtext {
@@ -758,6 +856,56 @@ a.btn {
   border-radius: var(--radius-md);
   padding: 0.65rem 0.85rem;
   margin-bottom: 1rem;
+}
+
+/* ——— Modal (quiz exit, etc.) ——— */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    calc(1.25rem + var(--safe-top))
+    calc(1.25rem + var(--safe-right))
+    calc(1.25rem + var(--safe-bottom))
+    calc(1.25rem + var(--safe-left));
+  background: rgba(10, 22, 40, 0.72);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  animation: pageIn 0.3s ease both;
+}
+
+.modal-panel {
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem 1.5rem 1.4rem;
+  box-shadow:
+    0 1px 0 var(--glass-highlight) inset,
+    0 32px 64px -28px rgba(0, 0, 0, 0.55),
+    0 0 80px -40px rgba(14, 165, 233, 0.15);
+}
+
+.modal-panel .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.modal-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
 }
 
 /* ——— App shell layout (nested routes) ——— */
