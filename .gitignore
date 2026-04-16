@@ -4,6 +4,7 @@ dist
 *.local
 .env
 .env.*
+!.env.example
 
 # Local scratch assets (not part of the app)
 ChatGPT*.png

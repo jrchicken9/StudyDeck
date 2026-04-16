@@ -1,7 +1,25 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const url = import.meta.env.VITE_SUPABASE_URL;
-const anon = import.meta.env.VITE_SUPABASE_ANON_KEY;
+function resolveSupabaseUrl(): string | undefined {
+  const injected =
+    typeof window !== "undefined" && window.__STUDYDECK_SUPABASE__?.url
+      ? String(window.__STUDYDECK_SUPABASE__.url).trim()
+      : undefined;
+  const v = injected || import.meta.env.VITE_SUPABASE_URL;
+  return v && String(v).trim() ? String(v).trim() : undefined;
+}
+
+function resolveSupabaseAnon(): string | undefined {
+  const injected =
+    typeof window !== "undefined" && window.__STUDYDECK_SUPABASE__?.anon
+      ? String(window.__STUDYDECK_SUPABASE__.anon).trim()
+      : undefined;
+  const v = injected || import.meta.env.VITE_SUPABASE_ANON_KEY;
+  return v && String(v).trim() ? String(v).trim() : undefined;
+}
+
+const url = resolveSupabaseUrl();
+const anon = resolveSupabaseAnon();
 
 /**
  * When `"1"`, Supabase auth reads/writes the session in sessionStorage for this tab

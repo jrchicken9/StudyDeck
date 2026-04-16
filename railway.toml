@@ -1,6 +1,16 @@
+# StudyDeck — Railway config-as-code
 # https://docs.railway.com/reference/config-as-code
-# Nixpacks runs `npm install` and `npm run build` automatically when a "build"
-# script exists in package.json.
+#
+# Required service variables (enable for the deploy environment, ideally "Build" + "Deploy"):
+#   VITE_SUPABASE_URL       — https://<ref>.supabase.co
+#   VITE_SUPABASE_ANON_KEY  — Supabase anon (public) key
+#
+# Optional aliases read at container start if VITE_* are unset:
+#   SUPABASE_URL
+#   SUPABASE_ANON_KEY
+#
+# `npm start` runs scripts/inject-railway-supabase-env.mjs so the SPA gets Supabase
+# credentials at runtime (works even when secrets were not available at vite build).
 
 [deploy]
 startCommand = "npm start"

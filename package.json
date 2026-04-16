@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "start": "serve dist -s -c ../serve.json -l tcp://0.0.0.0:${PORT:-3000}",
+    "start": "node scripts/inject-railway-supabase-env.mjs && serve dist -s -c serve.json -l tcp://0.0.0.0:${PORT:-3000}",
     "import-questions": "python3 scripts/docx_to_questions.py -o public/data/sgt-march-2026.json"
   },
   "engines": {

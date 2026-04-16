@@ -8,3 +8,8 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+/** Set by `scripts/inject-railway-supabase-env.mjs` before `serve` on Railway. */
+interface Window {
+  __STUDYDECK_SUPABASE__?: { url?: string; anon?: string };
+}
