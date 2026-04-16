@@ -1,5 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import CommunityPostCard, {
+  type CommunityAuthorPublic,
+  type CommunityPost,
+} from "../components/CommunityPostCard";
 import { useAuth } from "../context/AuthContext";
 import {
   parsePublicationAudience,
@@ -17,6 +21,15 @@ type PostRow = {
   question_count: number;
   publication_audience: PublicationAudience;
   publication_pricing: PublicationPricing;
+  publication_description: string | null;
+};
+
+type RpcAuthorRow = {
+  id: string;
+  first_name: string | null;
+  last_name: string | null;
+  publisher_rating_sum: number | null;
+  publisher_rating_count: number | null;
 };
 
 function authorLabel(first: string | null, last: string | null): string {
@@ -24,15 +37,26 @@ function authorLabel(first: string | null, last: string | null): string {
   return n || "Member";
 }
 
+function parseQuestionCountFromRow(r: Record<string, unknown>): number {
+  const nested = r.user_questions;
+  if (Array.isArray(nested) && nested[0] && typeof nested[0] === "object") {
+    const c = (nested[0] as { count?: number }).count;
+    return typeof c === "number" ? c : 0;
+  }
+  return 0;
+}
+
 export default function CommunityHomePage() {
   const location = useLocation();
   const { user } = useAuth();
   const [posts, setPosts] = useState<PostRow[]>([]);
-  const [authors, setAuthors] = useState<Map<string, string>>(new Map());
+  const [authors, setAuthors] = useState<Map<string, CommunityAuthorPublic>>(new Map());
+  const [myRatings, setMyRatings] = useState<Map<string, number>>(new Map());
   const [libraryIds, setLibraryIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [ratingBusyPublisherId, setRatingBusyPublisherId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     const sb = supabase;
@@ -46,7 +70,9 @@ export default function CommunityHomePage() {
     setError(null);
     const { data: rows, error: pErr } = await sb
       .from("user_question_banks")
-      .select("id, title, published_at, user_id, publication_audience, publication_pricing, user_questions(count)")
+      .select(
+        "id, title, published_at, user_id, publication_audience, publication_pricing, publication_description, user_questions(count)",
+      )
       .not("published_at", "is", null)
       .order("published_at", { ascending: false });
     if (pErr) {
@@ -55,47 +81,69 @@ export default function CommunityHomePage() {
       setLoading(false);
       return;
     }
-    const parsed: PostRow[] = (rows ?? []).map((r: Record<string, unknown>) => {
-      const nested = r.user_questions;
-      let qc = 0;
-      if (Array.isArray(nested) && nested[0] && typeof nested[0] === "object") {
-        const c = (nested[0] as { count?: number }).count;
-        qc = typeof c === "number" ? c : 0;
-      }
-      return {
-        id: String(r.id),
-        title: typeof r.title === "string" ? r.title : "Untitled test",
-        published_at: typeof r.published_at === "string" ? r.published_at : "",
-        user_id: String(r.user_id),
-        question_count: qc,
-        publication_audience: parsePublicationAudience(
-          (r as { publication_audience?: unknown }).publication_audience,
-        ),
-        publication_pricing: parsePublicationPricing(
-          (r as { publication_pricing?: unknown }).publication_pricing,
-        ),
-      };
-    });
+    const parsed: PostRow[] = (rows ?? []).map((r: Record<string, unknown>) => ({
+      id: String(r.id),
+      title: typeof r.title === "string" ? r.title : "Untitled test",
+      published_at: typeof r.published_at === "string" ? r.published_at : "",
+      user_id: String(r.user_id),
+      question_count: parseQuestionCountFromRow(r),
+      publication_audience: parsePublicationAudience(
+        (r as { publication_audience?: unknown }).publication_audience,
+      ),
+      publication_pricing: parsePublicationPricing(
+        (r as { publication_pricing?: unknown }).publication_pricing,
+      ),
+      publication_description:
+        typeof (r as { publication_description?: unknown }).publication_description === "string"
+          ? (r as { publication_description: string }).publication_description
+          : null,
+    }));
     setPosts(parsed);
+
     const uids = [...new Set(parsed.map((p) => p.user_id))];
     if (uids.length) {
-      const { data: profs } = await sb.from("profiles").select("id, first_name, last_name").in("id", uids);
-      const map = new Map<string, string>();
-      for (const pr of profs ?? []) {
-        const id = typeof pr.id === "string" ? pr.id : "";
-        if (!id) continue;
-        map.set(
-          id,
-          authorLabel(
-            typeof pr.first_name === "string" ? pr.first_name : null,
-            typeof pr.last_name === "string" ? pr.last_name : null,
-          ),
-        );
+      const { data: rpcRows, error: rpcErr } = await sb.rpc("community_authors_for_ids", {
+        target_ids: uids,
+      });
+      if (rpcErr) {
+        setError(rpcErr.message);
+        setAuthors(new Map());
+      } else {
+        const map = new Map<string, CommunityAuthorPublic>();
+        for (const row of (rpcRows ?? []) as RpcAuthorRow[]) {
+          if (!row?.id) continue;
+          map.set(row.id, {
+            id: row.id,
+            displayName: authorLabel(row.first_name, row.last_name),
+            ratingSum: typeof row.publisher_rating_sum === "number" ? row.publisher_rating_sum : 0,
+            ratingCount:
+              typeof row.publisher_rating_count === "number" ? row.publisher_rating_count : 0,
+          });
+        }
+        setAuthors(map);
       }
-      setAuthors(map);
+
+      if (user?.id) {
+        const { data: mine } = await sb
+          .from("publisher_ratings")
+          .select("publisher_user_id, rating")
+          .eq("rater_user_id", user.id)
+          .in("publisher_user_id", uids);
+        const rmap = new Map<string, number>();
+        for (const m of mine ?? []) {
+          const pid = String((m as { publisher_user_id: string }).publisher_user_id);
+          const rt = (m as { rating: number }).rating;
+          if (typeof rt === "number") rmap.set(pid, rt);
+        }
+        setMyRatings(rmap);
+      } else {
+        setMyRatings(new Map());
+      }
     } else {
       setAuthors(new Map());
+      setMyRatings(new Map());
     }
+
     if (user?.id) {
       const { data: lib, error: lErr } = await sb
         .from("user_community_library")
@@ -130,6 +178,48 @@ export default function CommunityHomePage() {
     setLibraryIds((prev) => new Set(prev).add(bankId));
   }
 
+  async function setPublisherRating(publisherUserId: string, rating: number) {
+    if (!supabase || !user?.id || publisherUserId === user.id) return;
+    setRatingBusyPublisherId(publisherUserId);
+    setError(null);
+    const { error: upErr } = await supabase.from("publisher_ratings").upsert(
+      {
+        rater_user_id: user.id,
+        publisher_user_id: publisherUserId,
+        rating,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "rater_user_id,publisher_user_id" },
+    );
+    setRatingBusyPublisherId(null);
+    if (upErr) {
+      setError(upErr.message);
+      return;
+    }
+    setMyRatings((prev) => {
+      const next = new Map(prev);
+      next.set(publisherUserId, rating);
+      return next;
+    });
+    const { data: refreshed } = await supabase.rpc("community_authors_for_ids", {
+      target_ids: [publisherUserId],
+    });
+    const row = (refreshed ?? [])[0] as RpcAuthorRow | undefined;
+    if (row?.id) {
+      setAuthors((prev) => {
+        const next = new Map(prev);
+        next.set(row.id, {
+          id: row.id,
+          displayName: authorLabel(row.first_name, row.last_name),
+          ratingSum: typeof row.publisher_rating_sum === "number" ? row.publisher_rating_sum : 0,
+          ratingCount:
+            typeof row.publisher_rating_count === "number" ? row.publisher_rating_count : 0,
+        });
+        return next;
+      });
+    }
+  }
+
   return (
     <main className="page page-dashboard page-community">
       <header className="page-header">
@@ -140,7 +230,8 @@ export default function CommunityHomePage() {
           <Link to="/my-banks" state={{ from: location.pathname }}>
             Work Shop
           </Link>
-          . Add one to{" "}
+          . Each post shows who published it, what the test is about, and how other learners rate them.
+          Add a test to{" "}
           <Link to="/my-tests" state={{ from: location.pathname }}>
             My Tests
           </Link>{" "}
@@ -164,81 +255,24 @@ export default function CommunityHomePage() {
           </p>
         </div>
       ) : (
-        <ul className="community-feed">
+        <ul className="community-feed community-feed--threaded">
           {posts.map((p) => {
-            const isOwn = Boolean(user?.id && p.user_id === user.id);
-            const inLibrary = libraryIds.has(p.id);
-            const author = authors.get(p.user_id) ?? "Member";
+            const post: CommunityPost = { ...p };
+            const author = authors.get(p.user_id) ?? null;
             return (
-              <li key={p.id} className="community-post card">
-                <div className="community-post-main">
-                  <span className="community-post-title">{p.title}</span>
-                  <span className="muted community-post-meta">
-                    {author}
-                    {p.question_count > 0 ? ` · ${p.question_count} questions` : ""}
-                    {p.published_at
-                      ? ` · Published ${new Date(p.published_at).toLocaleDateString()}`
-                      : ""}
-                  </span>
-                  <div className="community-post-badges">
-                    {p.publication_audience === "friends" ? (
-                      <span className="community-post-tag community-post-tag--friends">Friends</span>
-                    ) : (
-                      <span className="community-post-tag">Everyone</span>
-                    )}
-                    {p.publication_pricing === "paid" ? (
-                      <span className="community-post-tag community-post-tag--paid">Paid</span>
-                    ) : (
-                      <span className="community-post-tag community-post-tag--free">Free</span>
-                    )}
-                  </div>
-                </div>
-                <div className="community-post-actions">
-                  {isOwn ? (
-                    <>
-                      <span className="community-post-badge">Your test</span>
-                      <Link
-                        to={`/my-banks/${p.id}`}
-                        state={{ from: location.pathname }}
-                        className="btn btn-tertiary btn-compact"
-                      >
-                        Edit in Work Shop
-                      </Link>
-                      {p.question_count > 0 ? (
-                        <Link
-                          to={`/my-banks/${p.id}/practice`}
-                          state={{ from: location.pathname }}
-                          className="btn btn-compact"
-                        >
-                          Practice
-                        </Link>
-                      ) : null}
-                    </>
-                  ) : inLibrary ? (
-                    <>
-                      <span className="community-post-badge community-post-badge--ok">In My Tests</span>
-                      {p.question_count > 0 ? (
-                        <Link
-                          to={`/my-banks/${p.id}/practice`}
-                          state={{ from: location.pathname }}
-                          className="btn btn-compact"
-                        >
-                          Practice
-                        </Link>
-                      ) : null}
-                    </>
-                  ) : (
-                    <button
-                      type="button"
-                      className="btn btn-compact"
-                      disabled={busyId === p.id || p.question_count === 0}
-                      title={p.question_count === 0 ? "This test has no questions yet." : undefined}
-                      onClick={() => void addToMyTests(p.id)}
-                    >
-                      {busyId === p.id ? "Adding…" : "Add to My Tests"}
-                    </button>
-                  )}
-                </div>
+              <li key={p.id} className="community-feed-item">
+                <CommunityPostCard
+                  post={post}
+                  author={author}
+                  myRating={myRatings.get(p.user_id) ?? null}
+                  viewerId={user?.id}
+                  inLibrary={libraryIds.has(p.id)}
+                  busyId={busyId}
+                  pathname={location.pathname}
+                  onAddToMyTests={addToMyTests}
+                  onSetPublisherRating={setPublisherRating}
+                  ratingBusyPublisherId={ratingBusyPublisherId}
+                />
               </li>
             );
           })}

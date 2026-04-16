@@ -22,6 +22,7 @@ type BankRow = {
   published_at: string | null;
   publication_audience: PublicationAudience;
   publication_pricing: PublicationPricing;
+  publication_description: string | null;
 };
 
 type SortKey = "updated" | "title" | "questions";
@@ -66,7 +67,7 @@ export default function MyBanksPage() {
     const { data: bankRows, error: bErr } = await sb
       .from("user_question_banks")
       .select(
-        "id, title, created_at, updated_at, published_at, publication_audience, publication_pricing, user_questions(count)",
+        "id, title, created_at, updated_at, published_at, publication_audience, publication_pricing, publication_description, user_questions(count)",
       )
       .order("updated_at", { ascending: false });
     if (bErr) {
@@ -93,6 +94,10 @@ export default function MyBanksPage() {
         publication_pricing: parsePublicationPricing(
           (b as { publication_pricing?: unknown }).publication_pricing,
         ),
+        publication_description:
+          typeof (b as { publication_description?: unknown }).publication_description === "string"
+            ? (b as { publication_description: string }).publication_description
+            : null,
       })),
     );
     setLoading(false);
@@ -366,6 +371,7 @@ export default function MyBanksPage() {
                                 published_at: r.published_at,
                                 publication_audience: r.publication_audience,
                                 publication_pricing: r.publication_pricing,
+                                publication_description: r.publication_description,
                               })
                             }
                           >

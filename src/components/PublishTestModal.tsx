@@ -14,6 +14,7 @@ export type PublishTestModalBank = {
   published_at: string | null;
   publication_audience: PublicationAudience;
   publication_pricing: PublicationPricing;
+  publication_description: string | null;
 };
 
 type Props = {
@@ -23,9 +24,13 @@ type Props = {
   onSaved: () => void;
 };
 
+const DESCRIPTION_MAX = 2000;
+const DESCRIPTION_MIN_FIRST_PUBLISH = 24;
+
 export default function PublishTestModal({ open, bank, onClose, onSaved }: Props) {
   const [audience, setAudience] = useState<PublicationAudience>("everyone");
   const [pricing, setPricing] = useState<PublicationPricing>("free");
+  const [description, setDescription] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +38,9 @@ export default function PublishTestModal({ open, bank, onClose, onSaved }: Props
     if (!open || !bank) return;
     setAudience(parsePublicationAudience(bank.publication_audience));
     setPricing(parsePublicationPricing(bank.publication_pricing));
+    setDescription(
+      typeof bank.publication_description === "string" ? bank.publication_description : "",
+    );
     setError(null);
   }, [open, bank]);
 
@@ -44,6 +52,17 @@ export default function PublishTestModal({ open, bank, onClose, onSaved }: Props
 
   async function handlePublishOrUpdate() {
     if (!supabase || !canPublish) return;
+    const trimmed = description.trim();
+    if (!isPublished && trimmed.length < DESCRIPTION_MIN_FIRST_PUBLISH) {
+      setError(
+        `Please add a short description for the Community post (at least ${DESCRIPTION_MIN_FIRST_PUBLISH} characters).`,
+      );
+      return;
+    }
+    if (trimmed.length > DESCRIPTION_MAX) {
+      setError(`Description must be at most ${DESCRIPTION_MAX} characters.`);
+      return;
+    }
     setBusy(true);
     setError(null);
     const publishedAt = isPublished ? row.published_at : new Date().toISOString();
@@ -53,6 +72,7 @@ export default function PublishTestModal({ open, bank, onClose, onSaved }: Props
         published_at: publishedAt,
         publication_audience: audience,
         publication_pricing: pricing,
+        publication_description: trimmed.length ? trimmed : null,
       })
       .eq("id", row.id);
     setBusy(false);
@@ -101,6 +121,34 @@ export default function PublishTestModal({ open, bank, onClose, onSaved }: Props
             <> — add questions in the editor before publishing.</>
           ) : null}
         </p>
+
+        <div className="publish-test-field-block">
+          <label className="publish-test-desc-label" htmlFor="publish-test-description">
+            Community description
+            {!isPublished ? (
+              <span className="muted publish-test-desc-required"> (required to publish)</span>
+            ) : null}
+          </label>
+          <textarea
+            id="publish-test-description"
+            className="input publish-test-description-input"
+            rows={5}
+            maxLength={DESCRIPTION_MAX}
+            disabled={!canPublish || busy}
+            placeholder="Introduce your test on Community: who it is for, topics covered, difficulty, or how you use it. This appears on your public post like a social feed."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <p className="muted publish-test-desc-hint">
+            {description.trim().length}/{DESCRIPTION_MAX} characters
+            {!isPublished ? (
+              <>
+                {" "}
+                · first publish needs at least {DESCRIPTION_MIN_FIRST_PUBLISH}
+              </>
+            ) : null}
+          </p>
+        </div>
 
         <fieldset className="publish-test-fieldset" disabled={!canPublish || busy}>
           <legend className="publish-test-legend">Audience</legend>
