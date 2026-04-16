@@ -3498,16 +3498,79 @@ a.btn {
   color: var(--amber-bright);
 }
 
-.my-tests-section-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 1.5rem 0 0.65rem;
-  color: var(--text);
+.page-header--my-tests {
+  margin-bottom: 1rem;
 }
 
-.my-tests-empty-hint {
-  margin: 0 0 0.75rem;
-  max-width: 42rem;
+.page-header--my-tests .lead {
+  max-width: 40rem;
+}
+
+.my-tests-panel {
+  margin-bottom: 1.1rem;
+  padding: 1.05rem 1.15rem 1.15rem;
+}
+
+.my-tests-panel-title {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--zinc-400);
+}
+
+.my-tests-panel-grid {
+  margin: 0;
+}
+
+.my-tests-panel-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 6rem;
+  padding: 0.5rem 0;
+}
+
+.my-tests-empty-state {
+  text-align: center;
+  padding: 0.35rem 0.5rem 0.15rem;
+}
+
+.my-tests-empty-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 0.75rem;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(99, 102, 241, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.my-tests-empty-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.my-tests-empty-desc {
+  margin: 0 auto 1rem;
+  max-width: 26rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.my-tests-empty-cta {
+  margin-bottom: 1rem;
+}
+
+.my-tests-empty-foot {
+  margin: 0 auto;
+  max-width: 24rem;
+  font-size: 0.82rem;
   line-height: 1.45;
 }
 
