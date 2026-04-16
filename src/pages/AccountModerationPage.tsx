@@ -1,6 +1,4 @@
 import { Link, Navigate } from "react-router-dom";
-import ReturnNavButton from "../components/ReturnNavButton";
-import { useReturnNavigation } from "../hooks/useReturnNavigation";
 import { useAuth } from "../context/AuthContext";
 import {
   accountStatusDescription,
@@ -46,7 +44,6 @@ export default function AccountModerationPage() {
     accessLoading,
   } = useAuth();
   const { title, body } = copyFor(accountStatus);
-  const { handleReturn, returnLabel } = useReturnNavigation("/community");
 
   if (accessLoading) {
     return (
@@ -67,8 +64,12 @@ export default function AccountModerationPage() {
         <div className="card pending-card">
           <p className="eyebrow">Account</p>
           <h1 className="page-title">All clear</h1>
-          <p className="lead">Your account is active. You can return to the community home.</p>
-          <ReturnNavButton fallbackTo="/community" />
+          <p className="lead">Your account is active. Use the top bar to open Community or another tab.</p>
+          <div className="btn-row pending-actions" style={{ marginTop: "1.25rem" }}>
+            <Link to="/community" className="btn secondary">
+              Community
+            </Link>
+          </div>
         </div>
       </main>
     );
@@ -82,14 +83,7 @@ export default function AccountModerationPage() {
         <p className="lead">{body}</p>
         <p className="muted">{accountStatusDescription(accountStatus)}</p>
         {!isBannedStatus(accountStatus) ? (
-          <div className="page-return-nav" style={{ marginTop: "0.75rem" }}>
-            <button
-              type="button"
-              className="btn secondary btn-compact"
-              onClick={handleReturn}
-            >
-              ← {returnLabel}
-            </button>
+          <div className="btn-row pending-actions" style={{ marginTop: "1.25rem" }}>
             <Link to="/profile" className="btn secondary btn-compact">
               Profile
             </Link>

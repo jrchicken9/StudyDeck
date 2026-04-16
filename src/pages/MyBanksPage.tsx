@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ConfirmModal from "../components/ConfirmModal";
 import PublishTestModal, { type PublishTestModalBank } from "../components/PublishTestModal";
-import ReturnNavButton from "../components/ReturnNavButton";
 import { formatEditedAt } from "../lib/formatEditedAt";
 import {
   parsePublicationAudience,
@@ -144,8 +143,6 @@ export default function MyBanksPage() {
 
   return (
     <main className="page page-my-banks page-custom-tests">
-      <ReturnNavButton fallbackTo="/community" className="custom-tests-page-nav" />
-
       <header className="custom-tests-hero card">
         <p className="eyebrow custom-tests-eyebrow">Work Shop</p>
         <h1 className="page-title custom-tests-page-title">Your tests</h1>

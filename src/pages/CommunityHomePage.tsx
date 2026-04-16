@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import ReturnNavButton from "../components/ReturnNavButton";
 import { useAuth } from "../context/AuthContext";
 import {
   parsePublicationAudience,
@@ -133,7 +132,6 @@ export default function CommunityHomePage() {
 
   return (
     <main className="page page-dashboard page-community">
-      <ReturnNavButton fallbackTo="/my-tests" className="custom-tests-page-nav" />
       <header className="page-header">
         <p className="eyebrow">StudyDeck</p>
         <h1 className="page-title">Community</h1>

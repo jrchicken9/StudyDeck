@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import ReturnNavButton from "../components/ReturnNavButton";
 import { getExamSummary } from "../data/exams";
 
 const PRESETS = [20, 40, 60, 100] as const;
@@ -31,14 +30,12 @@ export default function SessionPage() {
     return (
       <main className="page page--centered">
         <p className="muted">That exam was not found.</p>
-        <ReturnNavButton fallbackTo="/community" />
       </main>
     );
   }
 
   return (
     <main className="page page-home">
-      <ReturnNavButton fallbackTo="/community" />
       <header className="page-header">
         <p className="eyebrow">{exam.subtitle}</p>
         <h1 className="page-title">{exam.title}</h1>

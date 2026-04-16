@@ -1,6 +1,5 @@
 import { useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ReturnNavButton from "../components/ReturnNavButton";
 import {
   attachImportedAssetToQuestion,
   importHasVisualOrTableAssets,
@@ -492,7 +491,6 @@ export default function MyBankCreatePage() {
 
   return (
     <main className="page page-my-bank-create page-custom-tests">
-      <ReturnNavButton fallbackTo="/my-banks" className="custom-tests-page-nav" />
       <section className="card my-bank-create-card">
         <p className="eyebrow custom-tests-eyebrow">Work Shop</p>
         <h1 className="page-title custom-tests-page-title">Create custom test</h1>

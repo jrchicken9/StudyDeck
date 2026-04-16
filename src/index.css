@@ -3721,20 +3721,6 @@ a.btn {
   margin-bottom: 0;
 }
 
-/* Back / return row (secondary buttons, matches global .btn.secondary) */
-.page-return-nav,
-.custom-tests-page-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0 0 1.1rem;
-}
-
-.admin-shell .page-return-nav {
-  margin: 0 0 1rem;
-}
-
 .custom-tests-hero {
   margin-bottom: 1.35rem;
   padding: 1.35rem 1.4rem 1.4rem;

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import ReturnNavButton from "../components/ReturnNavButton";
 import { useAuth } from "../context/AuthContext";
 import { EXAMS } from "../data/exams";
 import { supabase } from "../lib/supabaseClient";
@@ -77,7 +76,6 @@ export default function MyTestsPage() {
 
   return (
     <main className="page page-dashboard page-my-tests">
-      <ReturnNavButton fallbackTo="/community" className="custom-tests-page-nav" />
       <header className="page-header">
         <p className="eyebrow">Practice</p>
         <h1 className="page-title">My Tests</h1>

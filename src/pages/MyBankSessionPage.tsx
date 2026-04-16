@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import ReturnNavButton from "../components/ReturnNavButton";
 import { describeQuestionTimerRecipe, questionTimerFromBankRow } from "../lib/questionTimer";
 import { supabase } from "../lib/supabaseClient";
 import type { QuestionTimerSettings } from "../types";
@@ -96,12 +95,6 @@ export default function MyBankSessionPage() {
 
   return (
     <main className="page page-home page-custom-tests">
-      <ReturnNavButton
-        fallbackTo="/my-banks"
-        practiceBankId={bankId}
-        className="custom-tests-page-nav"
-      />
-
       <header className="custom-tests-session-intro card">
         <p className="eyebrow custom-tests-eyebrow">Work Shop</p>
         <div className="custom-tests-session-title-row">
