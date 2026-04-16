@@ -259,45 +259,16 @@ export default function MyBanksPage() {
               </p>
             </div>
           ) : (
-            <ul className="my-banks-list">
+            <ul className="my-banks-tile-grid">
               {displayedRows.map((r) => {
                 const ready = r.question_count > 0;
                 return (
-                  <li key={r.id} className="my-banks-row card">
-                    <div className="my-banks-row-accent" aria-hidden />
-                    <div className="my-banks-row-inner">
-                      <div className="my-banks-row-body">
-                        <div className="my-banks-avatar" aria-hidden title={r.title}>
+                  <li key={r.id} className="my-banks-tile card">
+                    <div className="my-banks-tile-accent" aria-hidden />
+                    <div className="my-banks-tile-frame">
+                      <div className="my-banks-tile-top">
+                        <div className="my-banks-avatar my-banks-tile-avatar" aria-hidden title={r.title}>
                           {monogramFromTitle(r.title)}
-                        </div>
-                        <div className="my-banks-row-main">
-                          <span className="my-banks-title">{r.title}</span>
-                          <span className="muted my-banks-meta">
-                            Edited {formatEditedAt(r.updated_at)}
-                            {r.published_at ? (
-                              <>
-                                {" "}
-                                <span
-                                  className="my-banks-published-pill"
-                                  title="Listed on Community (subject to audience)"
-                                >
-                                  Published
-                                  {r.publication_audience === "friends" ? " · Friends" : ""}
-                                  {r.publication_pricing === "paid" ? " · Paid" : ""}
-                                </span>
-                              </>
-                            ) : null}
-                          </span>
-                          <p
-                            className={
-                              "my-banks-status-hint" +
-                              (ready ? " my-banks-status-hint--ready" : " my-banks-status-hint--draft")
-                            }
-                          >
-                            {ready
-                              ? `${r.question_count} question${r.question_count === 1 ? "" : "s"} in the pool — run or publish anytime.`
-                              : "Add questions in the editor before you can run or publish this test."}
-                          </p>
                         </div>
                         <span
                           className={
@@ -309,55 +280,84 @@ export default function MyBanksPage() {
                           {r.question_count} Q
                         </span>
                       </div>
-                      <div className="my-banks-row-actions">
+                      <h3 className="my-banks-tile-title">{r.title}</h3>
+                      <div className="muted my-banks-tile-meta">
+                        <span>Edited {formatEditedAt(r.updated_at)}</span>
+                        {r.published_at ? (
+                          <>
+                            {" "}
+                            <span
+                              className="my-banks-published-pill my-banks-published-pill--tile"
+                              title="Listed on Community (subject to audience)"
+                            >
+                              Published
+                              {r.publication_audience === "friends" ? " · Friends" : ""}
+                              {r.publication_pricing === "paid" ? " · Paid" : ""}
+                            </span>
+                          </>
+                        ) : null}
+                      </div>
+                      <p
+                        className={
+                          "my-banks-status-hint my-banks-tile-hint" +
+                          (ready ? " my-banks-status-hint--ready" : " my-banks-status-hint--draft")
+                        }
+                      >
+                        {ready
+                          ? `${r.question_count} question${r.question_count === 1 ? "" : "s"} in the pool — run or publish anytime.`
+                          : "Add questions in the editor before you can run or publish this test."}
+                      </p>
+                      <div className="my-banks-tile-actions">
                         {ready ? (
                           <Link
                             to={`/my-banks/${r.id}/practice`}
                             state={{ from: location.pathname }}
-                            className="btn btn-accent-cool my-banks-run-btn"
+                            className="btn btn-accent-cool btn-compact my-banks-tile-run"
                           >
                             Run test
                           </Link>
                         ) : (
                           <span
-                            className="btn btn-accent-cool my-banks-run-btn my-banks-run-btn--disabled"
+                            className="btn btn-accent-cool btn-compact my-banks-tile-run my-banks-run-btn--disabled"
                             title="Add questions in the editor first"
                           >
                             Run test
                           </span>
                         )}
-                        <Link
-                          to={`/my-banks/${r.id}`}
-                          state={{ from: location.pathname }}
-                          className="btn secondary btn-compact"
-                        >
-                          Edit
-                        </Link>
-                        <button
-                          type="button"
-                          className="btn btn-ghost btn-compact"
-                          onClick={() =>
-                            setPublishBank({
-                              id: r.id,
-                              title: r.title,
-                              question_count: r.question_count,
-                              published_at: r.published_at,
-                              publication_audience: r.publication_audience,
-                              publication_pricing: r.publication_pricing,
-                            })
-                          }
-                        >
-                          {r.published_at ? "Publication…" : "Publish"}
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-ghost btn-compact my-banks-row-delete"
-                          disabled={deleting}
-                          aria-label={`Delete ${r.title}`}
-                          onClick={() => setDeleteTarget(r)}
-                        >
-                          Delete
-                        </button>
+                        <div className="my-banks-tile-row2">
+                          <Link
+                            to={`/my-banks/${r.id}`}
+                            state={{ from: location.pathname }}
+                            className="btn secondary btn-compact"
+                          >
+                            Edit
+                          </Link>
+                          <button
+                            type="button"
+                            className="btn btn-ghost btn-compact"
+                            onClick={() =>
+                              setPublishBank({
+                                id: r.id,
+                                title: r.title,
+                                question_count: r.question_count,
+                                published_at: r.published_at,
+                                publication_audience: r.publication_audience,
+                                publication_pricing: r.publication_pricing,
+                              })
+                            }
+                          >
+                            {r.published_at ? "Publication…" : "Publish"}
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-ghost btn-compact my-banks-row-delete"
+                            disabled={deleting}
+                            aria-label={`Delete ${r.title}`}
+                            onClick={() => setDeleteTarget(r)}
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </li>
