@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { StudyDeckLogo } from "../components/StudyDeckLogo";
+import { StudyDeckBrand } from "../components/StudyDeckLogo";
 import { loadExam } from "../lib/examApi";
+import { isUuid } from "../lib/isUuid";
 import type { Attempt } from "./QuizPage";
 
 type LocationState = {
@@ -48,15 +49,6 @@ export default function ResultsPage() {
   const scoringEnabled = Boolean(state.scoringEnabled);
   const totalSecondsOnQuiz = state.totalSecondsOnQuiz;
   const sessionQuestionCount = state.sessionQuestionCount;
-
-  const practiceAgainTo = useMemo(() => {
-    if (!examId) return "/dashboard";
-    const n = sessionQuestionCount;
-    if (typeof n === "number" && n > 0) {
-      return `/quiz/${examId}?n=${encodeURIComponent(String(n))}`;
-    }
-    return `/exams/${examId}`;
-  }, [examId, sessionQuestionCount]);
 
   useEffect(() => {
     if (!examId || !attempts.length) return;
@@ -159,14 +151,21 @@ export default function ResultsPage() {
   if (!attempts.length) {
     return (
       <main className="page page--centered page-results-empty">
-        <StudyDeckLogo className="results-empty-logo" title="StudyDeck" />
+        <div className="results-empty-brand">
+          <StudyDeckBrand
+            layout="stack"
+            logoClassName="results-empty-logo"
+            wordmarkClassName="studydeck-wordmark studydeck-wordmark--compact"
+          />
+        </div>
         <h1 className="page-title">No results</h1>
         <p className="lead lead--compact">
-          Open a quiz from the dashboard, finish the session, and you will land
-          here with a summary.
+          Open a quiz from{" "}
+          <Link to="/my-tests">My Tests</Link> or <Link to="/my-banks">Work Shop</Link>, finish the
+          session, and you will land here with a summary.
         </p>
-        <Link to="/dashboard" className="btn">
-          Go to dashboard
+        <Link to="/my-tests" className="btn">
+          Go to My Tests
         </Link>
       </main>
     );
@@ -175,7 +174,13 @@ export default function ResultsPage() {
   return (
     <main className="page page-results">
       <div className="results-hero card">
-        <StudyDeckLogo className="results-brand-mark" title="StudyDeck" />
+        <div className="results-hero-brand">
+          <StudyDeckBrand
+            layout="stack"
+            logoClassName="results-brand-mark"
+            wordmarkClassName="studydeck-wordmark studydeck-wordmark--compact"
+          />
+        </div>
         <p className="eyebrow">Session complete</p>
         <h1 className="results-headline">{headline}</h1>
         {state.title ? <p className="results-exam-title">{state.title}</p> : null}
@@ -236,17 +241,32 @@ export default function ResultsPage() {
 
       {examId ? (
         <div className="btn-row results-actions">
-          <Link to={practiceAgainTo} className="btn">
-            Practice this exam again
-          </Link>
-          <Link to="/dashboard" className="btn secondary">
-            Dashboard
+          {typeof sessionQuestionCount === "number" && sessionQuestionCount > 0 ? (
+            <Link
+              to={`/quiz/${examId}?n=${encodeURIComponent(String(sessionQuestionCount))}`}
+              className="btn"
+            >
+              Practice this exam again
+            </Link>
+          ) : (
+            <Link
+              to={`/exams/${examId}`}
+              className="btn"
+            >
+              Practice this exam again
+            </Link>
+          )}
+          <Link
+            to={examId && isUuid(examId) ? "/community" : "/my-tests"}
+            className="btn secondary"
+          >
+            {examId && isUuid(examId) ? "Community" : "My Tests"}
           </Link>
         </div>
       ) : (
         <div className="btn-row results-actions">
-          <Link to="/dashboard" className="btn">
-            Dashboard
+          <Link to="/community" className="btn">
+            Community
           </Link>
         </div>
       )}

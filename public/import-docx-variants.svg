@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+  <title id="title">Accepted correct-answer formats</title>
+  <desc id="desc">Accepted variant examples for docx import: bold answer and asterisk answer markers.</desc>
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="860" fill="url(#bg2)"/>
+  <text x="56" y="74" fill="#e2e8f0" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">
+    Accepted Correct-Answer Styles
+  </text>
+
+  <rect x="44" y="124" width="1312" height="300" rx="14" fill="#0a1020" stroke="#334155"/>
+  <text x="74" y="172" fill="#67e8f9" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Variant A: Correct option in bold</text>
+  <text x="74" y="218" fill="#dbeafe" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22">Which day follows Monday?</text>
+  <text x="74" y="254" fill="#cbd5e1" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22">a) Sunday</text>
+  <text x="74" y="288" fill="#e2e8f0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22" font-weight="700">b) Tuesday</text>
+  <text x="74" y="322" fill="#cbd5e1" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22">c) Friday</text>
+  <text x="74" y="362" fill="#94a3b8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">In Word: make only the correct choice text bold.</text>
+
+  <rect x="44" y="456" width="1312" height="300" rx="14" fill="#0a1020" stroke="#334155"/>
+  <text x="74" y="504" fill="#67e8f9" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Variant B: Correct option wrapped with asterisks</text>
+  <text x="74" y="550" fill="#dbeafe" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22">Pick a primary color.</text>
+  <text x="74" y="586" fill="#cbd5e1" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22">a) Green</text>
+  <text x="74" y="620" fill="#cbd5e1" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22">*b) Red*</text>
+  <text x="74" y="654" fill="#cbd5e1" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="22">c) Purple</text>
+  <text x="74" y="694" fill="#94a3b8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20">Use asterisks when bold formatting may be lost in exports.</text>
+</svg>

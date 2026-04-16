@@ -1,53 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { isSupabaseConfigured } from "../lib/supabaseClient";
-import { getGuestSession } from "../lib/session";
-import { StudyDeckLogo } from "../components/StudyDeckLogo";
+import { StudyDeckBrand } from "../components/StudyDeckLogo";
 
 export default function WelcomePage() {
   const navigate = useNavigate();
-  const { loading, user, isGuest, continueAsGuest } = useAuth();
+  const { loading, user, signedInHomePath } = useAuth();
   const authReady = isSupabaseConfigured();
-  const [guestName, setGuestName] = useState("");
 
   useEffect(() => {
     if (loading) return;
-    if (user || isGuest) navigate("/dashboard", { replace: true });
-  }, [loading, user, isGuest, navigate]);
-
-  /** If they already have a saved guest name, pre-fill when returning before nav redirect. */
-  useEffect(() => {
-    const g = getGuestSession();
-    if (g?.label) setGuestName(g.label);
-  }, []);
-
-  const trimmedName = guestName.trim();
-  const canContinueGuest = trimmedName.length > 0;
-
-  function onGuest() {
-    if (!canContinueGuest) return;
-    continueAsGuest(trimmedName);
-    navigate("/dashboard");
-  }
+    if (user) {
+      navigate(signedInHomePath, { replace: true });
+    }
+  }, [loading, user, signedInHomePath, navigate]);
 
   if (loading) {
     return (
       <div className="welcome-shell">
-        <div className="welcome-card">
+        <div className="welcome-card auth-surface">
           <div className="spinner" aria-hidden />
-          <p className="muted">Loading…</p>
+          <p className="muted welcome-loading-text">Loading…</p>
         </div>
       </div>
     );
   }
 
-  if (user || isGuest) {
+  if (user) {
     return (
       <div className="welcome-shell">
-        <div className="welcome-card">
+        <div className="welcome-card auth-surface">
           <div className="spinner" aria-hidden />
-          <p className="muted">Opening dashboard…</p>
+          <p className="muted welcome-loading-text">Opening StudyDeck…</p>
         </div>
       </div>
     );
@@ -55,60 +40,45 @@ export default function WelcomePage() {
 
   return (
     <div className="welcome-shell">
-      <div className="welcome-card">
+      <div className="welcome-card auth-surface">
         <div className="welcome-brand">
-          <StudyDeckLogo className="welcome-logo" title="StudyDeck" />
-          <h1 className="welcome-title">StudyDeck</h1>
-          <p className="welcome-tagline">Exam practice, one session at a time.</p>
-        </div>
-
-        <div className="welcome-guest-block">
-          <label className="welcome-label" htmlFor="guest-name">
-            Your name (guests)
-          </label>
-          <input
-            id="guest-name"
-            className="input welcome-input"
-            type="text"
-            autoComplete="nickname"
-            placeholder="e.g. Alex"
-            value={guestName}
-            onChange={(e) => setGuestName(e.target.value)}
-            maxLength={80}
+          <StudyDeckBrand
+            layout="stack"
+            logoClassName="welcome-logo"
+            wordmarkClassName="welcome-eyebrow studydeck-wordmark studydeck-wordmark--hero studydeck-wordmark--serious"
           />
-          <p className="welcome-guest-hint muted">
-            Shown in the header while you practice. Not a full account.
+          <h1 className="welcome-title">Exam practice, refined.</h1>
+          <p className="welcome-tagline">
+            Timed quizzes, clear results, and a calm place to prepare—built for serious
+            learners.
           </p>
+          <ul className="welcome-points" aria-label="Key benefits">
+            <li>Timed sessions</li>
+            <li>Instant feedback</li>
+            <li>Focused revision</li>
+          </ul>
         </div>
 
         <div className="welcome-actions">
-          <button
-            type="button"
-            className="btn btn-welcome-primary"
-            onClick={onGuest}
-            disabled={!canContinueGuest}
-          >
-            Continue as guest
-          </button>
           {authReady ? (
             <>
+              <Link
+                to="/auth/signup"
+                className="btn btn-welcome-primary"
+              >
+                Join For Free
+              </Link>
               <Link
                 to="/auth/login"
                 className="btn btn-welcome-secondary"
               >
                 Log in
               </Link>
-              <Link
-                to="/auth/signup"
-                className="btn btn-welcome-secondary"
-              >
-                Create account
-              </Link>
             </>
           ) : (
             <p className="welcome-auth-hint muted">
-              Log in and sign up will appear here once Supabase environment variables
-              are set on this deployment.
+              The Log in and Join For Free buttons will appear here once Supabase environment
+              variables are set on this deployment.
             </p>
           )}
         </div>

@@ -1,15 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 32 32" fill="none" role="img" aria-label="StudyDeck">
   <title>StudyDeck</title>
   <defs>
-    <linearGradient id="sdg" x1="6" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fb7185"/>
-      <stop offset="0.42" stop-color="#f43f5e"/>
-      <stop offset="1" stop-color="#0369a1"/>
+    <linearGradient id="sdm" x1="4" y1="3" x2="29" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fecdd3"/>
+      <stop offset="0.28" stop-color="#fb7185"/>
+      <stop offset="0.52" stop-color="#f43f5e"/>
+      <stop offset="0.72" stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="sds" x1="7" y1="6" x2="21" y2="15" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sdst" x1="16" y1="5" x2="16" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
     </linearGradient>
   </defs>
-  <rect x="3" y="14" width="22" height="16" rx="3" fill="#1e2d42" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-  <rect x="5" y="10" width="22" height="18" rx="3.5" fill="#2a3d56" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-  <rect x="6" y="4" width="22" height="24" rx="4.5" fill="url(#sdg)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-  <path d="M10 12h14M10 16h11M10 20h9" stroke="rgba(255,255,255,0.38)" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="25" cy="7" r="2.25" fill="#38bdf8" opacity="0.95"/>
+  <ellipse cx="16" cy="26.75" rx="9.5" ry="1.85" fill="rgba(0,0,0,0.2)"/>
+  <rect x="4.5" y="5" width="23" height="21" rx="5.25" fill="url(#sdm)" stroke="url(#sdst)" stroke-width="1"/>
+  <rect x="6" y="6.25" width="20" height="8.5" rx="2.25" fill="url(#sds)"/>
+  <path d="M8.5 16.25h15M8.5 19.25h12M8.5 22.25h9" stroke="rgba(255,255,255,0.52)" stroke-width="1.2" stroke-linecap="round"/>
+  <circle cx="23.75" cy="9" r="2.45" fill="#38bdf8" stroke="rgba(255,255,255,0.55)" stroke-width="0.6"/>
+  <circle cx="23.15" cy="8.4" r="0.7" fill="rgba(255,255,255,0.55)"/>
 </svg>

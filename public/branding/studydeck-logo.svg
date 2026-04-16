@@ -1,0 +1,66 @@
+<svg width="1600" height="420" viewBox="0 0 1600 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="20" y1="20" x2="320" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF6F9F"/>
+      <stop offset="55%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#22C1FF"/>
+    </linearGradient>
+    <linearGradient id="wordGrad" x1="360" y1="120" x2="980" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF6F9F"/>
+      <stop offset="55%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#22C1FF"/>
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="210" y1="55" x2="285" y2="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#51D1FF"/>
+      <stop offset="100%" stop-color="#1FA2FF"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.2 0"/>
+      <feBlend in="SourceGraphic" mode="normal"/>
+    </filter>
+    <filter id="wordShadow" x="-10%" y="-30%" width="120%" height="180%">
+      <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#081426" flood-opacity="0.25"/>
+    </filter>
+    <style>
+      .wordmark {
+        font-family: Inter, Poppins, "SF Pro Display", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 108px;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+      }
+    </style>
+  </defs>
+
+  <!-- icon -->
+  <g filter="url(#softGlow)" transform="translate(36 50)">
+    <rect x="0" y="0" width="280" height="280" rx="52" fill="url(#bgGrad)"/>
+    <rect x="2" y="2" width="276" height="276" rx="50" stroke="rgba(255,255,255,0.22)" stroke-width="2"/>
+
+    <!-- glossy highlight -->
+    <path d="M28 40C28 24.536 40.536 12 56 12H186C131 39 79 59 28 72V40Z" fill="white" fill-opacity="0.20"/>
+
+    <!-- stacked flashcards -->
+    <g transform="translate(52 78)">
+      <rect x="0" y="56" width="156" height="22" rx="11" transform="rotate(-8 0 56)" fill="white" fill-opacity="0.68"/>
+      <rect x="12" y="28" width="160" height="22" rx="11" transform="rotate(-6 12 28)" fill="white" fill-opacity="0.84"/>
+      <path d="M38 0H164C176.15 0 186 9.85 186 22V80C186 92.15 176.15 102 164 102H42C18.804 102 0 83.196 0 60V38C0 17.013 17.013 0 38 0Z" fill="white" fill-opacity="0.97"/>
+    </g>
+
+    <!-- badge -->
+    <g transform="translate(184 16)">
+      <circle cx="47" cy="47" r="47" fill="url(#badgeGrad)"/>
+      <circle cx="47" cy="47" r="46" stroke="#CFF4FF" stroke-opacity="0.55" stroke-width="2"/>
+      <path d="M28 47.5L40.5 60L66 34.5" stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <g filter="url(#wordShadow)">
+    <text x="372" y="242" class="wordmark" fill="url(#wordGrad)">StudyDeck</text>
+  </g>
+</svg>

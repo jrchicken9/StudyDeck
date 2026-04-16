@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import ReturnNavButton from "../components/ReturnNavButton";
 import { getExamSummary } from "../data/exams";
 
 const PRESETS = [20, 40, 60, 100] as const;
@@ -7,6 +8,7 @@ const PRESETS = [20, 40, 60, 100] as const;
 export default function SessionPage() {
   const { examId } = useParams<{ examId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const [custom, setCustom] = useState("");
   const exam = examId ? getExamSummary(examId) : undefined;
 
@@ -20,22 +22,23 @@ export default function SessionPage() {
     if (!examId) return;
     const sp = new URLSearchParams();
     sp.set("n", String(count));
-    navigate(`/quiz/${examId}?${sp.toString()}`);
+    navigate(`/quiz/${examId}?${sp.toString()}`, {
+      state: { from: location.pathname },
+    });
   }
 
   if (!examId || !exam) {
     return (
       <main className="page page--centered">
         <p className="muted">That exam was not found.</p>
-        <Link to="/dashboard" className="btn secondary">
-          Back to dashboard
-        </Link>
+        <ReturnNavButton fallbackTo="/community" />
       </main>
     );
   }
 
   return (
     <main className="page page-home">
+      <ReturnNavButton fallbackTo="/community" />
       <header className="page-header">
         <p className="eyebrow">{exam.subtitle}</p>
         <h1 className="page-title">{exam.title}</h1>
@@ -91,9 +94,6 @@ export default function SessionPage() {
         </div>
       </div>
 
-      <p className="muted" style={{ marginTop: "1.5rem" }}>
-        <Link to="/dashboard">← All exams</Link>
-      </p>
     </main>
   );
 }

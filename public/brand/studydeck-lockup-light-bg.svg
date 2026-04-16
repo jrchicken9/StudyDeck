@@ -1,19 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="192" viewBox="0 0 240 48" fill="none" role="img" aria-label="StudyDeck">
   <title>StudyDeck</title>
   <defs>
-    <linearGradient id="g2" x1="6" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f43f5e"/>
-      <stop offset="0.48" stop-color="#e11d48"/>
-      <stop offset="1" stop-color="#0284c7"/>
+    <linearGradient id="g2" x1="4" y1="3" x2="29" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fecdd3"/>
+      <stop offset="0.28" stop-color="#fb7185"/>
+      <stop offset="0.52" stop-color="#f43f5e"/>
+      <stop offset="0.72" stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="g2s" x1="7" y1="6" x2="21" y2="15" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="g2st" x1="16" y1="5" x2="16" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.12"/>
+    </linearGradient>
+    <linearGradient id="wmLight" x1="52" y1="0" x2="228" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#881337"/>
+      <stop offset="0.18" stop-color="#be123c"/>
+      <stop offset="0.36" stop-color="#a21caf"/>
+      <stop offset="0.54" stop-color="#7e22ce"/>
+      <stop offset="0.72" stop-color="#0369a1"/>
+      <stop offset="1" stop-color="#0c4a6e"/>
     </linearGradient>
   </defs>
   <rect width="240" height="48" rx="12" fill="#f8fafc"/>
   <g transform="translate(10, 8)">
-    <rect x="3" y="14" width="22" height="16" rx="3" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
-    <rect x="5" y="10" width="22" height="18" rx="3.5" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1"/>
-    <rect x="6" y="4" width="22" height="24" rx="4.5" fill="url(#g2)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
-    <path d="M10 12h14M10 16h11M10 20h9" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="25" cy="7" r="2.25" fill="#0ea5e9" opacity="0.95"/>
+    <ellipse cx="16" cy="26.75" rx="9.5" ry="1.85" fill="rgba(15,23,42,0.12)"/>
+    <rect x="4.5" y="5" width="23" height="21" rx="5.25" fill="url(#g2)" stroke="url(#g2st)" stroke-width="1"/>
+    <rect x="6" y="6.25" width="20" height="8.5" rx="2.25" fill="url(#g2s)"/>
+    <path d="M8.5 16.25h15M8.5 19.25h12M8.5 22.25h9" stroke="rgba(255,255,255,0.55)" stroke-width="1.2" stroke-linecap="round"/>
+    <circle cx="23.75" cy="9" r="2.45" fill="#0ea5e9" stroke="rgba(255,255,255,0.6)" stroke-width="0.6"/>
+    <circle cx="23.15" cy="8.4" r="0.7" fill="rgba(255,255,255,0.6)"/>
   </g>
-  <text x="50" y="30" fill="#0a1628" font-family="Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" letter-spacing="-0.04em">StudyDeck</text>
+  <text x="50" y="30" fill="url(#wmLight)" font-family="Outfit, Plus Jakarta Sans, system-ui, sans-serif" font-size="17" font-weight="700" letter-spacing="-0.04em">StudyDeck</text>
 </svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Best practice Word question bank format</title>
+  <desc id="desc">Example template for docx import showing one question, three lettered choices, and explicit answer line.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <rect x="42" y="42" width="1116" height="676" rx="22" fill="#0b1220" stroke="#334155" stroke-width="2"/>
+  <text x="76" y="105" fill="#e2e8f0" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">
+    Word Import Template (Best Practice)
+  </text>
+  <rect x="76" y="126" width="620" height="4" rx="2" fill="url(#accent)"/>
+  <text x="76" y="172" fill="#cbd5e1" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">
+    Use this exact structure per question:
+  </text>
+
+  <rect x="76" y="202" width="1048" height="420" rx="16" fill="#0a1020" stroke="#334155" stroke-width="2"/>
+  <text x="104" y="252" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">
+    1. In order to approve a member's timesheet row,
+  </text>
+  <text x="104" y="286" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">
+    it must be in what status?
+  </text>
+  <text x="104" y="336" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">
+    a) Needs Approval or Submitted
+  </text>
+  <text x="104" y="388" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">
+    b) Needs Approval or New
+  </text>
+  <text x="104" y="440" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28">
+    c) Not Submitted or New
+  </text>
+  <text x="104" y="496" fill="#a7f3d0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28" font-weight="700">
+    Answer: a
+  </text>
+  <text x="104" y="548" fill="#94a3b8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+    If you prefer marker-style correctness, you can use: *a) Needs Approval or Submitted*
+  </text>
+  <text x="104" y="598" fill="#94a3b8" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">
+    Keep one blank line between questions. Keep answer choices consistent (e.g., always 3).
+  </text>
+
+  <text x="76" y="678" fill="#67e8f9" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="600">
+    Tip: In the importer modal, set "Answers per question" to 3 for this format.
+  </text>
+</svg>
