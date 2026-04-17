@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
@@ -28,12 +28,15 @@ type ProfileRow = {
   email: string | null;
   first_name: string | null;
   last_name: string | null;
+  community_public_name: string | null;
   approved_at: string | null;
   created_at: string | null;
   account_status: string | null;
   moderation_note: string | null;
   moderation_updated_at: string | null;
 };
+
+const COMMUNITY_PUBLIC_NAME_MAX = 80;
 
 function formatMetaPhone(meta: Record<string, unknown> | undefined): string | null {
   if (!meta) return null;
@@ -51,6 +54,36 @@ export default function ProfilePage() {
   const [publishedBanks, setPublishedBanks] = useState<PublishedBankRow[]>([]);
   const [publishedLoading, setPublishedLoading] = useState(false);
   const [publishedError, setPublishedError] = useState<string | null>(null);
+  const [publicNameDraft, setPublicNameDraft] = useState("");
+  const [publicNameBusy, setPublicNameBusy] = useState(false);
+  const [publicNameMsg, setPublicNameMsg] = useState<string | null>(null);
+
+  const reloadProfile = useCallback(async () => {
+    if (!user?.id || !supabase) return null;
+    const { data, error: qErr } = await supabase
+      .from("profiles")
+      .select(
+        "email, first_name, last_name, community_public_name, approved_at, created_at, account_status, moderation_note, moderation_updated_at",
+      )
+      .eq("id", user.id)
+      .maybeSingle();
+    if (qErr || !data) return null;
+    const next: ProfileRow = {
+      email: typeof data.email === "string" ? data.email : null,
+      first_name: typeof data.first_name === "string" ? data.first_name : null,
+      last_name: typeof data.last_name === "string" ? data.last_name : null,
+      community_public_name:
+        typeof data.community_public_name === "string" ? data.community_public_name : null,
+      approved_at: typeof data.approved_at === "string" ? data.approved_at : null,
+      created_at: typeof data.created_at === "string" ? data.created_at : null,
+      account_status: typeof data.account_status === "string" ? data.account_status : null,
+      moderation_note: typeof data.moderation_note === "string" ? data.moderation_note : null,
+      moderation_updated_at:
+        typeof data.moderation_updated_at === "string" ? data.moderation_updated_at : null,
+    };
+    setRow(next);
+    return next;
+  }, [user?.id]);
 
   useEffect(() => {
     if (!user?.id || !supabase) {
@@ -65,7 +98,7 @@ export default function ProfilePage() {
       const { data, error: qErr } = await supabase
         .from("profiles")
         .select(
-          "email, first_name, last_name, approved_at, created_at, account_status, moderation_note, moderation_updated_at",
+          "email, first_name, last_name, community_public_name, approved_at, created_at, account_status, moderation_note, moderation_updated_at",
         )
         .eq("id", user.id)
         .maybeSingle();
@@ -78,6 +111,8 @@ export default function ProfilePage() {
           email: typeof data.email === "string" ? data.email : null,
           first_name: typeof data.first_name === "string" ? data.first_name : null,
           last_name: typeof data.last_name === "string" ? data.last_name : null,
+          community_public_name:
+            typeof data.community_public_name === "string" ? data.community_public_name : null,
           approved_at: typeof data.approved_at === "string" ? data.approved_at : null,
           created_at: typeof data.created_at === "string" ? data.created_at : null,
           account_status: typeof data.account_status === "string" ? data.account_status : null,
@@ -140,6 +175,35 @@ export default function ProfilePage() {
     };
   }, [user?.id]);
 
+  useEffect(() => {
+    if (!row) {
+      setPublicNameDraft("");
+      return;
+    }
+    setPublicNameDraft(row.community_public_name ?? "");
+  }, [row?.community_public_name]);
+
+  async function saveCommunityPublicName() {
+    if (!supabase) return;
+    const trimmed = publicNameDraft.trim();
+    if (trimmed.length > COMMUNITY_PUBLIC_NAME_MAX) {
+      setPublicNameMsg(`Use at most ${COMMUNITY_PUBLIC_NAME_MAX} characters.`);
+      return;
+    }
+    setPublicNameBusy(true);
+    setPublicNameMsg(null);
+    const { error: rpcErr } = await supabase.rpc("set_my_community_public_name", {
+      new_name: trimmed,
+    });
+    setPublicNameBusy(false);
+    if (rpcErr) {
+      setPublicNameMsg(rpcErr.message);
+      return;
+    }
+    await reloadProfile();
+    setPublicNameMsg("Saved. This is how your name appears on Community.");
+  }
+
   const meta = user?.user_metadata as Record<string, unknown> | undefined;
   const metaPhone = formatMetaPhone(meta);
   const nameFromProfile = [row?.first_name, row?.last_name].filter(Boolean).join(" ").trim();
@@ -151,6 +215,8 @@ export default function ProfilePage() {
     .join(" ")
     .trim();
   const displayName = nameFromProfile || nameFromMeta || null;
+  const communityPreview =
+    row?.community_public_name?.trim() || displayName || "Member";
   const accessStatus: AccountStatus = parseAccountStatus(row?.account_status);
 
   const accountEmail = row?.email ?? user?.email ?? null;
@@ -162,7 +228,8 @@ export default function ProfilePage() {
         <p className="eyebrow">Account</p>
         <h1 className="page-title">My profile</h1>
         <p className="lead lead--compact">
-          Your sign-in details, access status, and tests you have published to the community.
+          Your sign-in details, access status, and tests you have published to the community. Set a
+          public Community name so other learners never need to see your account name.
           Password and email changes are handled outside this app (for example in your account
           provider settings).
         </p>
@@ -182,6 +249,10 @@ export default function ProfilePage() {
             <div className="profile-dl-row">
               <dt>Name</dt>
               <dd>{displayName ?? "—"}</dd>
+            </div>
+            <div className="profile-dl-row">
+              <dt>On Community as</dt>
+              <dd>{communityPreview}</dd>
             </div>
             <div className="profile-dl-row">
               <dt>Email</dt>
@@ -241,6 +312,52 @@ export default function ProfilePage() {
           </dl>
         </div>
       )}
+
+      {!loading && user?.id && supabase ? (
+        <section className="card profile-community-name" aria-labelledby="profile-community-name-heading">
+          <h2 id="profile-community-name-heading" className="profile-card-kicker">
+            Community public name
+          </h2>
+          <p className="muted profile-community-name-lead">
+            This label appears on your Community posts and publisher profile for everyone signed in.
+            Leave it blank to fall back to your profile first and last name, or &ldquo;Member&rdquo; if
+            those are empty.
+          </p>
+          <div className="profile-community-name-field">
+            <label className="profile-community-name-label" htmlFor="profile-community-public-name">
+              Public or studio name
+            </label>
+            <input
+              id="profile-community-public-name"
+              type="text"
+              className="input"
+              maxLength={COMMUNITY_PUBLIC_NAME_MAX}
+              placeholder="e.g. Northside Tutoring, Dr. Chen Prep, Alex K."
+              value={publicNameDraft}
+              onChange={(e) => setPublicNameDraft(e.target.value)}
+              autoComplete="organization"
+            />
+            <p className="muted profile-community-name-counter">
+              {publicNameDraft.trim().length}/{COMMUNITY_PUBLIC_NAME_MAX} characters
+            </p>
+          </div>
+          {publicNameMsg ? (
+            <p className={publicNameMsg.startsWith("Saved") ? "profile-community-name-ok" : "auth-error"}>
+              {publicNameMsg}
+            </p>
+          ) : null}
+          <div className="btn-row">
+            <button
+              type="button"
+              className="btn"
+              disabled={publicNameBusy}
+              onClick={() => void saveCommunityPublicName()}
+            >
+              {publicNameBusy ? "Saving…" : "Save Community name"}
+            </button>
+          </div>
+        </section>
+      ) : null}
 
       <section className="card profile-published" aria-labelledby="profile-published-heading">
         <h2 id="profile-published-heading" className="profile-card-kicker">

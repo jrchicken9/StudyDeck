@@ -29,16 +29,10 @@ type PostRow = {
 
 type RpcAuthorRow = {
   id: string;
-  first_name: string | null;
-  last_name: string | null;
+  display_name: string | null;
   publisher_rating_sum: number | null;
   publisher_rating_count: number | null;
 };
-
-function authorLabel(first: string | null, last: string | null): string {
-  const n = [first, last].filter(Boolean).join(" ").trim();
-  return n || "Member";
-}
 
 function parseQuestionCountFromRow(r: Record<string, unknown>): number {
   const nested = r.user_questions;
@@ -125,9 +119,13 @@ export default function CommunityHomePage() {
         const map = new Map<string, CommunityAuthorPublic>();
         for (const row of (rpcRows ?? []) as RpcAuthorRow[]) {
           if (!row?.id) continue;
+          const label =
+            typeof row.display_name === "string" && row.display_name.trim()
+              ? row.display_name.trim()
+              : "Member";
           map.set(row.id, {
             id: row.id,
-            displayName: authorLabel(row.first_name, row.last_name),
+            displayName: label,
             ratingSum: typeof row.publisher_rating_sum === "number" ? row.publisher_rating_sum : 0,
             ratingCount:
               typeof row.publisher_rating_count === "number" ? row.publisher_rating_count : 0,

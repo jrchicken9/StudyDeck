@@ -15,8 +15,7 @@ import { supabase } from "../lib/supabaseClient";
 
 type RpcAuthorRow = {
   id: string;
-  first_name: string | null;
-  last_name: string | null;
+  display_name: string | null;
   publisher_rating_sum: number | null;
   publisher_rating_count: number | null;
 };
@@ -30,11 +29,6 @@ type PublishedBankRow = {
   testRatingSum: number;
   testRatingCount: number;
 };
-
-function authorLabel(first: string | null, last: string | null): string {
-  const n = [first, last].filter(Boolean).join(" ").trim();
-  return n || "Member";
-}
 
 function averageRating(sum: number, count: number): number | null {
   if (count <= 0) return null;
@@ -87,9 +81,13 @@ export default function PublisherProfilePage() {
       setLoading(false);
       return;
     }
+    const label =
+      typeof row.display_name === "string" && row.display_name.trim()
+        ? row.display_name.trim()
+        : "Member";
     setAuthor({
       id: row.id,
-      displayName: authorLabel(row.first_name, row.last_name),
+      displayName: label,
       ratingSum: typeof row.publisher_rating_sum === "number" ? row.publisher_rating_sum : 0,
       ratingCount:
         typeof row.publisher_rating_count === "number" ? row.publisher_rating_count : 0,
@@ -173,9 +171,13 @@ export default function PublisherProfilePage() {
     });
     const r = (refreshed ?? [])[0] as RpcAuthorRow | undefined;
     if (r?.id) {
+      const label =
+        typeof r.display_name === "string" && r.display_name.trim()
+          ? r.display_name.trim()
+          : "Member";
       setAuthor({
         id: r.id,
-        displayName: authorLabel(r.first_name, r.last_name),
+        displayName: label,
         ratingSum: typeof r.publisher_rating_sum === "number" ? r.publisher_rating_sum : 0,
         ratingCount:
           typeof r.publisher_rating_count === "number" ? r.publisher_rating_count : 0,

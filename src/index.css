@@ -2995,6 +2995,39 @@ a.btn {
   margin-top: 0.5rem;
 }
 
+.profile-community-name {
+  max-width: 32rem;
+  margin-top: 0.75rem;
+}
+
+.profile-community-name-lead {
+  margin: 0 0 1rem;
+  line-height: 1.45;
+}
+
+.profile-community-name-field {
+  margin-bottom: 0.65rem;
+}
+
+.profile-community-name-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--zinc-200);
+}
+
+.profile-community-name-counter {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+}
+
+.profile-community-name-ok {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: #86efac;
+}
+
 .profile-card-kicker {
   margin: 0 0 1rem;
   font-size: 0.68rem;
