@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { StudyDeckBrand } from "../components/StudyDeckLogo";
+import { useAuth } from "../context/AuthContext";
 import { loadExam } from "../lib/examApi";
 import { isUuid } from "../lib/isUuid";
+import { supabase } from "../lib/supabaseClient";
 import type { Attempt } from "./QuizPage";
 
 type LocationState = {
@@ -38,12 +40,19 @@ export default function ResultsPage() {
   const { examId } = useParams<{ examId: string }>();
   const location = useLocation();
   const state = (location.state ?? {}) as LocationState;
+  const { user } = useAuth();
 
   const [resolved, setResolved] = useState<{
     correct: number;
     total: number;
     answered: number;
   } | null>(null);
+
+  const [bankOwnerId, setBankOwnerId] = useState<string | null>(null);
+  const [bankPublishedAt, setBankPublishedAt] = useState<string | null>(null);
+  const [myTestRating, setMyTestRating] = useState<number | null>(null);
+  const [testRatingBusy, setTestRatingBusy] = useState(false);
+  const [testRatingErr, setTestRatingErr] = useState<string | null>(null);
 
   const attempts = state.attempts ?? [];
   const scoringEnabled = Boolean(state.scoringEnabled);
@@ -85,6 +94,84 @@ export default function ResultsPage() {
       cancelled = true;
     };
   }, [attempts, examId]);
+
+  useEffect(() => {
+    if (!examId || !isUuid(examId) || !supabase) {
+      setBankOwnerId(null);
+      setBankPublishedAt(null);
+      setMyTestRating(null);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      const { data: bank, error: bErr } = await supabase
+        .from("user_question_banks")
+        .select("user_id, published_at")
+        .eq("id", examId)
+        .maybeSingle();
+      if (cancelled) return;
+      if (bErr || !bank) {
+        setBankOwnerId(null);
+        setBankPublishedAt(null);
+        setMyTestRating(null);
+        return;
+      }
+      const uid = typeof bank.user_id === "string" ? bank.user_id : null;
+      const pub =
+        bank.published_at !== null && bank.published_at !== undefined
+          ? String(bank.published_at)
+          : null;
+      setBankOwnerId(uid);
+      setBankPublishedAt(pub);
+      if (user?.id && uid && pub && uid !== user.id) {
+        const { data: existing } = await supabase
+          .from("community_test_ratings")
+          .select("rating")
+          .eq("rater_user_id", user.id)
+          .eq("bank_id", examId)
+          .maybeSingle();
+        if (!cancelled) {
+          const r = (existing as { rating?: number } | null)?.rating;
+          setMyTestRating(typeof r === "number" ? r : null);
+        }
+      } else if (!cancelled) {
+        setMyTestRating(null);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [examId, user?.id]);
+
+  const showCommunityTestRating = Boolean(
+    examId &&
+      isUuid(examId) &&
+      user?.id &&
+      bankPublishedAt &&
+      bankOwnerId &&
+      bankOwnerId !== user.id,
+  );
+
+  async function submitTestRating(rating: number) {
+    if (!supabase || !user?.id || !examId || !isUuid(examId)) return;
+    setTestRatingBusy(true);
+    setTestRatingErr(null);
+    const { error: upErr } = await supabase.from("community_test_ratings").upsert(
+      {
+        rater_user_id: user.id,
+        bank_id: examId,
+        rating,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "rater_user_id,bank_id" },
+    );
+    setTestRatingBusy(false);
+    if (upErr) {
+      setTestRatingErr(upErr.message);
+      return;
+    }
+    setMyTestRating(rating);
+  }
 
   const incorrectCount = useMemo(() => {
     if (!resolved || !scoringEnabled) return 0;
@@ -238,6 +325,49 @@ export default function ResultsPage() {
 
         <p className="results-summary">{summaryLine ?? "…"}</p>
       </div>
+
+      {showCommunityTestRating ? (
+        <section className="card results-community-test-rating" aria-labelledby="results-test-rating-heading">
+          <h2 id="results-test-rating-heading" className="results-test-rating-title">
+            Rate this test
+          </h2>
+          <p className="muted results-test-rating-lead">
+            This session was a published Community test. Your rating helps other learners choose
+            quality material. You can update your stars anytime after another session.
+          </p>
+          {bankOwnerId ? (
+            <p className="muted results-test-rating-publisher">
+              Publisher:{" "}
+              <Link to={`/community/publisher/${encodeURIComponent(bankOwnerId)}`}>
+                View profile
+              </Link>
+            </p>
+          ) : null}
+          {testRatingErr ? <p className="auth-error">{testRatingErr}</p> : null}
+          <div className="results-test-rating-controls">
+            <span className="muted results-test-rating-label">
+              {myTestRating ? "Your rating" : "Tap a star"}
+            </span>
+            <div className="community-thread-rate-stars" role="group" aria-label="Test rating 1 to 5">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <button
+                  key={n}
+                  type="button"
+                  className={
+                    "community-thread-rate-btn" +
+                    (myTestRating && n <= myTestRating ? " community-thread-rate-btn--on" : "")
+                  }
+                  disabled={testRatingBusy}
+                  aria-label={`${n} star${n === 1 ? "" : "s"}`}
+                  onClick={() => void submitTestRating(n)}
+                >
+                  ★
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {examId ? (
         <div className="btn-row results-actions">

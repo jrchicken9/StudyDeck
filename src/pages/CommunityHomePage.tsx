@@ -22,6 +22,9 @@ type PostRow = {
   publication_audience: PublicationAudience;
   publication_pricing: PublicationPricing;
   publication_description: string | null;
+  testRatingSum: number;
+  testRatingCount: number;
+  likeCount: number;
 };
 
 type RpcAuthorRow = {
@@ -46,17 +49,21 @@ function parseQuestionCountFromRow(r: Record<string, unknown>): number {
   return 0;
 }
 
+function num(raw: unknown, fallback = 0): number {
+  return typeof raw === "number" && Number.isFinite(raw) ? raw : fallback;
+}
+
 export default function CommunityHomePage() {
   const location = useLocation();
   const { user } = useAuth();
   const [posts, setPosts] = useState<PostRow[]>([]);
   const [authors, setAuthors] = useState<Map<string, CommunityAuthorPublic>>(new Map());
-  const [myRatings, setMyRatings] = useState<Map<string, number>>(new Map());
+  const [likedBankIds, setLikedBankIds] = useState<Set<string>>(new Set());
   const [libraryIds, setLibraryIds] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
-  const [ratingBusyPublisherId, setRatingBusyPublisherId] = useState<string | null>(null);
+  const [likeBusyBankId, setLikeBusyBankId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     const sb = supabase;
@@ -71,9 +78,10 @@ export default function CommunityHomePage() {
     const { data: rows, error: pErr } = await sb
       .from("user_question_banks")
       .select(
-        "id, title, published_at, user_id, publication_audience, publication_pricing, publication_description, user_questions(count)",
+        "id, title, published_at, user_id, publication_audience, publication_pricing, publication_description, test_rating_sum, test_rating_count, community_like_count, user_questions(count)",
       )
       .not("published_at", "is", null)
+      .order("community_like_count", { ascending: false })
       .order("published_at", { ascending: false });
     if (pErr) {
       setError(pErr.message);
@@ -97,10 +105,15 @@ export default function CommunityHomePage() {
         typeof (r as { publication_description?: unknown }).publication_description === "string"
           ? (r as { publication_description: string }).publication_description
           : null,
+      testRatingSum: num((r as { test_rating_sum?: unknown }).test_rating_sum, 0),
+      testRatingCount: num((r as { test_rating_count?: unknown }).test_rating_count, 0),
+      likeCount: num((r as { community_like_count?: unknown }).community_like_count, 0),
     }));
     setPosts(parsed);
 
     const uids = [...new Set(parsed.map((p) => p.user_id))];
+    const bankIds = parsed.map((p) => p.id);
+
     if (uids.length) {
       const { data: rpcRows, error: rpcErr } = await sb.rpc("community_authors_for_ids", {
         target_ids: uids,
@@ -122,26 +135,21 @@ export default function CommunityHomePage() {
         }
         setAuthors(map);
       }
-
-      if (user?.id) {
-        const { data: mine } = await sb
-          .from("publisher_ratings")
-          .select("publisher_user_id, rating")
-          .eq("rater_user_id", user.id)
-          .in("publisher_user_id", uids);
-        const rmap = new Map<string, number>();
-        for (const m of mine ?? []) {
-          const pid = String((m as { publisher_user_id: string }).publisher_user_id);
-          const rt = (m as { rating: number }).rating;
-          if (typeof rt === "number") rmap.set(pid, rt);
-        }
-        setMyRatings(rmap);
-      } else {
-        setMyRatings(new Map());
-      }
     } else {
       setAuthors(new Map());
-      setMyRatings(new Map());
+    }
+
+    if (user?.id && bankIds.length) {
+      const { data: likes } = await sb
+        .from("community_bank_likes")
+        .select("bank_id")
+        .eq("user_id", user.id)
+        .in("bank_id", bankIds);
+      setLikedBankIds(
+        new Set((likes ?? []).map((x) => String((x as { bank_id: string }).bank_id))),
+      );
+    } else {
+      setLikedBankIds(new Set());
     }
 
     if (user?.id) {
@@ -178,45 +186,45 @@ export default function CommunityHomePage() {
     setLibraryIds((prev) => new Set(prev).add(bankId));
   }
 
-  async function setPublisherRating(publisherUserId: string, rating: number) {
-    if (!supabase || !user?.id || publisherUserId === user.id) return;
-    setRatingBusyPublisherId(publisherUserId);
+  async function toggleLike(bankId: string, currentlyLiked: boolean) {
+    if (!supabase || !user?.id) return;
+    setLikeBusyBankId(bankId);
     setError(null);
-    const { error: upErr } = await supabase.from("publisher_ratings").upsert(
-      {
-        rater_user_id: user.id,
-        publisher_user_id: publisherUserId,
-        rating,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "rater_user_id,publisher_user_id" },
-    );
-    setRatingBusyPublisherId(null);
-    if (upErr) {
-      setError(upErr.message);
-      return;
-    }
-    setMyRatings((prev) => {
-      const next = new Map(prev);
-      next.set(publisherUserId, rating);
-      return next;
-    });
-    const { data: refreshed } = await supabase.rpc("community_authors_for_ids", {
-      target_ids: [publisherUserId],
-    });
-    const row = (refreshed ?? [])[0] as RpcAuthorRow | undefined;
-    if (row?.id) {
-      setAuthors((prev) => {
-        const next = new Map(prev);
-        next.set(row.id, {
-          id: row.id,
-          displayName: authorLabel(row.first_name, row.last_name),
-          ratingSum: typeof row.publisher_rating_sum === "number" ? row.publisher_rating_sum : 0,
-          ratingCount:
-            typeof row.publisher_rating_count === "number" ? row.publisher_rating_count : 0,
-        });
+    if (currentlyLiked) {
+      const { error: delErr } = await supabase
+        .from("community_bank_likes")
+        .delete()
+        .eq("user_id", user.id)
+        .eq("bank_id", bankId);
+      setLikeBusyBankId(null);
+      if (delErr) {
+        setError(delErr.message);
+        return;
+      }
+      setLikedBankIds((prev) => {
+        const next = new Set(prev);
+        next.delete(bankId);
         return next;
       });
+      setPosts((prev) =>
+        prev.map((p) =>
+          p.id === bankId ? { ...p, likeCount: Math.max(0, p.likeCount - 1) } : p,
+        ),
+      );
+    } else {
+      const { error: insErr } = await supabase.from("community_bank_likes").insert({
+        user_id: user.id,
+        bank_id: bankId,
+      });
+      setLikeBusyBankId(null);
+      if (insErr) {
+        setError(insErr.message);
+        return;
+      }
+      setLikedBankIds((prev) => new Set(prev).add(bankId));
+      setPosts((prev) =>
+        prev.map((p) => (p.id === bankId ? { ...p, likeCount: p.likeCount + 1 } : p)),
+      );
     }
   }
 
@@ -230,12 +238,8 @@ export default function CommunityHomePage() {
           <Link to="/my-banks" state={{ from: location.pathname }}>
             Work Shop
           </Link>
-          . Each post shows who published it, what the test is about, and how other learners rate them.
-          Add a test to{" "}
-          <Link to="/my-tests" state={{ from: location.pathname }}>
-            My Tests
-          </Link>{" "}
-          to run it like any other practice session.
+          . Likes help popular posts rise to the top. Rate the <strong>test</strong> after you finish
+          a session; rate the <strong>publisher</strong> from their profile.
         </p>
       </header>
 
@@ -257,21 +261,33 @@ export default function CommunityHomePage() {
       ) : (
         <ul className="community-feed community-feed--threaded">
           {posts.map((p) => {
-            const post: CommunityPost = { ...p };
+            const post: CommunityPost = {
+              id: p.id,
+              title: p.title,
+              published_at: p.published_at,
+              user_id: p.user_id,
+              question_count: p.question_count,
+              publication_audience: p.publication_audience,
+              publication_pricing: p.publication_pricing,
+              publication_description: p.publication_description,
+              testRatingSum: p.testRatingSum,
+              testRatingCount: p.testRatingCount,
+              likeCount: p.likeCount,
+            };
             const author = authors.get(p.user_id) ?? null;
             return (
               <li key={p.id} className="community-feed-item">
                 <CommunityPostCard
                   post={post}
                   author={author}
-                  myRating={myRatings.get(p.user_id) ?? null}
                   viewerId={user?.id}
                   inLibrary={libraryIds.has(p.id)}
                   busyId={busyId}
                   pathname={location.pathname}
+                  liked={likedBankIds.has(p.id)}
+                  likeBusy={likeBusyBankId === p.id}
                   onAddToMyTests={addToMyTests}
-                  onSetPublisherRating={setPublisherRating}
-                  ratingBusyPublisherId={ratingBusyPublisherId}
+                  onToggleLike={toggleLike}
                 />
               </li>
             );

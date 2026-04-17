@@ -17,6 +17,7 @@ import AdminLayout from "./components/AdminLayout";
 import AdminApprovalsPage from "./pages/AdminApprovalsPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import CommunityHomePage from "./pages/CommunityHomePage";
+import PublisherProfilePage from "./pages/PublisherProfilePage";
 import MyTestsPage from "./pages/MyTestsPage";
 import MyBankCreatePage from "./pages/MyBankCreatePage";
 import MyBankEditPage from "./pages/MyBankEditPage";
@@ -85,6 +86,7 @@ export const appRouter = createBrowserRouter(
               <Route element={<RequireExamAccess />}>
                 <Route path="dashboard" element={<Navigate to="/community" replace />} />
                 <Route path="community" element={<CommunityHomePage />} />
+                <Route path="community/publisher/:publisherId" element={<PublisherProfilePage />} />
                 <Route path="my-tests" element={<MyTestsPage />} />
                 <Route path="exams/:examId" element={<SessionPage />} />
                 <Route path="quiz/:examId" element={<QuizPage />} />

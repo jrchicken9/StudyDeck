@@ -10,6 +10,9 @@ export type CommunityPost = {
   publication_audience: PublicationAudience;
   publication_pricing: PublicationPricing;
   publication_description: string | null;
+  testRatingSum: number;
+  testRatingCount: number;
+  likeCount: number;
 };
 
 export type CommunityAuthorPublic = {
@@ -49,31 +52,32 @@ function StarRow({ value, max = 5 }: { value: number; max?: number }) {
 type Props = {
   post: CommunityPost;
   author: CommunityAuthorPublic | null;
-  myRating: number | null;
   viewerId: string | undefined;
   inLibrary: boolean;
   busyId: string | null;
   pathname: string;
+  liked: boolean;
+  likeBusy: boolean;
   onAddToMyTests: (bankId: string) => void;
-  onSetPublisherRating: (publisherUserId: string, rating: number) => Promise<void>;
-  ratingBusyPublisherId: string | null;
+  onToggleLike: (bankId: string, currentlyLiked: boolean) => Promise<void>;
 };
 
 export default function CommunityPostCard({
   post: p,
   author,
-  myRating,
   viewerId,
   inLibrary,
   busyId,
   pathname,
+  liked,
+  likeBusy,
   onAddToMyTests,
-  onSetPublisherRating,
-  ratingBusyPublisherId,
+  onToggleLike,
 }: Props) {
   const isOwn = Boolean(viewerId && p.user_id === viewerId);
   const displayName = author?.displayName ?? "Member";
-  const avg = author ? averageRating(author.ratingSum, author.ratingCount) : null;
+  const pubAvg = author ? averageRating(author.ratingSum, author.ratingCount) : null;
+  const testAvg = averageRating(p.testRatingSum, p.testRatingCount);
   const publishedLabel = p.published_at
     ? new Date(p.published_at).toLocaleString(undefined, {
         month: "short",
@@ -85,16 +89,25 @@ export default function CommunityPostCard({
     : "";
 
   const linkState = { from: pathname };
+  const publisherHref = `/community/publisher/${encodeURIComponent(p.user_id)}`;
 
   return (
     <article className="community-thread-card card">
       <header className="community-thread-header">
-        <div className="community-thread-avatar" aria-hidden title={displayName}>
+        <Link
+          to={publisherHref}
+          state={linkState}
+          className="community-thread-avatar community-thread-avatar--link"
+          aria-label={`${displayName} — view publisher profile`}
+          title="View publisher profile"
+        >
           {monogramFromName(displayName)}
-        </div>
+        </Link>
         <div className="community-thread-header-text">
           <div className="community-thread-name-row">
-            <span className="community-thread-author">{displayName}</span>
+            <Link to={publisherHref} state={linkState} className="community-thread-author-link">
+              <span className="community-thread-author">{displayName}</span>
+            </Link>
             {isOwn ? (
               <span className="community-thread-you-pill">You</span>
             ) : null}
@@ -107,16 +120,16 @@ export default function CommunityPostCard({
             <span>Publisher</span>
           </div>
           <div className="community-thread-rating-block" aria-label="Publisher rating">
-            {avg !== null ? (
+            {pubAvg !== null ? (
               <>
-                <StarRow value={avg} />
+                <StarRow value={pubAvg} />
                 <span className="community-thread-rating-meta muted">
-                  {avg.toFixed(1)} · {author?.ratingCount ?? 0}{" "}
+                  {pubAvg.toFixed(1)} · {author?.ratingCount ?? 0}{" "}
                   {author?.ratingCount === 1 ? "rating" : "ratings"}
                 </span>
               </>
             ) : (
-              <span className="muted community-thread-rating-meta">No ratings yet</span>
+              <span className="muted community-thread-rating-meta">No publisher ratings yet</span>
             )}
           </div>
         </div>
@@ -131,8 +144,23 @@ export default function CommunityPostCard({
             No description was added for this listing.
           </p>
         )}
-        <div className="community-thread-stats muted">
-          <span>{p.question_count} question{p.question_count === 1 ? "" : "s"} in pool</span>
+        <div className="community-thread-stats-row">
+          <span className="muted community-thread-stats">
+            {p.question_count} question{p.question_count === 1 ? "" : "s"} in pool
+          </span>
+          <span className="community-thread-test-rating muted" aria-label="Average test rating">
+            {testAvg !== null ? (
+              <>
+                <StarRow value={testAvg} />
+                <span className="community-thread-test-rating-text">
+                  Test {testAvg.toFixed(1)} ({p.testRatingCount}{" "}
+                  {p.testRatingCount === 1 ? "rating" : "ratings"})
+                </span>
+              </>
+            ) : (
+              <span className="community-thread-test-rating-text">No test ratings yet</span>
+            )}
+          </span>
         </div>
       </div>
 
@@ -149,31 +177,29 @@ export default function CommunityPostCard({
         )}
       </div>
 
-      {!isOwn && viewerId ? (
-        <div className="community-thread-rate">
-          <span className="community-thread-rate-label muted">
-            {myRating ? "Your rating" : "Rate this publisher"}
+      <div className="community-thread-engagement">
+        <button
+          type="button"
+          className={"community-like-btn" + (liked ? " community-like-btn--on" : "")}
+          disabled={likeBusy || !viewerId || isOwn}
+          title={
+            isOwn
+              ? "You cannot like your own post."
+              : !viewerId
+                ? "Sign in to like."
+                : liked
+                  ? "Unlike"
+                  : "Like — boosts visibility in the feed"
+          }
+          aria-pressed={liked}
+          onClick={() => void onToggleLike(p.id, liked)}
+        >
+          <span className="community-like-icon" aria-hidden>
+            ♥
           </span>
-          <div className="community-thread-rate-stars" role="group" aria-label="Choose 1 to 5 stars">
-            {[1, 2, 3, 4, 5].map((n) => (
-              <button
-                key={n}
-                type="button"
-                className={
-                  "community-thread-rate-btn" +
-                  (myRating && n <= myRating ? " community-thread-rate-btn--on" : "")
-                }
-                disabled={ratingBusyPublisherId === p.user_id}
-                aria-pressed={myRating === n ? true : myRating ? n <= myRating : undefined}
-                aria-label={`${n} star${n === 1 ? "" : "s"}`}
-                onClick={() => void onSetPublisherRating(p.user_id, n)}
-              >
-                ★
-              </button>
-            ))}
-          </div>
-        </div>
-      ) : null}
+          <span className="community-like-count">{p.likeCount}</span>
+        </button>
+      </div>
 
       <footer className="community-thread-footer">
         <div className="community-thread-actions">
