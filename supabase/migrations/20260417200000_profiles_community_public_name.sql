@@ -7,8 +7,12 @@ comment on column public.profiles.community_public_name is
   'Shown on Community posts and publisher profile instead of legal name when set. Max 80 chars; empty clears to fallback.';
 
 -- ——— Replace RPC: single display_name for all viewers ———
+-- OUT-parameter signature changed from (first_name, last_name, …) → (display_name, …);
+-- PostgreSQL requires DROP before CREATE; CREATE OR REPLACE cannot change return row type.
 
-create or replace function public.community_authors_for_ids(target_ids uuid[])
+drop function if exists public.community_authors_for_ids(uuid[]);
+
+create function public.community_authors_for_ids(target_ids uuid[])
 returns table (
   id uuid,
   display_name text,
@@ -57,6 +61,9 @@ $$;
 
 revoke all on function public.community_authors_for_ids(uuid[]) from public;
 grant execute on function public.community_authors_for_ids(uuid[]) to authenticated;
+
+comment on function public.community_authors_for_ids(uuid[]) is
+  'Returns publisher id, display label (public name or name fallback), and rating aggregates for Community.';
 
 -- ——— Learners set their own public Community name (no broad profiles UPDATE) ———
 
