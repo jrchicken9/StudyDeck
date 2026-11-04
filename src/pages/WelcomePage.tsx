@@ -47,15 +47,15 @@ export default function WelcomePage() {
             logoClassName="welcome-logo"
             wordmarkClassName="welcome-eyebrow studydeck-wordmark studydeck-wordmark--hero studydeck-wordmark--serious"
           />
-          <h1 className="welcome-title">Exam practice, refined.</h1>
+          <h1 className="welcome-title">Prepare for the Sergeant exam.</h1>
           <p className="welcome-tagline">
-            Timed quizzes, clear results, and a calm place to prepare—built for serious
-            learners.
+            The March 2026 question bank, timed sessions, and feedback as soon as you
+            answer. Sign in when you are ready to begin.
           </p>
           <ul className="welcome-points" aria-label="Key benefits">
+            <li>Question bank</li>
             <li>Timed sessions</li>
             <li>Instant feedback</li>
-            <li>Focused revision</li>
           </ul>
         </div>
 
@@ -66,7 +66,7 @@ export default function WelcomePage() {
                 to="/auth/signup"
                 className="btn btn-welcome-primary"
               >
-                Join For Free
+                Create account
               </Link>
               <Link
                 to="/auth/login"

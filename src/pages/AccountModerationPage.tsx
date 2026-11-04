@@ -64,10 +64,10 @@ export default function AccountModerationPage() {
         <div className="card pending-card">
           <p className="eyebrow">Account</p>
           <h1 className="page-title">All clear</h1>
-          <p className="lead">Your account is active. Use the top bar to open Community or another tab.</p>
+          <p className="lead">Your account is active. Home is where you start the Sergeant exam.</p>
           <div className="btn-row pending-actions" style={{ marginTop: "1.25rem" }}>
-            <Link to="/community" className="btn secondary">
-              Community
+            <Link to="/home" className="btn secondary">
+              Home
             </Link>
           </div>
         </div>

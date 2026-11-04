@@ -72,7 +72,7 @@ type AccessSnapshot = {
 
 function signedInHomeFromSnapshot(s: AccessSnapshot): string {
   if (isBannedStatus(s.accountStatus)) return "/account/moderation";
-  if (canAccessExams(s.approvedAt, s.accountStatus)) return "/community";
+  if (canAccessExams(s.approvedAt, s.accountStatus)) return "/home";
   if (!s.approvedAt) return "/pending-approval";
   return "/account/moderation";
 }

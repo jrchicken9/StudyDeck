@@ -13,8 +13,8 @@ export const EXAMS: ExamSummary[] = [
     id: "sgt-march-2026",
     title: "Sergeant exam",
     subtitle: "March 2026",
-    description: "Full bank of multiple-choice items with instant feedback.",
-    dashboardCta: "Get Started",
+    description: "Multiple-choice questions with instant feedback.",
+    dashboardCta: "Open",
   },
 ];
 

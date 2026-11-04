@@ -55,9 +55,8 @@ export default function PendingApprovalPage() {
         />
         <h1 className="page-title">Awaiting access</h1>
         <p className="lead">
-          Your account is active, but an administrator has not approved access to
-          practice banks yet. You will be able to open the community home once access
-          is granted.
+          Your account is ready, but an administrator still needs to approve it.
+          After that, Home is where you start the Sergeant exam.
         </p>
         {user.email ? (
           <p className="muted">

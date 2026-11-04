@@ -22,88 +22,98 @@ export default function AppLayout() {
   return (
     <div className="layout layout--app">
       <header className="topbar">
-        <Link to={banned ? "/account/moderation" : "/community"} className="brand">
+        <Link to={banned ? "/account/moderation" : "/home"} className="brand">
           <StudyDeckBrand
             layout="inline"
             logoClassName="brand-icon"
             wordmarkClassName="brand-wordmark studydeck-wordmark"
           />
         </Link>
-        <div className="topbar-actions">
-          {user ? (
+        <nav className="topbar-tabs" aria-label="StudyDeck">
+          {user && !banned ? (
             <>
-              {!banned ? (
-                <>
-                  <NavLink
-                    to="/community"
-                    end
-                    state={{ from: location.pathname }}
-                    className={({ isActive }) =>
-                      `btn btn-ghost btn-compact topbar-tab${isActive ? " topbar-tab--active" : ""}`
-                    }
-                  >
-                    Community
-                  </NavLink>
-                  <NavLink
-                    to="/my-tests"
-                    end
-                    state={{ from: location.pathname }}
-                    className={({ isActive }) =>
-                      `btn btn-ghost btn-compact topbar-tab${isActive ? " topbar-tab--active" : ""}`
-                    }
-                  >
-                    My Tests
-                  </NavLink>
-                  <NavLink
-                    to="/my-banks"
-                    state={{ from: location.pathname }}
-                    className={({ isActive }) =>
-                      `btn btn-ghost btn-compact topbar-tab${isActive ? " topbar-tab--active" : ""}`
-                    }
-                  >
-                    Work Shop
-                  </NavLink>
-                  <NavLink
-                    to="/profile"
-                    state={{ from: location.pathname }}
-                    className={({ isActive }) =>
-                      `btn btn-ghost btn-compact topbar-tab${isActive ? " topbar-tab--active" : ""}`
-                    }
-                  >
-                    Profile
-                  </NavLink>
-                  {isAdmin ? (
-                    <NavLink
-                      to="/admin"
-                      state={{ from: location.pathname }}
-                      className={({ isActive }) =>
-                        `btn btn-ghost btn-compact topbar-admin topbar-tab${pendingApprovals > 0 ? " topbar-admin--notify" : ""}${isActive ? " topbar-tab--active" : ""}`
-                      }
-                      aria-label={
-                        pendingApprovals > 0
-                          ? `Admin, ${pendingApprovals} approval requests pending`
-                          : "Admin"
-                      }
-                    >
-                      {pendingApprovals > 0 ? (
-                        <ApprovalsBellIcon className="topbar-admin-bell" />
-                      ) : null}
-                      <span>Admin</span>
-                      {pendingApprovals > 0 ? (
-                        <span className="topbar-admin-badge" title={`${pendingApprovals} pending`}>
-                          {pendingApprovals > 99 ? "99+" : pendingApprovals}
-                        </span>
-                      ) : null}
-                    </NavLink>
+              <NavLink
+                to="/home"
+                end
+                state={{ from: location.pathname }}
+                className={({ isActive }) =>
+                  `topbar-tab${isActive ? " topbar-tab--active" : ""}`
+                }
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/my-tests"
+                end
+                state={{ from: location.pathname }}
+                className={({ isActive }) =>
+                  `topbar-tab${isActive ? " topbar-tab--active" : ""}`
+                }
+              >
+                Tests
+              </NavLink>
+              <NavLink
+                to="/community"
+                end
+                state={{ from: location.pathname }}
+                className={({ isActive }) =>
+                  `topbar-tab${isActive ? " topbar-tab--active" : ""}${isAdmin ? "" : " topbar-tab--soon"}`
+                }
+                title={isAdmin ? undefined : "Coming soon"}
+              >
+                Community
+              </NavLink>
+              <NavLink
+                to="/my-banks"
+                state={{ from: location.pathname }}
+                className={({ isActive }) =>
+                  `topbar-tab${isActive ? " topbar-tab--active" : ""}${isAdmin ? "" : " topbar-tab--soon"}`
+                }
+                title={isAdmin ? undefined : "Coming soon"}
+              >
+                Workshop
+              </NavLink>
+              <NavLink
+                to="/profile"
+                state={{ from: location.pathname }}
+                className={({ isActive }) =>
+                  `topbar-tab${isActive ? " topbar-tab--active" : ""}`
+                }
+              >
+                Profile
+              </NavLink>
+              {isAdmin ? (
+                <NavLink
+                  to="/admin"
+                  state={{ from: location.pathname }}
+                  className={({ isActive }) =>
+                    `topbar-tab topbar-admin${pendingApprovals > 0 ? " topbar-admin--notify" : ""}${isActive ? " topbar-tab--active" : ""}`
+                  }
+                  aria-label={
+                    pendingApprovals > 0
+                      ? `Admin, ${pendingApprovals} approval requests pending`
+                      : "Admin"
+                  }
+                >
+                  {pendingApprovals > 0 ? (
+                    <ApprovalsBellIcon className="topbar-admin-bell" />
                   ) : null}
-                </>
+                  <span>Admin</span>
+                  {pendingApprovals > 0 ? (
+                    <span className="topbar-admin-badge" title={`${pendingApprovals} pending`}>
+                      {pendingApprovals > 99 ? "99+" : pendingApprovals}
+                    </span>
+                  ) : null}
+                </NavLink>
               ) : null}
-              <button type="button" className="btn btn-ghost" onClick={handleSignOut}>
-                Sign out
-              </button>
             </>
           ) : null}
-        </div>
+        </nav>
+        {user ? (
+          <button type="button" className="topbar-signout" onClick={handleSignOut}>
+            Sign out
+          </button>
+        ) : null}
       </header>
       <PendingApprovalsProvider count={pendingApprovals}>
         <PageTransition tone="subtle">

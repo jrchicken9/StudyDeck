@@ -21,6 +21,7 @@ export default function LoginPage() {
     () => Boolean(getRememberedLoginEmail()),
   );
   const [staySignedIn, setStaySignedIn] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const ready = isSupabaseConfigured();
@@ -93,7 +94,7 @@ export default function LoginPage() {
                 to="/auth/signup"
                 className="btn btn-welcome-secondary auth-cta-secondary"
               >
-                Join Us
+                Create account
               </Link>
             </div>
           </>
@@ -115,17 +116,27 @@ export default function LoginPage() {
             </div>
             <div className="field">
               <label htmlFor="login-password">Password</label>
-              <input
-                id="login-password"
-                className="input"
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setError(null);
-                }}
-              />
+              <div className="input-with-toggle">
+                <input
+                  id="login-password"
+                  className="input input--toggle"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setError(null);
+                  }}
+                />
+                <button
+                  type="button"
+                  className="input-toggle-btn"
+                  onClick={() => setShowPassword((v) => !v)}
+                  aria-pressed={showPassword}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
             </div>
             <div className="auth-options" role="group" aria-label="Sign-in options">
               <label className="auth-option">
@@ -168,7 +179,7 @@ export default function LoginPage() {
                 to="/auth/signup"
                 className="btn btn-welcome-secondary auth-cta-secondary"
               >
-                Join Us
+                Create account
               </Link>
             </div>
           </form>

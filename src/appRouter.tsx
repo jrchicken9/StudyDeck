@@ -10,6 +10,7 @@ import BannedAccountGate from "./components/BannedAccountGate";
 import PageTransition from "./components/PageTransition";
 import RequireAdmin from "./components/RequireAdmin";
 import RequireExamAccess from "./components/RequireExamAccess";
+import { LockedArea, LockedCustomExam } from "./components/LockedArea";
 import RequireSession from "./components/RequireSession";
 import { AuthProvider } from "./context/AuthContext";
 import AccountModerationPage from "./pages/AccountModerationPage";
@@ -17,6 +18,7 @@ import AdminLayout from "./components/AdminLayout";
 import AdminApprovalsPage from "./pages/AdminApprovalsPage";
 import AdminUsersPage from "./pages/AdminUsersPage";
 import CommunityHomePage from "./pages/CommunityHomePage";
+import HomePage from "./pages/HomePage";
 import PublisherProfilePage from "./pages/PublisherProfilePage";
 import MyTestsPage from "./pages/MyTestsPage";
 import MyBankCreatePage from "./pages/MyBankCreatePage";
@@ -29,6 +31,7 @@ import ProfilePage from "./pages/ProfilePage";
 import QuizPage from "./pages/QuizPage";
 import ResultsPage from "./pages/ResultsPage";
 import SessionPage from "./pages/SessionPage";
+import SignupEmailPage from "./pages/SignupEmailPage";
 import SignupPage from "./pages/SignupPage";
 import WelcomePage from "./pages/WelcomePage";
 
@@ -77,6 +80,15 @@ export const appRouter = createBrowserRouter(
             </PageTransition>
           }
         />
+        <Route
+          path="/auth/signup/email"
+          element={
+            <PageTransition>
+              <SignupEmailPage />
+            </PageTransition>
+          }
+        />
+        <Route path="/auth/signup/phone" element={<Navigate to="/auth/signup" replace />} />
         <Route element={<AppLayout />}>
           <Route element={<RequireSession />}>
             <Route path="account/moderation" element={<AccountModerationPage />} />
@@ -84,17 +96,36 @@ export const appRouter = createBrowserRouter(
               <Route path="profile" element={<ProfilePage />} />
               <Route path="pending-approval" element={<PendingApprovalPage />} />
               <Route element={<RequireExamAccess />}>
-                <Route path="dashboard" element={<Navigate to="/community" replace />} />
-                <Route path="community" element={<CommunityHomePage />} />
-                <Route path="community/publisher/:publisherId" element={<PublisherProfilePage />} />
+                <Route path="home" element={<HomePage />} />
+                <Route path="dashboard" element={<Navigate to="/home" replace />} />
+                <Route element={<LockedArea area="Community" />}>
+                  <Route path="community" element={<CommunityHomePage />} />
+                  <Route path="community/publisher/:publisherId" element={<PublisherProfilePage />} />
+                </Route>
                 <Route path="my-tests" element={<MyTestsPage />} />
                 <Route path="exams/:examId" element={<SessionPage />} />
-                <Route path="quiz/:examId" element={<QuizPage />} />
-                <Route path="results/:examId" element={<ResultsPage />} />
-                <Route path="my-banks" element={<MyBanksPage />} />
-                <Route path="my-banks/new" element={<MyBankCreatePage />} />
-                <Route path="my-banks/:bankId" element={<MyBankEditPage />} />
-                <Route path="my-banks/:bankId/practice" element={<MyBankSessionPage />} />
+                <Route
+                  path="quiz/:examId"
+                  element={
+                    <LockedCustomExam>
+                      <QuizPage />
+                    </LockedCustomExam>
+                  }
+                />
+                <Route
+                  path="results/:examId"
+                  element={
+                    <LockedCustomExam>
+                      <ResultsPage />
+                    </LockedCustomExam>
+                  }
+                />
+                <Route element={<LockedArea area="Workshop" />}>
+                  <Route path="my-banks" element={<MyBanksPage />} />
+                  <Route path="my-banks/new" element={<MyBankCreatePage />} />
+                  <Route path="my-banks/:bankId" element={<MyBankEditPage />} />
+                  <Route path="my-banks/:bankId/practice" element={<MyBankSessionPage />} />
+                </Route>
               </Route>
               <Route element={<RequireAdmin />}>
                 <Route path="admin" element={<AdminLayout />}>

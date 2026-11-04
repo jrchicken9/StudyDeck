@@ -31,7 +31,6 @@ export function StudyDeckLogo({ className = "", title = "StudyDeck", width }: Pr
       alt={title}
       width={width}
       className={className}
-      style={{ height: "auto", maxWidth: "100%" }}
     />
   );
 }

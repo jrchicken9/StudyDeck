@@ -78,17 +78,17 @@ export default function MyTestsPage() {
     <main className="page page-dashboard page-my-tests">
       <header className="page-header page-header--my-tests">
         <p className="eyebrow">Practice</p>
-        <h1 className="page-title">My Tests</h1>
+        <h1 className="page-title">Tests</h1>
         <p className="lead lead--compact">
-          Official exams below. Community saves and banks you build open from the top bar (
+          The Sergeant exam is here. Saved community tests and exams you build are under{" "}
           <Link to="/community" state={{ from: location.pathname }}>
             Community
-          </Link>
-          ,{" "}
+          </Link>{" "}
+          and{" "}
           <Link to="/my-banks" state={{ from: location.pathname }}>
-            Work Shop
+            Workshop
           </Link>
-          ).
+          .
         </p>
       </header>
 
@@ -96,7 +96,7 @@ export default function MyTestsPage() {
 
       <section className="card my-tests-panel" aria-labelledby="my-tests-official-heading">
         <h2 id="my-tests-official-heading" className="my-tests-panel-title">
-          Official curriculum
+          Sergeant exam
         </h2>
         <ul className="exam-grid my-tests-panel-grid">
           {EXAMS.map((exam) => (
@@ -130,18 +130,17 @@ export default function MyTestsPage() {
             <div className="my-tests-empty-icon" aria-hidden />
             <p className="my-tests-empty-title">No community tests here yet</p>
             <p className="muted my-tests-empty-desc">
-              When you <strong>Add to My Tests</strong> on Community, they show up here so you can start a session
-              anytime.
+              When you save a community test, it shows up here so you can start a session anytime.
             </p>
             <Link to="/community" state={{ from: location.pathname }} className="btn btn-tertiary my-tests-empty-cta">
               Browse Community
             </Link>
             <p className="muted my-tests-empty-foot">
-              Tests you create yourself stay in{" "}
+              Exams you build stay in{" "}
               <Link to="/my-banks" state={{ from: location.pathname }}>
-                Work Shop
+                Workshop
               </Link>
-              — use <strong>Run test</strong> there.
+              . Open one there to start a session.
             </p>
           </div>
         ) : (

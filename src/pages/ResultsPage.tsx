@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { StudyDeckBrand } from "../components/StudyDeckLogo";
 import { useAuth } from "../context/AuthContext";
 import { loadExam } from "../lib/examApi";
@@ -39,6 +39,7 @@ function headlineForScore(pct: number | null, scoringEnabled: boolean): string {
 export default function ResultsPage() {
   const { examId } = useParams<{ examId: string }>();
   const location = useLocation();
+  const navigate = useNavigate();
   const state = (location.state ?? {}) as LocationState;
   const { user } = useAuth();
 
@@ -222,7 +223,7 @@ export default function ResultsPage() {
       <>
         You answered{" "}
         <span className="text-emphasis">{resolved.correct}</span> of{" "}
-        <span className="text-emphasis">{resolved.answered}</span> graded items
+        <span className="text-emphasis">{resolved.answered}</span> questions
         correctly
         {resolved.answered < resolved.total ? (
           <>
@@ -247,12 +248,12 @@ export default function ResultsPage() {
         </div>
         <h1 className="page-title">No results</h1>
         <p className="lead lead--compact">
-          Open a quiz from{" "}
-          <Link to="/my-tests">My Tests</Link> or <Link to="/my-banks">Work Shop</Link>, finish the
-          session, and you will land here with a summary.
+          Start a session from{" "}
+          <Link to="/my-tests">Tests</Link> or <Link to="/my-banks">Workshop</Link>. When you
+          finish, your results show up here.
         </p>
         <Link to="/my-tests" className="btn">
-          Go to My Tests
+          Go to Tests
         </Link>
       </main>
     );
@@ -370,28 +371,47 @@ export default function ResultsPage() {
       ) : null}
 
       {examId ? (
-        <div className="btn-row results-actions">
-          {typeof sessionQuestionCount === "number" && sessionQuestionCount > 0 ? (
-            <Link
-              to={`/quiz/${examId}?n=${encodeURIComponent(String(sessionQuestionCount))}`}
+        <div className="results-again">
+          <p className="results-again-label" id="results-again-heading">
+            Practice again
+          </p>
+          <p className="results-again-copy">
+            Start a new set of the same length, or repeat the questions from this session.
+          </p>
+          <div className="btn-row results-actions" role="group" aria-labelledby="results-again-heading">
+            <button
+              type="button"
               className="btn"
+              onClick={() => {
+                const count =
+                  typeof sessionQuestionCount === "number" && sessionQuestionCount > 0
+                    ? sessionQuestionCount
+                    : attempts.length;
+                navigate(`/quiz/${examId}?n=${encodeURIComponent(String(count))}`);
+              }}
             >
-              Practice this exam again
-            </Link>
-          ) : (
+              New questions
+            </button>
+            <button
+              type="button"
+              className="btn secondary"
+              onClick={() => {
+                const ids = attempts.map((a) => a.questionId).filter((id) => id.length > 0);
+                const count = ids.length || sessionQuestionCount || attempts.length;
+                navigate(`/quiz/${examId}?n=${encodeURIComponent(String(count))}`, {
+                  state: { replayQuestionIds: ids },
+                });
+              }}
+            >
+              Same questions
+            </button>
             <Link
-              to={`/exams/${examId}`}
-              className="btn"
+              to={isUuid(examId) ? "/community" : "/home"}
+              className="btn secondary"
             >
-              Practice this exam again
+              {isUuid(examId) ? "Community" : "Home"}
             </Link>
-          )}
-          <Link
-            to={examId && isUuid(examId) ? "/community" : "/my-tests"}
-            className="btn secondary"
-          >
-            {examId && isUuid(examId) ? "Community" : "My Tests"}
-          </Link>
+          </div>
         </div>
       ) : (
         <div className="btn-row results-actions">

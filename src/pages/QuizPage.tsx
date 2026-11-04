@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { StudyDeckBrand } from "../components/StudyDeckLogo";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { loadExam } from "../lib/examApi";
 import { isUuid } from "../lib/isUuid";
 import { pickCount, shuffle } from "../lib/shuffle";
@@ -123,7 +123,14 @@ function FeedbackLine({
 export default function QuizPage() {
   const { examId } = useParams<{ examId: string }>();
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const navigate = useNavigate();
+  const replayQuestionIds = useMemo(() => {
+    const raw = (location.state as { replayQuestionIds?: unknown } | null)?.replayQuestionIds;
+    if (!Array.isArray(raw)) return null;
+    const ids = raw.filter((id): id is string => typeof id === "string" && id.length > 0);
+    return ids.length > 0 ? ids : null;
+  }, [location.state]);
 
   const requested = useMemo(() => {
     const raw = searchParams.get("n");
@@ -181,7 +188,17 @@ export default function QuizPage() {
         if (cancelled) return;
         setExam(ex);
         const n = Math.min(requested, ex.questions.length);
-        const picked = pickCount(ex.questions, n);
+        let picked: Question[];
+        if (replayQuestionIds) {
+          const byId = new Map(ex.questions.map((question) => [question.id, question]));
+          picked = replayQuestionIds.flatMap((id) => {
+            const question = byId.get(id);
+            return question ? [question] : [];
+          });
+          if (picked.length === 0) picked = pickCount(ex.questions, n);
+        } else {
+          picked = pickCount(ex.questions, n);
+        }
         setDeck(picked);
         setAttempts(
           picked.map((q) => ({ questionId: q.id, selectedChoiceIndex: null })),
@@ -200,7 +217,7 @@ export default function QuizPage() {
     return () => {
       cancelled = true;
     };
-  }, [examId, requested]);
+  }, [examId, requested, replayQuestionIds]);
 
   const q = deck[index];
   const row = perQ[index] ?? { sel: null, rev: false };
@@ -415,11 +432,7 @@ export default function QuizPage() {
 
   function confirmLeaveQuiz() {
     setExitModalOpen(false);
-    if (examId && isUuid(examId)) {
-      navigate("/my-tests");
-      return;
-    }
-    navigate("/my-tests");
+    navigate(examId && isUuid(examId) ? "/my-tests" : "/home");
   }
 
   function toggleTimerBar() {
@@ -443,7 +456,7 @@ export default function QuizPage() {
           className="btn secondary"
           onClick={() => navigate("/my-tests")}
         >
-          My Tests
+          Tests
         </button>
       </main>
     );
@@ -492,14 +505,14 @@ export default function QuizPage() {
     questionTimer !== null && !isFullTestTimer && questionTimer.display === "countup";
   const timerLabel = questionTimer
     ? isFullTestTimer
-      ? "Time left (full test)"
+      ? "Time left"
       : questionTimer.display === "countdown"
         ? "Time remaining"
         : "Count up from 0"
     : "Time on this question";
   const timerAria = questionTimer
     ? isFullTestTimer
-      ? `Full test countdown: ${questionTimer.seconds} seconds total. ${displayMainSeconds} seconds left. When the clock hits zero, this session ends and results open.`
+      ? `Session countdown: ${questionTimer.seconds} seconds total. ${displayMainSeconds} seconds left. When the clock hits zero, this session ends and your results open.`
       : questionTimer.display === "countdown"
         ? `Countdown: ${questionTimer.seconds} seconds per question. ${displayMainSeconds} seconds left. ${
             questionTimer.onExpire === "reveal"
@@ -524,30 +537,46 @@ export default function QuizPage() {
             </span>
             <span>{exam.title}</span>
           </div>
-          <div
-            className="progress-track progress-track--segments"
-            role="list"
-            aria-label="Per-question results: green correct, red incorrect, dim not yet answered."
-          >
-            {deck.map((qi, i) => {
-              const kind = segmentKinds[i] ?? "pending";
-              const labels: Record<ProgressSegment, string> = {
-                pending: "Not yet answered",
-                current: "Current question",
-                correct: "Correct",
-                incorrect: "Incorrect",
-                neutral: "Answered (no score)",
-              };
-              return (
-                <div
-                  key={qi.id}
-                  className={`progress-segment progress-segment--${kind}`}
-                  role="listitem"
-                  title={`Question ${i + 1}: ${labels[kind]}`}
-                />
-              );
-            })}
-          </div>
+          {deck.length <= 40 ? (
+            <div
+              className="progress-track progress-track--segments"
+              role="list"
+              aria-label="Per-question results: green correct, red incorrect, dim not yet answered."
+            >
+              {deck.map((qi, i) => {
+                const kind = segmentKinds[i] ?? "pending";
+                const labels: Record<ProgressSegment, string> = {
+                  pending: "Not yet answered",
+                  current: "Current question",
+                  correct: "Correct",
+                  incorrect: "Incorrect",
+                  neutral: "Answered (no score)",
+                };
+                return (
+                  <div
+                    key={qi.id}
+                    className={`progress-segment progress-segment--${kind}`}
+                    role="listitem"
+                    title={`Question ${i + 1}: ${labels[kind]}`}
+                  />
+                );
+              })}
+            </div>
+          ) : (
+            <div
+              className="progress-track"
+              role="progressbar"
+              aria-valuemin={1}
+              aria-valuemax={deck.length}
+              aria-valuenow={index + 1}
+              aria-label={`Question ${index + 1} of ${deck.length}`}
+            >
+              <div
+                className="progress-fill"
+                style={{ width: `${((index + 1) / deck.length) * 100}%` }}
+              />
+            </div>
+          )}
         </div>
         <div className="quiz-timer" aria-label={timerAria}>
           <div className="quiz-timer-row">
@@ -655,8 +684,7 @@ export default function QuizPage() {
         })}
         {!revealed ? (
           <p className="hint-line">
-            Tap an option to select it; tap again on your choice to deselect. Then
-            confirm below.
+            Select an answer, then confirm. Select it again to clear your choice.
             {questionTimer?.onExpire === "reference" && !isFullTestTimer ? (
               <>
                 {" "}
@@ -733,12 +761,11 @@ export default function QuizPage() {
             />
           </div>
           <h2 id="exit-quiz-title" className="modal-title">
-            Leave this quiz?
+            Leave this session?
           </h2>
           <p className="lead lead--compact">
-            You will return to My Tests and{" "}
-            <span className="text-emphasis">lose your progress</span> in this
-            session.
+            This session will close and{" "}
+            <span className="text-emphasis">your answers will not be saved</span>.
           </p>
           <div className="modal-actions">
             <button
@@ -749,7 +776,7 @@ export default function QuizPage() {
               Stay
             </button>
             <button type="button" className="btn" onClick={confirmLeaveQuiz}>
-              Leave quiz
+              Leave session
             </button>
           </div>
         </div>
