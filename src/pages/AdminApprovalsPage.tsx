@@ -18,6 +18,8 @@ export default function AdminApprovalsPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [denyId, setDenyId] = useState<string | null>(null);
+  const [denyNote, setDenyNote] = useState("");
   const [search, setSearch] = useState("");
 
   const load = useCallback(async () => {
@@ -28,6 +30,7 @@ export default function AdminApprovalsPage() {
       .from("profiles")
       .select("id, email, first_name, last_name, created_at")
       .is("approved_at", null)
+      .is("access_denied_at", null)
       .order("created_at", { ascending: true });
     if (qErr) {
       setError(qErr.message);
@@ -67,6 +70,24 @@ export default function AdminApprovalsPage() {
     await load();
   }
 
+  async function denyUser(targetId: string) {
+    if (!supabase) return;
+    setBusyId(targetId);
+    setError(null);
+    const { error: rpcErr } = await supabase.rpc("admin_deny_profile", {
+      target_id: targetId,
+      note: denyNote.trim() || null,
+    });
+    setBusyId(null);
+    if (rpcErr) {
+      setError(rpcErr.message);
+      return;
+    }
+    setDenyId(null);
+    setDenyNote("");
+    await load();
+  }
+
   const filteredRows = useMemo(
     () => rows.filter((r) => profileMatchesAdminSearch(r, search)),
     [rows, search],
@@ -78,8 +99,7 @@ export default function AdminApprovalsPage() {
         <p className="eyebrow admin-page-eyebrow">Pending queue</p>
         <h1 className="page-title">Accounts awaiting approval</h1>
         <p className="lead lead--compact">
-          Grant access to practice banks. Details below come from each user&apos;s sign-up when
-          available.
+          Approve access, or deny it and leave a reason or the steps to try again.
         </p>
         {!loading && rows.length > 0 ? (
           <div className="admin-search">
@@ -145,14 +165,64 @@ export default function AdminApprovalsPage() {
                 </div>
               </div>
               <div className="admin-pending-action">
-                <button
-                  type="button"
-                  className="btn admin-pending-btn"
-                  disabled={busyId === r.id}
-                  onClick={() => void approveUser(r.id)}
-                >
-                  {busyId === r.id ? "Approving…" : "Approve access"}
-                </button>
+                {denyId === r.id ? (
+                  <>
+                    <label className="admin-deny-label">
+                      <span className="admin-users-field-label">
+                        Reason or steps to gain access
+                      </span>
+                      <textarea
+                        className="input admin-deny-note"
+                        rows={3}
+                        value={denyNote}
+                        placeholder="Optional. The person sees this on the access screen."
+                        onChange={(e) => setDenyNote(e.target.value)}
+                        disabled={busyId === r.id}
+                      />
+                    </label>
+                    <button
+                      type="button"
+                      className="btn btn-secondary admin-pending-btn"
+                      disabled={busyId === r.id}
+                      onClick={() => void denyUser(r.id)}
+                    >
+                      {busyId === r.id ? "Denying…" : "Confirm deny"}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-ghost btn-compact"
+                      disabled={busyId === r.id}
+                      onClick={() => {
+                        setDenyId(null);
+                        setDenyNote("");
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      className="btn admin-pending-btn"
+                      disabled={busyId === r.id}
+                      onClick={() => void approveUser(r.id)}
+                    >
+                      {busyId === r.id ? "Working…" : "Approve access"}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-secondary admin-pending-btn"
+                      disabled={busyId === r.id}
+                      onClick={() => {
+                        setDenyId(r.id);
+                        setDenyNote("");
+                      }}
+                    >
+                      Deny access
+                    </button>
+                  </>
+                )}
               </div>
             </li>
           ))}

@@ -29,7 +29,8 @@ export function usePendingApprovalsCount(enabled: boolean, userId: string | unde
       const { count: c, error } = await client
         .from("profiles")
         .select("id", { count: "exact", head: true })
-        .is("approved_at", null);
+        .is("approved_at", null)
+        .is("access_denied_at", null);
       if (cancelled) return;
       if (error || c === null) setCount(0);
       else setCount(c);

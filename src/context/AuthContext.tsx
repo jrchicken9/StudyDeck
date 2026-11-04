@@ -29,6 +29,10 @@ type AuthContextValue = {
   accessLoading: boolean;
   /** True when the signed-in user has profiles.approved_at (Supabase migration). */
   profileApproved: boolean;
+  /** Set when an admin denied access. */
+  accessDenied: boolean;
+  /** Optional reason or steps left by the admin. */
+  accessDenialNote: string | null;
   /** Practice banks: approved profile and account_status active. */
   examAccessApproved: boolean;
   accountStatus: AccountStatus;
@@ -66,9 +70,32 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 
 type AccessSnapshot = {
   approvedAt: string | null;
+  deniedAt: string | null;
+  denialNote: string | null;
   isAdmin: boolean;
   accountStatus: AccountStatus;
 };
+
+const ACCESS_COLUMNS = "approved_at, access_denied_at, access_denial_note, account_status";
+
+function snapshotFromProfile(
+  profile: {
+    approved_at?: unknown;
+    access_denied_at?: unknown;
+    access_denial_note?: unknown;
+    account_status?: unknown;
+  } | null,
+  isAdmin: boolean,
+): AccessSnapshot {
+  return {
+    approvedAt: typeof profile?.approved_at === "string" ? profile.approved_at : null,
+    deniedAt: typeof profile?.access_denied_at === "string" ? profile.access_denied_at : null,
+    denialNote:
+      typeof profile?.access_denial_note === "string" ? profile.access_denial_note : null,
+    isAdmin,
+    accountStatus: parseAccountStatus(profile?.account_status),
+  };
+}
 
 function signedInHomeFromSnapshot(s: AccessSnapshot): string {
   if (isBannedStatus(s.accountStatus)) return "/account/moderation";
@@ -115,7 +142,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [profileRes, adminRes] = await Promise.all([
       supabase
         .from("profiles")
-        .select("approved_at, account_status")
+        .select(ACCESS_COLUMNS)
         .eq("id", user.id)
         .maybeSingle(),
       supabase
@@ -124,15 +151,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .eq("user_id", user.id)
         .maybeSingle(),
     ]);
-    const approvedAt =
-      typeof profileRes.data?.approved_at === "string"
-        ? profileRes.data.approved_at
-        : null;
-    setAccessSnapshot({
-      approvedAt,
-      isAdmin: Boolean(adminRes.data),
-      accountStatus: parseAccountStatus(profileRes.data?.account_status),
-    });
+    setAccessSnapshot(snapshotFromProfile(profileRes.data, Boolean(adminRes.data)));
   }, [user?.id]);
 
   useEffect(() => {
@@ -146,7 +165,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const [profileRes, adminRes] = await Promise.all([
         supabase
           .from("profiles")
-          .select("approved_at, account_status")
+          .select(ACCESS_COLUMNS)
           .eq("id", user.id)
           .maybeSingle(),
         supabase
@@ -156,15 +175,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           .maybeSingle(),
       ]);
       if (ac.signal.aborted) return;
-      const approvedAt =
-        typeof profileRes.data?.approved_at === "string"
-          ? profileRes.data.approved_at
-          : null;
-      setAccessSnapshot({
-        approvedAt,
-        isAdmin: Boolean(adminRes.data),
-        accountStatus: parseAccountStatus(profileRes.data?.account_status),
-      });
+      setAccessSnapshot(snapshotFromProfile(profileRes.data, Boolean(adminRes.data)));
     })();
     return () => ac.abort();
   }, [user?.id]);
@@ -288,6 +299,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const accessLoading = Boolean(user && supabase && accessSnapshot === null);
   const profileApproved = Boolean(accessSnapshot?.approvedAt);
+  const accessDenied = Boolean(accessSnapshot?.deniedAt);
+  const accessDenialNote = accessSnapshot?.denialNote ?? null;
   const accountStatus = accessSnapshot?.accountStatus ?? "active";
   const examAccessApproved = Boolean(
     user &&
@@ -307,6 +320,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       loading,
       accessLoading,
       profileApproved,
+      accessDenied,
+      accessDenialNote,
       examAccessApproved,
       accountStatus,
       signedInHomePath,
@@ -322,6 +337,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       loading,
       accessLoading,
       profileApproved,
+      accessDenied,
+      accessDenialNote,
       examAccessApproved,
       accountStatus,
       signedInHomePath,

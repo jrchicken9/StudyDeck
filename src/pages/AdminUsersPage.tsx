@@ -34,6 +34,7 @@ export default function AdminUsersPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [removeId, setRemoveId] = useState<string | null>(null);
   const [noteDrafts, setNoteDrafts] = useState<Record<string, string>>({});
   const [search, setSearch] = useState("");
 
@@ -108,15 +109,30 @@ export default function AdminUsersPage() {
     await load();
   }
 
+  async function removeAccount(targetId: string) {
+    if (!supabase) return;
+    setBusyId(targetId);
+    setError(null);
+    const { error: rpcErr } = await supabase.rpc("admin_delete_account", {
+      target_id: targetId,
+    });
+    setBusyId(null);
+    if (rpcErr) {
+      setError(rpcErr.message);
+      return;
+    }
+    setRemoveId(null);
+    await load();
+  }
+
   return (
     <main className="page page-admin page-admin-users">
       <header className="page-header admin-page-header">
         <p className="eyebrow admin-page-eyebrow">Directory</p>
         <h1 className="page-title">All users</h1>
         <p className="lead lead--compact">
-          Change account status: <strong>Active</strong> (default), <strong>Suspend</strong> or{" "}
-          <strong>Restrict</strong> (no practice banks), or <strong>Ban</strong> (sign-in only to
-          the account notice screen). Optional notes are stored on the profile.
+          Change account status, or remove an account. Removing deletes their sign-in and the
+          tests tied to it. You cannot remove your own account.
         </p>
         {!loading && rows.length > 0 ? (
           <div className="admin-search">
@@ -244,6 +260,42 @@ export default function AdminUsersPage() {
                       </button>
                     ))}
                   </div>
+                  {removeId === r.id ? (
+                    <div className="admin-remove-confirm">
+                      <p className="admin-remove-copy">
+                        Remove {r.email ?? "this account"}? Their sign-in and tests are deleted.
+                        This cannot be undone.
+                      </p>
+                      <div className="admin-remove-actions">
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-compact"
+                          disabled={busyId === r.id}
+                          onClick={() => void removeAccount(r.id)}
+                        >
+                          {busyId === r.id ? "Removing…" : "Confirm remove"}
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-ghost btn-compact"
+                          disabled={busyId === r.id}
+                          onClick={() => setRemoveId(null)}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn btn-secondary btn-compact admin-remove-btn"
+                      disabled={busyId === r.id || isSelf}
+                      title={isSelf ? "You cannot remove your own account" : undefined}
+                      onClick={() => setRemoveId(r.id)}
+                    >
+                      Remove account
+                    </button>
+                  )}
                 </div>
               </li>
             );

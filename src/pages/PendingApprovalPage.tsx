@@ -11,6 +11,8 @@ export default function PendingApprovalPage() {
     signedInHomePath,
     refetchAccess,
     signOutUser,
+    accessDenied,
+    accessDenialNote,
   } = useAuth();
 
   useEffect(() => {
@@ -53,11 +55,15 @@ export default function PendingApprovalPage() {
           logoClassName="auth-brand-logo"
           wordmarkClassName="eyebrow studydeck-wordmark studydeck-wordmark--compact"
         />
-        <h1 className="page-title">Awaiting access</h1>
+        <h1 className="page-title">{accessDenied ? "Access was not granted" : "Awaiting access"}</h1>
         <p className="lead">
-          Your account is ready, but an administrator still needs to approve it.
-          After that, Home is where you pick a test and start a session.
+          {accessDenied
+            ? "An administrator reviewed this account and did not grant access."
+            : "Your account is ready, but an administrator still needs to approve it. After that, Home is where you pick a test and start a session."}
         </p>
+        {accessDenied && accessDenialNote ? (
+          <p className="pending-denial-note">{accessDenialNote}</p>
+        ) : null}
         {user.email ? (
           <p className="muted">
             Signed in as <strong className="pending-email">{user.email}</strong>
