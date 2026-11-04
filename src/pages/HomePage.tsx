@@ -139,20 +139,32 @@ export default function HomePage() {
         </div>
       </section>
       <section className="home-soon" aria-labelledby="home-soon-title">
-        <p className="home-soon-kicker">Coming soon · From the community</p>
-        <h2 id="home-soon-title" className="home-soon-title">
-          Upload a test. Others can practice it.
-        </h2>
-        <p className="home-soon-copy">
-          Upload any multiple-choice test with the answers. Other people can practice it,
-          and if they find it useful, you can earn from the upload.
-        </p>
-        <ul className="home-soon-points">
-          <li>Any multiple-choice test</li>
-          <li>Answers included</li>
-          <li>Practice for everyone</li>
-          <li>Earn if it is useful</li>
-        </ul>
+        <div className="home-soon-aurora" aria-hidden />
+        <div className="home-soon-grid" aria-hidden />
+        <div className="home-soon-scan" aria-hidden />
+        <div className="home-soon-body">
+          <p className="home-soon-kicker">
+            <span className="home-soon-live" aria-hidden />
+            Coming soon
+            <span className="home-soon-kicker-meta">From the community</span>
+          </p>
+          <h2 id="home-soon-title" className="home-soon-title">
+            Upload a test. Others can practice it.
+          </h2>
+          <p className="home-soon-copy">
+            Upload any multiple-choice test with the answers. Other people can practice it,
+            and if they find it useful, you can earn from the upload.
+          </p>
+          <div className="home-soon-track" aria-hidden>
+            <span />
+          </div>
+          <ul className="home-soon-points">
+            <li>Any multiple-choice test</li>
+            <li>Answers included</li>
+            <li>Practice for everyone</li>
+            <li>Earn if it is useful</li>
+          </ul>
+        </div>
       </section>
     </main>
   );
