@@ -2185,8 +2185,8 @@ a.btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: calc(1.5rem + var(--safe-top)) calc(1.5rem + var(--safe-right))
-    calc(1.5rem + var(--safe-bottom)) calc(1.5rem + var(--safe-left));
+  padding: calc(1.75rem + var(--safe-top)) calc(1.5rem + var(--safe-right))
+    calc(1.75rem + var(--safe-bottom)) calc(1.5rem + var(--safe-left));
 }
 
 .welcome-card {
@@ -2202,82 +2202,103 @@ a.btn {
   letter-spacing: 0.02em;
 }
 
-.welcome-brand {
-  margin-bottom: 1.85rem;
+.welcome-stage {
+  width: min(1040px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: center;
+}
+
+.welcome-copy {
+  text-align: left;
 }
 
 .welcome-logo {
-  width: clamp(160px, 40vw, 220px);
-  height: auto;
-  margin: 0 auto 1.15rem;
+  display: block;
+  width: auto;
+  height: 46px;
+  margin: 0 0 1.6rem;
   filter:
-    saturate(0.9)
-    brightness(0.96)
-    drop-shadow(0 5px 18px rgba(14, 165, 233, 0.2));
-}
-
-.welcome-brand .studydeck-brand--stack .welcome-logo {
-  margin-bottom: 0;
-}
-
-.welcome-eyebrow {
-  margin: 0 0 0.65rem;
-}
-
-.welcome-brand .studydeck-brand--stack .welcome-eyebrow {
-  margin: 0;
-  font-size: clamp(0.84rem, 2.5vw, 0.98rem);
+    saturate(0.92)
+    brightness(0.98)
+    drop-shadow(0 8px 22px rgba(37, 99, 235, 0.28));
 }
 
 .welcome-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.85rem, 5vw, 2.25rem);
+  font-size: clamp(3rem, 6.4vw, 4.6rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.12;
+  letter-spacing: -0.05em;
+  line-height: 0.96;
   color: var(--white);
 }
 
 .welcome-tagline {
-  margin: 0.95rem auto 0;
-  max-width: 32rem;
-  font-size: 0.94rem;
-  line-height: 1.6;
+  margin: 1.15rem 0 0;
+  max-width: 28rem;
+  font-size: 1.05rem;
+  line-height: 1.55;
   font-weight: 400;
-  color: var(--zinc-400);
+  color: var(--zinc-300);
 }
 
 .welcome-points {
   list-style: none;
-  margin: 1.1rem 0 0;
-  padding: 0;
+  margin: 0;
+  padding: 0.15rem 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.45rem;
+  flex-direction: column;
+  border-radius: 22px;
+  border: 1px solid rgba(147, 197, 253, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 24px 50px -36px rgba(0, 0, 0, 0.7);
 }
 
 .welcome-points li {
-  font-size: 0.72rem;
+  margin: 0;
+  padding: 1.05rem 1.2rem;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+  background: transparent;
+}
+
+.welcome-points li + li {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.welcome-points span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--zinc-300);
-  border: 1px solid rgba(125, 211, 252, 0.22);
-  border-radius: 999px;
-  padding: 0.35rem 0.55rem;
-  background: rgba(56, 189, 248, 0.08);
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.welcome-points p {
+  margin: 0.28rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--zinc-400);
 }
 
 .welcome-actions {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: 0.7rem;
+  margin-top: 1.75rem;
+  max-width: 28rem;
 }
 
 .btn.btn-welcome-primary {
-  width: 100%;
+  flex: 1;
+  width: auto;
   padding: 0.88rem 1.35rem;
   font-family: var(--font-display);
   font-size: 0.98rem;
@@ -2287,7 +2308,8 @@ a.btn {
 }
 
 .btn.btn-welcome-secondary {
-  width: 100%;
+  flex: 1;
+  width: auto;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -2315,13 +2337,32 @@ a.btn {
 }
 
 .welcome-auth-hint {
-  margin: 0.35rem 0 0;
+  margin: 0;
   font-size: 0.82rem;
   line-height: 1.55;
-  text-align: center;
+  text-align: left;
   max-width: 26rem;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+@media (max-width: 800px) {
+  .welcome-stage {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .welcome-title {
+    font-size: clamp(2.6rem, 12vw, 3.4rem);
+  }
+
+  .welcome-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn.btn-welcome-primary,
+  .btn.btn-welcome-secondary {
+    width: 100%;
+  }
 }
 
 /* ——— Auth pages ——— */
@@ -8714,9 +8755,70 @@ a.btn {
   }
 }
 
-/* Signed-in home: one poster card that opens the Sergeant exam */
-.page-signed-home .eyebrow {
-  margin-bottom: 0.85rem;
+/* Signed-in home: a StudyDeck exam card, then a community coming-soon note */
+.page-signed-home {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.home-intro-lead {
+  margin: 0;
+  max-width: 40rem;
+}
+
+.home-soon {
+  padding: 1.2rem 1.3rem 1.3rem;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.home-soon-kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber-soft);
+}
+
+.home-soon-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--white);
+}
+
+.home-soon-copy {
+  margin: 0.7rem 0 0;
+  max-width: 42rem;
+  color: var(--zinc-300);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.home-soon-points {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.home-soon-points li {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--zinc-100);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.38rem 0.7rem;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .home-feature {

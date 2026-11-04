@@ -135,7 +135,7 @@ export default function SignupPhonePage() {
             <p className="auth-subtitle">
               {step === "code"
                 ? "Almost done—confirm your mobile number."
-                : "Sign up with your mobile number. An admin will approve access to the Sergeant exam after your account is created."}
+                : "Sign up with your mobile number. An admin approves your account before you can start a session."}
             </p>
           ) : null}
         </header>

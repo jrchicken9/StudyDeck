@@ -42,9 +42,9 @@ export default function HomePage() {
     return [
       {
         id: "exam",
-        kicker: `${exam?.subtitle ?? "March 2026"} · Official exam`,
+        kicker: `${exam?.subtitle ?? "March 2026"} · From StudyDeck`,
         title: exam?.title ?? "Sergeant exam",
-        copy: "Practice for the Sergeant exam. On the next screen you choose how many questions, then confirm to begin.",
+        copy: "A StudyDeck exam. On the next screen you choose how many questions, then confirm to begin.",
       },
       {
         id: "bank",
@@ -80,7 +80,12 @@ export default function HomePage() {
 
   return (
     <main className="page page-dashboard page-signed-home">
-      <p className="eyebrow">Home</p>
+      <header className="home-intro">
+        <p className="eyebrow">From StudyDeck</p>
+        <p className="lead lead--compact home-intro-lead">
+          Exams published by StudyDeck.
+        </p>
+      </header>
       <section
         className="home-feature home-stage"
         data-slide={slides[index]?.id}
@@ -132,6 +137,22 @@ export default function HomePage() {
             Start the exam
           </Link>
         </div>
+      </section>
+      <section className="home-soon" aria-labelledby="home-soon-title">
+        <p className="home-soon-kicker">Coming soon · From the community</p>
+        <h2 id="home-soon-title" className="home-soon-title">
+          Upload a test. Others can practice it.
+        </h2>
+        <p className="home-soon-copy">
+          Upload any multiple-choice test with the answers. Other people can practice it,
+          and if they find it useful, you can earn from the upload.
+        </p>
+        <ul className="home-soon-points">
+          <li>Any multiple-choice test</li>
+          <li>Answers included</li>
+          <li>Practice for everyone</li>
+          <li>Earn if it is useful</li>
+        </ul>
       </section>
     </main>
   );

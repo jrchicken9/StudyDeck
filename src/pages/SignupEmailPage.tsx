@@ -82,8 +82,8 @@ export default function SignupEmailPage() {
           <h1 className="page-title signup-title auth-page-title">Create account</h1>
           {ready ? (
             <p className="auth-subtitle">
-              Sign up with your email. An admin will approve access to the Sergeant
-              exam after your account is created.
+              Sign up with your email. An admin approves your account before you can
+              start a session.
             </p>
           ) : null}
         </header>

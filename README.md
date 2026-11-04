@@ -1,6 +1,6 @@
 # StudyDeck
 
-Exam practice app: timed quizzes, personal question banks, and a community test library. The UI is a Vite + React app. Accounts and data live in the StudyDeck Supabase project.
+Exam practice app: timed sessions, personal question banks, and a community test library. The UI is a Vite + React app. Accounts and data live in the StudyDeck Supabase project.
 
 ## Run locally
 

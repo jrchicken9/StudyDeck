@@ -40,48 +40,49 @@ export default function WelcomePage() {
 
   return (
     <div className="welcome-shell">
-      <div className="welcome-card auth-surface">
-        <div className="welcome-brand">
-          <StudyDeckBrand
-            layout="stack"
-            logoClassName="welcome-logo"
-            wordmarkClassName="welcome-eyebrow studydeck-wordmark studydeck-wordmark--hero studydeck-wordmark--serious"
-          />
-          <h1 className="welcome-title">Prepare for the Sergeant exam.</h1>
+      <div className="welcome-stage">
+        <div className="welcome-copy">
+          <StudyDeckBrand layout="inline" logoClassName="welcome-logo" />
+          <h1 className="welcome-title">
+            Practice for
+            <br />
+            your exam.
+          </h1>
           <p className="welcome-tagline">
-            The March 2026 question bank, timed sessions, and feedback as soon as you
-            answer. Sign in when you are ready to begin.
+            Timed multiple-choice sessions. Answer a question, then see if you were right.
           </p>
-          <ul className="welcome-points" aria-label="Key benefits">
-            <li>Question bank</li>
-            <li>Timed sessions</li>
-            <li>Instant feedback</li>
-          </ul>
+          <div className="welcome-actions">
+            {authReady ? (
+              <>
+                <Link to="/auth/signup" className="btn btn-welcome-primary">
+                  Create account
+                </Link>
+                <Link to="/auth/login" className="btn btn-welcome-secondary">
+                  Log in
+                </Link>
+              </>
+            ) : (
+              <p className="welcome-auth-hint muted">
+                Create account and Log in appear once this deployment is connected to accounts.
+              </p>
+            )}
+          </div>
         </div>
 
-        <div className="welcome-actions">
-          {authReady ? (
-            <>
-              <Link
-                to="/auth/signup"
-                className="btn btn-welcome-primary"
-              >
-                Create account
-              </Link>
-              <Link
-                to="/auth/login"
-                className="btn btn-welcome-secondary"
-              >
-                Log in
-              </Link>
-            </>
-          ) : (
-            <p className="welcome-auth-hint muted">
-              The Log in and Join For Free buttons will appear here once Supabase environment
-              variables are set on this deployment.
-            </p>
-          )}
-        </div>
+        <ul className="welcome-points" aria-label="What you can practice">
+          <li>
+            <span>StudyDeck exams</span>
+            <p>Exams published by the team behind the app.</p>
+          </li>
+          <li>
+            <span>Community</span>
+            <p>Multiple-choice tests people upload, with the answers included.</p>
+          </li>
+          <li>
+            <span>The session</span>
+            <p>A timer on each question, and the key as soon as you commit.</p>
+          </li>
+        </ul>
       </div>
     </div>
   );

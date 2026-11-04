@@ -151,7 +151,7 @@ export default function MyBanksPage() {
   return (
     <main className="page page-my-banks page-custom-tests">
       <header className="custom-tests-hero card">
-        <p className="eyebrow custom-tests-eyebrow">Work Shop</p>
+        <p className="eyebrow custom-tests-eyebrow">Workshop</p>
         <h1 className="page-title custom-tests-page-title">Your tests</h1>
         <p className="lead lead--compact custom-tests-lead">
           Build multiple-choice banks, run timed or untimed practice, then{" "}
@@ -198,7 +198,7 @@ export default function MyBanksPage() {
           <p className="custom-tests-empty-title">Start your first test</p>
           <p className="custom-tests-empty-desc muted">
             You will name the test, add A–B–C questions in the editor, then use <strong>Run test</strong> for
-            instant feedback—same flow as official exams.
+            instant feedback—same flow as a StudyDeck exam.
           </p>
           <div className="my-banks-empty-actions">
             <Link to="/my-banks/new" className="btn">

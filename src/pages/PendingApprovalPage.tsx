@@ -56,7 +56,7 @@ export default function PendingApprovalPage() {
         <h1 className="page-title">Awaiting access</h1>
         <p className="lead">
           Your account is ready, but an administrator still needs to approve it.
-          After that, Home is where you start the Sergeant exam.
+          After that, Home is where you pick a test and start a session.
         </p>
         {user.email ? (
           <p className="muted">

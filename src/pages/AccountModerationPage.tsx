@@ -64,7 +64,7 @@ export default function AccountModerationPage() {
         <div className="card pending-card">
           <p className="eyebrow">Account</p>
           <h1 className="page-title">All clear</h1>
-          <p className="lead">Your account is active. Home is where you start the Sergeant exam.</p>
+          <p className="lead">Your account is active. Home is where you pick a test and start a session.</p>
           <div className="btn-row pending-actions" style={{ marginTop: "1.25rem" }}>
             <Link to="/home" className="btn secondary">
               Home

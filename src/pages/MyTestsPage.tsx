@@ -80,15 +80,16 @@ export default function MyTestsPage() {
         <p className="eyebrow">Practice</p>
         <h1 className="page-title">Tests</h1>
         <p className="lead lead--compact">
-          The Sergeant exam is here. Saved community tests and exams you build are under{" "}
-          <Link to="/community" state={{ from: location.pathname }}>
-            Community
-          </Link>{" "}
-          and{" "}
+          Exams published by StudyDeck are listed here. Tests uploaded by the
+          community, built in{" "}
           <Link to="/my-banks" state={{ from: location.pathname }}>
             Workshop
+          </Link>{" "}
+          and shared on{" "}
+          <Link to="/community" state={{ from: location.pathname }}>
+            Community
           </Link>
-          .
+          , are coming soon.
         </p>
       </header>
 
@@ -96,7 +97,7 @@ export default function MyTestsPage() {
 
       <section className="card my-tests-panel" aria-labelledby="my-tests-official-heading">
         <h2 id="my-tests-official-heading" className="my-tests-panel-title">
-          Sergeant exam
+          From StudyDeck
         </h2>
         <ul className="exam-grid my-tests-panel-grid">
           {EXAMS.map((exam) => (
@@ -128,19 +129,19 @@ export default function MyTestsPage() {
         ) : library.length === 0 ? (
           <div className="my-tests-empty-state">
             <div className="my-tests-empty-icon" aria-hidden />
-            <p className="my-tests-empty-title">No community tests here yet</p>
+            <p className="my-tests-empty-title">Community tests are coming soon</p>
             <p className="muted my-tests-empty-desc">
-              When you save a community test, it shows up here so you can start a session anytime.
+              You will be able to save a multiple-choice test uploaded by the community, answers included, and practice it here.
             </p>
             <Link to="/community" state={{ from: location.pathname }} className="btn btn-tertiary my-tests-empty-cta">
-              Browse Community
+              See Community
             </Link>
             <p className="muted my-tests-empty-foot">
-              Exams you build stay in{" "}
+              Uploading your own test, and earning from it if people find it useful, will live in{" "}
               <Link to="/my-banks" state={{ from: location.pathname }}>
                 Workshop
               </Link>
-              . Open one there to start a session.
+              .
             </p>
           </div>
         ) : (
