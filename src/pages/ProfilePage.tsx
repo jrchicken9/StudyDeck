@@ -364,8 +364,8 @@ export default function ProfilePage() {
           Published tests
         </h2>
         <p className="muted profile-published-intro">
-          Work Shop banks you have published appear here. Use <strong>Publication…</strong> on the Work
-          Shop card to change audience, pricing, or unpublish.
+          Workshop banks you have published appear here. Use <strong>Publication…</strong> on the
+          Workshop card to change audience, pricing, or unpublish.
         </p>
         {publishedError ? <p className="auth-error">{publishedError}</p> : null}
         {publishedLoading ? (
@@ -391,7 +391,7 @@ export default function ProfilePage() {
                   state={{ from: location.pathname }}
                   className="btn btn-tertiary btn-compact"
                 >
-                  Open in Work Shop
+                  Open in Workshop
                 </Link>
               </li>
             ))}

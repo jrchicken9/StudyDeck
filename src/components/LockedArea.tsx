@@ -12,7 +12,7 @@ function AccessHold() {
   );
 }
 
-/** Community and Work Shop stay available to admins. Everyone else sees coming soon. */
+/** Community and Workshop stay available to admins. Everyone else sees coming soon. */
 export function LockedArea({ area }: { area: string }) {
   const { isAdmin, accessLoading } = useAuth();
   if (accessLoading) return <AccessHold />;
@@ -20,7 +20,7 @@ export function LockedArea({ area }: { area: string }) {
   return <Outlet />;
 }
 
-/** Custom-bank sessions belong to Work Shop. Official exams stay open. */
+/** Custom-bank sessions belong to Workshop. Official exams stay open. */
 export function LockedCustomExam({ children }: { children: React.ReactNode }) {
   const { examId } = useParams<{ examId: string }>();
   const { isAdmin, accessLoading } = useAuth();

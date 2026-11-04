@@ -207,7 +207,7 @@ export default function CommunityPostCard({
             <>
               <span className="community-post-badge">Your test</span>
               <Link to={`/my-banks/${p.id}`} state={linkState} className="btn btn-tertiary btn-compact">
-                Edit in Work Shop
+                Edit in Workshop
               </Link>
               {p.question_count > 0 ? (
                 <Link to={`/my-banks/${p.id}/practice`} state={linkState} className="btn btn-compact">

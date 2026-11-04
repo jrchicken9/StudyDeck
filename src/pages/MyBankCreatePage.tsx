@@ -492,7 +492,7 @@ export default function MyBankCreatePage() {
   return (
     <main className="page page-my-bank-create page-custom-tests">
       <section className="card my-bank-create-card">
-        <p className="eyebrow custom-tests-eyebrow">Work Shop</p>
+        <p className="eyebrow custom-tests-eyebrow">Workshop</p>
         <h1 className="page-title custom-tests-page-title">Create custom test</h1>
         <p className="lead lead--compact custom-tests-lead">
           Enter a test name, then choose how you want to add questions.

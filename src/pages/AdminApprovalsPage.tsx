@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { profileMatchesAdminSearch } from "../lib/adminTableSearch";
+import { publishPendingApprovalsCount } from "../hooks/usePendingApprovalsCount";
 import { supabase } from "../lib/supabaseClient";
 
 type PendingRow = {
@@ -31,16 +32,17 @@ export default function AdminApprovalsPage() {
     if (qErr) {
       setError(qErr.message);
       setRows([]);
+      publishPendingApprovalsCount(0);
     } else {
-      setRows(
-        (data ?? []).map((p) => ({
-          id: String(p.id),
-          email: typeof p.email === "string" ? p.email : null,
-          first_name: typeof p.first_name === "string" ? p.first_name : null,
-          last_name: typeof p.last_name === "string" ? p.last_name : null,
-          created_at: String(p.created_at ?? ""),
-        })),
-      );
+      const next = (data ?? []).map((p) => ({
+        id: String(p.id),
+        email: typeof p.email === "string" ? p.email : null,
+        first_name: typeof p.first_name === "string" ? p.first_name : null,
+        last_name: typeof p.last_name === "string" ? p.last_name : null,
+        created_at: String(p.created_at ?? ""),
+      }));
+      setRows(next);
+      publishPendingApprovalsCount(next.length);
     }
     setLoading(false);
   }, []);

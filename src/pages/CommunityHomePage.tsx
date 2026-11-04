@@ -234,7 +234,7 @@ export default function CommunityHomePage() {
         <p className="lead">
           Browse tests other learners have published from{" "}
           <Link to="/my-banks" state={{ from: location.pathname }}>
-            Work Shop
+            Workshop
           </Link>
           . Likes help popular posts rise to the top. Rate the <strong>test</strong> after you finish
           a session; rate the <strong>publisher</strong> from their profile.
@@ -252,7 +252,7 @@ export default function CommunityHomePage() {
         <div className="custom-tests-empty card">
           <p className="custom-tests-empty-title">No published tests yet</p>
           <p className="custom-tests-empty-desc muted">
-            When someone publishes a test from Work Shop (audience: everyone), it will show up here.
+            When someone publishes a test from Workshop (audience: everyone), it will show up here.
             Friends-only posts only appear to connected friends.
           </p>
         </div>

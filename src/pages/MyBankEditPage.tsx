@@ -1667,7 +1667,7 @@ export default function MyBankEditPage() {
       <main className="page page--centered">
         <p className="muted">Invalid test link.</p>
         <Link to="/my-banks" className="btn secondary">
-          Work Shop
+          Workshop
         </Link>
       </main>
     );
@@ -1687,7 +1687,7 @@ export default function MyBankEditPage() {
       <main className="page page--centered">
         <p className="muted">{error}</p>
         <Link to="/my-banks" className="btn secondary">
-          Work Shop
+          Workshop
         </Link>
       </main>
     );
@@ -1701,7 +1701,7 @@ export default function MyBankEditPage() {
         <div
           className="my-bank-meta-save-strip"
           role="region"
-          aria-label="Run this test or return to Work Shop"
+          aria-label="Run this test or return to Workshop"
         >
           <div className="my-bank-meta-save-strip__inner">
             <div
@@ -1725,7 +1725,7 @@ export default function MyBankEditPage() {
             <div
               className="my-bank-meta-save-strip__cluster my-bank-meta-save-strip__cluster--solo my-bank-meta-save-strip__cluster--merged-save"
               role="group"
-              aria-label="Work Shop"
+              aria-label="Workshop"
             >
               <Link
                 to="/my-banks"
@@ -1792,7 +1792,7 @@ export default function MyBankEditPage() {
               aria-labelledby="custom-test-title-label my-bank-general-details-heading"
             >
               <div className="my-bank-general-summary__hero">
-                <p className="eyebrow custom-tests-eyebrow my-bank-general-summary__eyebrow">Work Shop</p>
+                <p className="eyebrow custom-tests-eyebrow my-bank-general-summary__eyebrow">Workshop</p>
                 <div className="my-bank-general-summary__top">
                   <div className="my-bank-title-block" id="my-bank-test-name-section">
                     <div className="my-bank-title-label-row">

@@ -1,5 +1,6 @@
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { flushSync } from "react-dom";
 import { useLocation } from "react-router-dom";
-import type { ReactNode } from "react";
 
 type PageTransitionProps = {
   children: ReactNode;
@@ -10,26 +11,63 @@ type PageTransitionProps = {
   tone?: "full" | "subtle";
 };
 
+type Snapshot = {
+  key: string;
+  children: ReactNode;
+};
+
+type DocumentWithViewTransition = Document & {
+  startViewTransition?: (update: () => void) => { finished: Promise<void> };
+};
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 /**
- * Re-mounts a keyed wrapper on route changes so enter animations run on navigation.
+ * Keeps the previous page on screen until the next one is ready, then
+ * crossfades them. The top bar stays put, so a click feels like moving
+ * inside the app.
  */
 export default function PageTransition({
   children,
   tone = "full",
 }: PageTransitionProps) {
-  const { pathname, search, hash } = useLocation();
-  const transitionKey = `${pathname}${search}${hash}`;
+  const location = useLocation();
+  const transitionKey = `${location.pathname}${location.search}${location.hash}`;
+  const pendingChildren = useRef(children);
+  pendingChildren.current = children;
+
+  const [snapshot, setSnapshot] = useState<Snapshot>({
+    key: transitionKey,
+    children,
+  });
+
+  useLayoutEffect(() => {
+    if (snapshot.key === transitionKey) return;
+    const nextKey = transitionKey;
+    const commit = () => {
+      setSnapshot({ key: nextKey, children: pendingChildren.current });
+    };
+    const start = (document as DocumentWithViewTransition).startViewTransition;
+    if (prefersReducedMotion() || typeof start !== "function") {
+      commit();
+      return;
+    }
+    start.call(document, () => {
+      flushSync(commit);
+    });
+  }, [snapshot.key, transitionKey]);
 
   return (
     <div
-      key={transitionKey}
       className={
         tone === "subtle"
           ? "page-transition page-transition--subtle"
           : "page-transition page-transition--full"
       }
     >
-      {children}
+      {snapshot.children}
     </div>
   );
 }

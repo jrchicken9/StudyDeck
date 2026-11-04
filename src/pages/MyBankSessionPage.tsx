@@ -70,7 +70,7 @@ export default function MyBankSessionPage() {
       <main className="page page--centered">
         <p className="muted">{loadError ?? "Something went wrong."}</p>
         <Link to="/my-banks" className="btn secondary">
-          Work Shop
+          Workshop
         </Link>
       </main>
     );
@@ -96,7 +96,7 @@ export default function MyBankSessionPage() {
   return (
     <main className="page page-home page-custom-tests">
       <header className="custom-tests-session-intro card">
-        <p className="eyebrow custom-tests-eyebrow">Work Shop</p>
+        <p className="eyebrow custom-tests-eyebrow">Workshop</p>
         <div className="custom-tests-session-title-row">
           <h1 className="page-title custom-tests-session-title">{title}</h1>
           <Link
